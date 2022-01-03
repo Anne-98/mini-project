@@ -1,0 +1,60 @@
+#home-wrapper{
+    color: #ffe8d6;
+    display: inline;
+}
+
+
+#home-video {
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    overflow: scroll;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.home-cake-structure {
+    color: #f1f1f1;
+    width: 50%;
+    background-color: rgba(51, 45, 45, 0.267);
+    position: relative;
+    padding: 20px;
+    height: 100vh;
+    font-family: 'Acme', sans-serif;
+    float: right;
+}
+
+#home-cake-icon{
+    color: #ffe8d6;
+}
+
+.home-cake-btn{
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    color: #ffe8d6;
+    border: 15px solid #ffe8d6;
+}
+
+#home-cake-designs{
+    border-bottom: none;
+    margin: 10px;
+    width: 120px;
+    height: 70px;
+}
+
+#home-cake-profiles{
+    border-bottom: none;
+    width: 200px;
+    height: 60px;
+}
+#home-cake-bottom{
+    border: 15px solid #ffe8d6;
+    margin-top: 10px;
+    width: 250px;
+    border-radius: 50px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');

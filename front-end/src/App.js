@@ -1,10 +1,16 @@
-
-import React from "react";
+import React, { Fragment } from "react";
+import Test from "./components/Test";
+import HomePage from "./pages/HomePage";
+import WorkPlacePage from "./pages/WorkPlacePage";
 
 const App = () =>{
 
   return(
-    <div>App</div>
+    <Fragment>
+      {/* <HomePage /> */}
+      {/* <WorkPlacePage /> */}
+      <Test />
+    </Fragment>
   )
 
 }
