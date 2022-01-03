@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const {loginCakeMaker, findExistCakeMaker} = require('./../database/CakeMakerDB')
 const {signInCakeMaker} = require('./../database/CakeMakerDB')
 const designRoute = require('./designRoute')
+const postRoute = require('./postRoute')
 
 
 const cakeMakerRoute = express.Router()
@@ -74,5 +75,9 @@ cakeMakerRoute.get('/logout', (req, res) => {
     req.session.user_id = null
     res.json({msg: "successfully logged out", isLog: req.session.isLog})
 })
+
+cakeMakerRoute.use('/createpost', postRoute)
+
+cakeMakerRoute.use('/posts', postRoute)
 
 module.exports = cakeMakerRoute

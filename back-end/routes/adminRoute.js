@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const {loginAdmin, findExistUser} = require('./../database/adminDB')
 const {signInAdmin} = require('./../database/adminDB')
+const postRoute = require('./postRoute')
 
 const adminRoute = express.Router()
 adminRoute.use(bodyParser.json())
@@ -46,5 +47,6 @@ adminRoute.get('/logout', (req, res) => {
     res.json({msg: "successfully logged out", isLog: req.session.isLog})
 })
 
+adminRoute.use('/posts', postRoute)
 
 module.exports = adminRoute

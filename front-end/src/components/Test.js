@@ -16,11 +16,13 @@ const Test = () => {
         body.append('file', imageRef.current.files[0])
         body.append('fileName', nameRef.current.value)
         
-        var dataSet = await axios.post('http://localhost:8000/cakemaker/designs/insert', body)
+        // var dataSet = await axios.post('http://localhost:8000/cakemaker/designs/insert', body)
         // var dataSet = await axios.post('http://localhost:8000/cakemaker/signin', body)
+        // var dataSet = await axios.post('http://localhost:8000/cakemaker/createpost/post', body)
+        var dataSet = await axios.post('http://localhost:8000/customer/orders/indirect_orders', body)
         
         setName(dataSet.data.msg)
-        console.log(dataSet.data)
+        console.log(name)
         
         // setImage(dataSet.data.image)
         console.log(dataSet.data.image)

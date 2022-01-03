@@ -23,7 +23,11 @@ app.use(session({
   resave: true
 }))
 
-app.use(cors({credentials:true}))
+app.use(cors({
+  credentials:true,
+  origin: 'http://localhost:3000',
+  methods: ['get','post']
+}))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(fileupload())
 app.use('/public',express.static(__dirname + '/public'))

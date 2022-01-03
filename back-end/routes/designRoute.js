@@ -13,13 +13,12 @@ designRoute.post('/insert', async(req, res) => {
     var price = 1000
     var rates = 5
     var imageFile = req.files.file
-    // var cake_makers_id = req.session.user_id
-    var cake_makers_id = 'ec5395ff-8dd0-44a4-bc2f-4ece9744327e'
+    var cake_makers_id = req.session.user_id
     // var imageFile = '/http:8000//public/images/designs/ksjhfaksjhf'
     console.log(cake_makers_id)
-    var data = await insertDesign(title, description, imageFile, category, price, cake_makers_id, rates)
-
+    
     if (req.session.isLog == true) {
+        var data = await insertDesign(title, description, imageFile, category, price, cake_makers_id, rates)
         if (data.length > 0) {
             res.json({success: true, msg: "Successfully added a new design"})
         }else{
