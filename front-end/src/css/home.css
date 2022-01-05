@@ -1,6 +1,6 @@
 #home-wrapper{
     color: #ffe8d6;
-    display: inline;
+    /* display: inline; */
 }
 
 
@@ -9,7 +9,7 @@
     width: 100%;
     left: 50%;
     top: 50%;
-    height: 100%;
+    height: 100vh;
     overflow: scroll;
     object-fit: cover;
     transform: translate(-50%, -50%);
@@ -18,17 +18,63 @@
 
 .home-cake-structure {
     color: #f1f1f1;
-    width: 50%;
-    background-color: rgba(51, 45, 45, 0.267);
+    width: 350px;
+    height: 91vh;
+    background-color: #a1925f;
     position: relative;
-    padding: 20px;
-    height: 100vh;
+    margin-right: 30px;
+    padding: 50px;
     font-family: 'Acme', sans-serif;
     float: right;
-}
-
-#home-cake-icon{
+    /* border-radius: 10px; */
     color: #ffe8d6;
+    animation-name: home-cake-structure;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+  transition: all 0.2s ease;
+  z-index: -1;
+}
+#home-cake-header{
+    font-family: 'Meie Script', cursive;
+}
+@keyframes pop-up{
+  0%{ transform: translateX(-80px); width: 300px;}
+  100%{ transform: translateX(80px);width: 50%;}
+}
+@keyframes home-cake-structure{
+  0%{ transform: translateY(-100px); height: 91vh;}
+  100%{ transform: translateY(0px);height: 91vh;}
+}
+#popUp{
+  background-color: #ffe8d6;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.404); 
+  border-radius: 5px;
+  animation-name: pop-up;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+  transition: all 0.2s ease;
+  margin-top: 450px;
+  z-index: 2;
+  width: 50%;
+  padding: 5px;
+}
+.carouselIcon{
+  color:#ffe8d6;
+  padding: 40px;
+  background:#a1925f;
+  border-radius:10px;
+  float:left;
+  font-size: 50px;
+}
+#carouselFollow{
+  color: #a1925f;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-family: cursive;
+}
+#home-cake-icon{
+    /* color: #ffe8d6;/ */
 }
 
 .home-cake-btn{
@@ -58,3 +104,7 @@
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Langar&display=swap');
+/* font-family: 'Langar', cursive; */
+
+@import url('https://fonts.googleapis.com/css2?family=Meie+Script&display=swap');

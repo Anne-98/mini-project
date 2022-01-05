@@ -1,5 +1,24 @@
 #navbarWrapper{
-    background: rgba(255, 255, 255, 0.712);
-    border-bottom: 5px solid #a1925f;
+    background: #ffe8d6e0;
+    border-bottom: 10px solid #a1925f;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    font-family: 'Langar', cursive;
+}
+
+.navbar-brand{
+    color: #a1925f;
+    font-family: 'Meie Script', cursive;
+    font-size: 30px;
+}
+.nav-link {
+    color: #a1925f;
 
 }
+
+#toggler-icon{
+    color: #a1925f;
+    /* z-index: 5; */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Meie+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Langar&display=swap');

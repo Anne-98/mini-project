@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import Home from "../components/Home/Home";
-import Navbar from "../components/Home/Navbar";
+import Navbar from "../components/Home/NavbarFixed";
 
 const HomePage = () => {
     return(

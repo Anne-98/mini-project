@@ -3,7 +3,8 @@ const bodyParser = require('body-parser')
 const {loginCustomer, findExistUser} = require('./../database/customerDB')
 const {signInCustomer} = require('./../database/customerDB')
 const postRoute = require('./postRoute')
-const indirectOrdersRoute = require('./indirectOrdersRoute')
+const indirectOrdersRoute = require('./indirectOrderRoute')
+const directOrderRoute = require('./directOrderRoute')
 
 const customerRoute = express.Router()
 customerRoute.use(bodyParser.json())
@@ -60,6 +61,7 @@ customerRoute.get('/logout', (req, res) => {
 })
 
 customerRoute.use('/posts', postRoute)
-customerRoute.use('/orders', indirectOrdersRoute)
+customerRoute.use('/indirect_orders', indirectOrdersRoute)
+customerRoute.use('/direct_orders', directOrderRoute)
 
 module.exports = customerRoute

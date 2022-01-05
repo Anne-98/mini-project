@@ -9,6 +9,7 @@ const fileupload = require('express-fileupload')
 const path = require('path')
 const session = require('express-session')
 const designRoute = require('./routes/designRoute')
+const generalRoute = require('./routes/generalRoute')
 
 const app = express()
 
@@ -36,6 +37,7 @@ app.use('/', indexRoute)
 app.use('/customer', customerRoute)
 app.use('/cakemaker', cakeMakerRoute)
 app.use('/admin', adminRoute)
+app.use('/general', generalRoute)
 
 app.listen(8000, (error) =>{
   if (error) {

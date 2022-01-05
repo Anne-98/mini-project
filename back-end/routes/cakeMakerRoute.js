@@ -4,6 +4,7 @@ const {loginCakeMaker, findExistCakeMaker} = require('./../database/CakeMakerDB'
 const {signInCakeMaker} = require('./../database/CakeMakerDB')
 const designRoute = require('./designRoute')
 const postRoute = require('./postRoute')
+const allOrdersRoute = require('./allOrdersRoute')
 
 
 const cakeMakerRoute = express.Router()
@@ -79,5 +80,7 @@ cakeMakerRoute.get('/logout', (req, res) => {
 cakeMakerRoute.use('/createpost', postRoute)
 
 cakeMakerRoute.use('/posts', postRoute)
+
+cakeMakerRoute.use('/orders', allOrdersRoute)
 
 module.exports = cakeMakerRoute

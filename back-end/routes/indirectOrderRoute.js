@@ -1,10 +1,10 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const { indirectOrder } = require('../database/indirectOrdersDB')
+const { indirectOrder } = require('../database/indirectOrderDB')
 
-const indirectOrdersRoute = express.Router()
+const indirectOrderRoute = express.Router()
 
-indirectOrdersRoute.post('/indirect_orders', async(req, res) => {
+indirectOrderRoute.post('/order', async(req, res) => {
 
     const date = new Date();
 
@@ -30,8 +30,6 @@ indirectOrdersRoute.post('/indirect_orders', async(req, res) => {
     }else{
         res.json({msg:"You are not logged In"})
     }
-
-
 })
 
-module.exports = indirectOrdersRoute
+module.exports = indirectOrderRoute
