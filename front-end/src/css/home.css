@@ -1,6 +1,5 @@
 #home-wrapper{
     color: #ffe8d6;
-    /* display: inline; */
 }
 
 
@@ -19,31 +18,29 @@
 .home-cake-structure {
     color: #f1f1f1;
     width: 350px;
-    height: 91vh;
     background-color: #a1925f;
-    position: relative;
     margin-right: 30px;
     padding: 50px;
     font-family: 'Acme', sans-serif;
     float: right;
-    /* border-radius: 10px; */
+    margin-top: 80px;
     color: #ffe8d6;
     animation-name: home-cake-structure;
   animation-duration: 5s;
   animation-fill-mode: forwards;
   transition: all 0.2s ease;
-  z-index: -1;
+  z-index: 0;
 }
 #home-cake-header{
     font-family: 'Meie Script', cursive;
 }
 @keyframes pop-up{
   0%{ transform: translateX(-80px); width: 300px;}
-  100%{ transform: translateX(80px);width: 50%;}
+  100%{ transform: translateX(80px);width: 45vw;}
 }
 @keyframes home-cake-structure{
-  0%{ transform: translateY(-100px); height: 91vh;}
-  100%{ transform: translateY(0px);height: 91vh;}
+  0%{ transform: translateY(-100px); height: 89vh;}
+  100%{ transform: translateY(0px);height: 89vh;}
 }
 #popUp{
   background-color: #ffe8d6;

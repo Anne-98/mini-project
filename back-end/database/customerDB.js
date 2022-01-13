@@ -9,13 +9,18 @@ const loginCustomer = (email, password) =>{
 
         let hashed_email = SHA256(email).toString()
 
+        console.log(email, password)
         connection.query(`SELECT*FROM customer_details WHERE email='${hashed_email}' `, (err, row) => {
-            if (err) {
+            if (row.length == 0) {
+                return resolve({row, exist: false})
+            }else if(err){
                 return reject(err)
             }else{
                 bcrypt.compare(password, row[0].password, (error, result) => {
-                    if (error) {
-                        reject(error)
+                    if (result == false) {
+                        return resolve(result)
+                    }else if(error){
+                        return reject(error)
                     }
                     return resolve(row)
                 })

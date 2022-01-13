@@ -24,4 +24,19 @@ const insertDesign = (title, description, imageFile, category, price,cake_makers
     })
 }
 
-module.exports = {insertDesign}
+const getDesigns = () => {
+    return new Promise((resolve, reject) => {
+        connection.query(`SELECT*FROM designs`, (error, row) => {
+            if (error) {
+                console.log("eeeeeeeeeeeee")
+                return reject(error)
+            }else{
+                // console.log("ffffffffffff")
+                // console.log(row)
+                return resolve(row)
+            }
+        })
+    })
+}
+
+module.exports = {insertDesign, getDesigns}

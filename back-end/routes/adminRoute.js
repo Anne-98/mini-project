@@ -41,12 +41,6 @@ adminRoute.get('/signin', async(req, res) => {
     
 })
 
-adminRoute.get('/logout', (req, res) => {
-    req.session.isLog = false
-    req.session.user_id = null
-    res.json({msg: "successfully logged out", isLog: req.session.isLog})
-})
-
 adminRoute.use('/posts', postRoute)
 
 module.exports = adminRoute

@@ -1,13 +1,20 @@
 import React, { Fragment } from "react";
+import {Routes } from "react-router-dom";
+import Design from "../components/Home/Design";
 import Home from "../components/Home/Home";
-import Navbar from "../components/Home/NavbarFixed";
+import { Container, Row, Col } from "react-bootstrap"; 
 
 const HomePage = () => {
     return(
-        <Fragment>
-            <Navbar />
-            <Home />
-        </Fragment>
+                <Container fluid="md">
+                    <Row>
+                        <Col><Home/></Col>
+                    </Row>
+                    <Row>
+                        <Col><Design/></Col>
+                    </Row>
+                </Container>
+                    
     )
 }
 

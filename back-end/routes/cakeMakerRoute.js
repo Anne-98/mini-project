@@ -10,72 +10,89 @@ const allOrdersRoute = require('./allOrdersRoute')
 const cakeMakerRoute = express.Router()
 cakeMakerRoute.use(bodyParser.json())
 
-cakeMakerRoute.get('/login', async(req, res) => {
-    var email = 's@gmail.com'
-    var password = '1234'
+cakeMakerRoute.post('/login', async(req, res) => {
+    // var email = 'ss@gmail.com'
+    // var password = '1234'
+    var email = req.body.cakemaker_email
+    var password = req.body.cakemaker_password
+
+    console.log(req.body)
 
     console.log(req.session)
     
-    const data = await loginCakeMaker(email, password)
-    if (data.length > 0) {
-        console.log(data[0].cake_makers_id)
-        req.session.isLog = true
-        var cake_makers = data[0].cake_makers_id
-        req.session.user_id = cake_makers
-        console.log(req.session)
-        res.json({success: true, data, msg: "Successfully logged"})
+    if (!req.session.isLog) {
+        const data = await loginCakeMaker(email, password)
+
+        console.log(data)
+        if (data.length > 0) {
+            console.log(data[0].cake_makers_id)
+            req.session.isLog = true
+            var cake_makers = data[0].cake_makers_id
+            req.session.user_id = cake_makers
+            console.log(req.session)
+            res.json({success: true, data, msg: "Successfully logged", isLog: true})
+        }else if (data.exist ==  false) {
+            req.session.isLog = false
+            req.session.user_id = null
+            res.json({success: false, msg: "This Email doesn't exist", isLog: false})
+        }else{
+            req.session.isLog = false
+            req.session.user_id = null
+            res.json({success: false, msg: "Invalid credentials", isLog: false})
+        }
     }else{
-        req.session.isLog = false
-        req.session.user_id = null
-        res.json({success: false, msg: "Invalid credentials"})
+        res.json({success:false, msg: "You have already Logged In"})
     }
 })
 
 cakeMakerRoute.post('/signin', async(req, res) => {
 
-    var name = 'shamalka'
-    var password = '1234'
-    var email = 's@gmail.com'
-    var district = 'galle'
-    var qualifications = 'dfajksdhfakldfhlkdf'
-    var contact_num = 0112255455
-    var brand_name = 'sha'
-    var facebook = 'kjhafsadfhlsadfks'
-    var instagram = 'lakhfalkdf'
-    var twitter = 'alkdfalkdsjf'
+    // var name = 'shamalka'
+    // var password = '1234'
+    // var email = 's@gmail.com'
+    // var district = 'galle'
+    // var qualifications = 'dfajksdhfakldfhlkdf'
+    // var contact_num = 0112255455
+    // var brand_name = 'sha'
+    // var facebook = 'kjhafsadfhlsadfks'
+    // var instagram = 'lakhfalkdf'
+    // var twitter = 'alkdfalkdsjf'
+
+    var {name, password, email, district, qualifications, contact_num, brand_name, facebook, instagram, twitter} = req.body
+
+    console.log(req.body)
 
     var imageFile = req.files.file
 
-    const data = await findExistCakeMaker(email)
+    if (!req.session.isLog) {
+        const data = await findExistCakeMaker(email)
 
-    if (data.length > 0) {
-        req.session.isLog = false
-        req.session.user_id = null
-        res.json({exist: true, msg:"You already have an account"})
-    }else{
-        
-        const dataSet = await signInCakeMaker(name, password, email, district, qualifications, contact_num, brand_name, facebook, instagram, twitter, imageFile)
-
-        console.log(dataSet)
-
-        if (dataSet.length > 0) {
-            req.session.isLog = true
-            req.session.user_id = data[0].cake_makers_id
-            res.json({exist: false, success: true, data: dataSet, msg:"Successfully created", isLog: req.session.isLog})
-        }else{
+        if (data.exist == true) {
             req.session.isLog = false
             req.session.user_id = null
-            res.json({exist: false, success: false, msg: "Something went wrong", isLog: req.session.isLog})
+            res.json({exist: true, msg:"You already have an account"})
+        }else{
+            
+            const dataSet = await signInCakeMaker(name, password, email, district, qualifications, contact_num, brand_name, facebook, instagram, twitter, imageFile)
+
+            console.log("signInCakeMaker",dataSet)
+
+            if (dataSet.length > 0) {
+                req.session.isLog = true
+                req.session.user_id = dataSet[0].cake_makers_id
+                res.json({exist: false, success: true, data: dataSet, msg:"Successfully created", isLog: req.session.isLog})
+            }else{
+                req.session.isLog = false
+                req.session.user_id = null
+                res.json({exist: false, success: false, msg: "Something went wrong", isLog: req.session.isLog})
+            }
         }
+    }else{
+        res.json({exist:true, success:false, msg:"You are already Logged In", isLog: true})
     }
     
 })
 cakeMakerRoute.use('/designs', designRoute)
-cakeMakerRoute.get('/logout', (req, res) => {
-    req.session.isLog = false
-    req.session.user_id = null
-    res.json({msg: "successfully logged out", isLog: req.session.isLog})
-})
 
 cakeMakerRoute.use('/createpost', postRoute)
 

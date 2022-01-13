@@ -9,26 +9,38 @@ const directOrderRoute = require('./directOrderRoute')
 const customerRoute = express.Router()
 customerRoute.use(bodyParser.json())
 
-customerRoute.get('/login', async(req, res) => {
-    var email = 'anne@gmail.com'
-    var password = '1234'
+customerRoute.post('/login', async(req, res) => {
+    // var email = 'anne@gmail.com'
+    // var password = '1234'
+
+    var email = req.body.customer_email
+    var password = req.body.customer_password
 
     console.log(req.session)
-    const data = await loginCustomer(email, password)
     
-    if (data.length > 0) {
-        req.session.isLog = true
-        req.session.user_id = data[0].cus_id
-        console.log(req.session)
-        res.json({success: true, data, msg: "Successfully logged", isLog: true})
+    if (!req.session.isLog) {
+        const data = await loginCustomer(email, password)
+        console.log(data)
+        if (data.length > 0) {
+            req.session.isLog = true
+            req.session.user_id = data[0].cus_id
+            console.log(req.session)
+            res.json({success: true, data, msg: "Successfully logged", isLog: true})
+        }else if (data.exist ==  false) {
+            req.session.isLog = false
+            req.session.user_id = null
+            res.json({success: false, msg: "This Email doesn't exist", isLog: false})
+        }else{
+            req.session.isLog = false
+            req.session.user_id = null
+            res.json({success: false, msg: "Invalid credentials", isLog: false})
+        }
     }else{
-        req.session.isLog = false
-        req.session.user_id = null
-        res.json({success: false, msg: "Invalid credentials", isLog: false})
+        res.json({success:false, msg:"You have already Logged In"})
     }
 })
 
-customerRoute.get('/signin', async(req, res) => {
+customerRoute.post('/signin', async(req, res) => {
     var email = 'anne@gmail.com'
     var password = '1234'
     var name = 'anne'
@@ -52,12 +64,6 @@ customerRoute.get('/signin', async(req, res) => {
         }
     }
     
-})
-
-customerRoute.get('/logout', (req, res) => {
-    req.session.isLog = false
-    req.session.user_id = null
-    res.json({msg: "successfully logged out", isLog: req.session.isLog})
 })
 
 customerRoute.use('/posts', postRoute)

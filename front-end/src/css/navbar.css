@@ -10,9 +10,10 @@
     font-family: 'Meie Script', cursive;
     font-size: 30px;
 }
-.nav-link {
+.navItem {
     color: #a1925f;
-
+    text-decoration: none;
+    margin-right: 40px;
 }
 
 #toggler-icon{

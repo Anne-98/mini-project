@@ -9,7 +9,7 @@ const Home = () => {
         <Fragment>
             <div className="" id="home-wrapper">
                 <div id="home-video-div">
-                    <video autoPlay muted loop id="home-video">
+                    <video autoPlay muted loop poster="https://assets.codepen.io/6093409/river.jpg" id="home-video">
                         <source src={video_1} type="video/mp4"/>
                     </video>
                 </div>
@@ -34,10 +34,10 @@ const Home = () => {
                             <i class="fas fa-birthday-cake fa-5x" id="home-cake-icon"></i>
                         </div>
                         <div className="text-center">
-                            <Link to='/'> <button className="btn home-cake-btn" id="home-cake-designs" >Designs</button></Link>
+                            <Link to='/categories'> <button className="btn home-cake-btn" id="home-cake-designs" type="button" >Categories</button></Link>
                         </div>
                         <div className="text-center">
-                            <button className="btn home-cake-btn" id="home-cake-profiles" >Profiles</button>
+                            <button className="btn home-cake-btn" id="home-cake-profiles" type="button" >Profiles</button>
                         </div>
                         <div className="text-center">
                             <div className="btn" id="home-cake-bottom"></div>
