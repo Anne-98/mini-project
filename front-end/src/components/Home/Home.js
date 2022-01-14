@@ -9,7 +9,7 @@ const Home = () => {
         <Fragment>
             <div className="" id="home-wrapper">
                 <div id="home-video-div">
-                    <video autoPlay muted loop poster="https://assets.codepen.io/6093409/river.jpg" id="home-video">
+                    <video autoPlay muted loop id="home-video">
                         <source src={video_1} type="video/mp4"/>
                     </video>
                 </div>

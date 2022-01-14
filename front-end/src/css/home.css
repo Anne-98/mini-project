@@ -18,7 +18,7 @@
 .home-cake-structure {
     color: #f1f1f1;
     width: 350px;
-    background-color: #a1925f;
+    background-color: #aa968a;
     margin-right: 30px;
     padding: 50px;
     font-family: 'Acme', sans-serif;
@@ -58,13 +58,13 @@
 .carouselIcon{
   color:#ffe8d6;
   padding: 40px;
-  background:#a1925f;
+  background:#aa968a;
   border-radius:10px;
   float:left;
   font-size: 50px;
 }
 #carouselFollow{
-  color: #a1925f;
+  color: #aa968a;
   justify-content: center;
   align-items: center;
   display: flex;
