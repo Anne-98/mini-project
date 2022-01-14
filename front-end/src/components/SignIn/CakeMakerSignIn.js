@@ -18,6 +18,7 @@ const CakeMakerSignIn = () => {
     var [passwordValidate, setPasswordValidate] = useState('')
     var [nameValidate, setNameValidate] = useState('')
     var [imageValidate, setImageValidate] = useState('')
+    var [contactNumValidate, setContactNumValidate] = useState('')
 
     // var [body, setBody] = useState({password, name, city, brandName, tel, facebook, instagram, twitter, qualifications, file, email})
 
@@ -69,12 +70,23 @@ const CakeMakerSignIn = () => {
                 }
                 return imageValidation;
             }
+        function checkContactNum(str){
 
+            var res = (str.length == 10 && str.charAt(0) == 0)
+            console.log(res)
+                if (res) {
+                    setContactNumValidate('')
+                }else{
+                    setContactNumValidate('* Invalid telephone number')
+                }
+                return res;
+            }
         var isValidPassword = checkPassword(password)
         var isValidName = checkName(name)
         var isValidImage = checkImageType(file.name)
+        var isValidContact = checkContactNum(contact_num)
 
-        if (isValidPassword && isValidName && isValidImage) {
+        if (isValidPassword && isValidName && isValidImage && isValidContact) {
             var {data} = await axios.post('http://localhost:8000/cakemaker/signin', body)
 
             if (!data.exist) {
@@ -113,7 +125,6 @@ const CakeMakerSignIn = () => {
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <div class="invalid-feedback">{nameValidate}</div>
                     <label className="col-sm-4" for="inputName">Name</label>
                     <div className="col-sm-8">
                         <small id="passwordHelpInline" class="text-danger">
@@ -137,6 +148,9 @@ const CakeMakerSignIn = () => {
                 <div class="row mb-2">
                     <label className="col-sm-4" for="formGroupExampleInput">Contact Number</label>
                     <div className="col-sm-8">
+                        <small id="passwordHelpInline" class="text-danger">
+                    {contactNumValidate}
+                    </small>
                         <input type="number" class="form-control" id="formGroupExampleInput" placeholder="0711118898 / 0112255447" onChange={e => setContact_num(e.target.value)} required={true}/>
                     </div>
                 </div>
