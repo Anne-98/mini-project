@@ -55,7 +55,7 @@ const signInCakeMaker = (name, password, email, district, qualifications, contac
                 connection.query(`INSERT INTO cake_makers_details(cake_makers_id, name, password, email, district, qualifications, contact_num, brand_name, profile_picture, facebook, instagram, twitter) values('${random_id}','${name}', '${hashed_password}', '${hashed_email}', '${district}', '${qualifications}', '${contact_num}', '${brand_name}','${profile_pic}','${facebook}','${instagram}','${twitter}')`, async(error, row) => {
                         console.log("3")
                         if (error) {
-                            console.log("4")
+                            console.log(error.length)
                             return reject(error)
                         }else if (row.length == 0) {
                             console.log("5")

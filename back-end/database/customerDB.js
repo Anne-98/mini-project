@@ -34,17 +34,18 @@ const signInCustomer = (name, password, email, address, question, contact_num) =
         bcrypt.hash(password, saltRounds, (error, hashed_password) => {
             
             if (error) {
-                console.log(error)
                 return reject(error)
             }else{
                 let hashed_email = SHA256(email).toString()
-
-                connection.query(`INSERT INTO customer_details(name, password, email, address, question, contact_num) values('${name}', '${hashed_password}', '${hashed_email}', '${address}', '${question}', '${contact_num}')`, (error, row) =>{
+                let random_id = uuid()
+                connection.query(`INSERT INTO customer_details(cus_id, name, password, email, address, question, contact_num) values('${random_id}','${name}', '${hashed_password}', '${hashed_email}', '${address}', '${question}', '${contact_num}')`, async(error, row) =>{
                     if (error) {
                         return reject(error)
-                    }else{
+                    }else if(row.length == 0){
                         return resolve(row)
                     }
+                    const data = await loginCustomer(email, password)
+                    return resolve(data)
                 })
             }
         })

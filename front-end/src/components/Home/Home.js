@@ -1,10 +1,14 @@
 import React,{Fragment} from "react";
-import {Link} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import video_1 from './../../videos/video_1.mp4';
 import './../../css/home.css';
 import {Button,Carousel, Container, Row, Col,Jumbotron,Card} from 'react-bootstrap';
 
 const Home = () => {
+
+    var para = useParams()
+    var cake_makers_id = para.cake_makers_id
+
     return(
         <Fragment>
             <div className="" id="home-wrapper">
@@ -37,7 +41,7 @@ const Home = () => {
                             <Link to='/categories'> <button className="btn home-cake-btn" id="home-cake-designs" type="button" >Categories</button></Link>
                         </div>
                         <div className="text-center">
-                            <button className="btn home-cake-btn" id="home-cake-profiles" type="button" >Profiles</button>
+                            <Link to={`/profiles/cakemaker/${cake_makers_id}`}><button className="btn home-cake-btn" id="home-cake-profiles" type="button" >Profiles</button></Link>
                         </div>
                         <div className="text-center">
                             <div className="btn" id="home-cake-bottom"></div>

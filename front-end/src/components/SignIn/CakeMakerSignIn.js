@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { Fragment, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import CakeMakerProfile from "../Profiles/CakeMakerProfile";
 
 const CakeMakerSignIn = () => {
 
@@ -19,6 +21,8 @@ const CakeMakerSignIn = () => {
     var [nameValidate, setNameValidate] = useState('')
     var [imageValidate, setImageValidate] = useState('')
     var [contactNumValidate, setContactNumValidate] = useState('')
+    var [cake_makers_id, setCake_makers_id] = useState('')
+    var navigate = useNavigate()
 
     // var [body, setBody] = useState({password, name, city, brandName, tel, facebook, instagram, twitter, qualifications, file, email})
 
@@ -89,7 +93,12 @@ const CakeMakerSignIn = () => {
         if (isValidPassword && isValidName && isValidImage && isValidContact) {
             var {data} = await axios.post('http://localhost:8000/cakemaker/signin', body)
 
+            console.log(data.data[0].cake_makers_id)
+
             if (!data.exist) {
+                setCake_makers_id(data.data[0].cake_makers_id)
+                
+                navigate(`/profiles/cakemaker/${data.data[0].cake_makers_id}`)
                 setMsg(data.msg)
             }else{
                 setMsg(data.msg)

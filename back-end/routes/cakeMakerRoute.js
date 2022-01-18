@@ -5,6 +5,7 @@ const {signInCakeMaker} = require('./../database/CakeMakerDB')
 const designRoute = require('./designRoute')
 const postRoute = require('./postRoute')
 const allOrdersRoute = require('./allOrdersRoute')
+const cakeMakerProfileRoute = require('./cakeMakerProfileRoute')
 
 
 const cakeMakerRoute = express.Router()
@@ -47,18 +48,7 @@ cakeMakerRoute.post('/login', async(req, res) => {
 
 cakeMakerRoute.post('/signin', async(req, res) => {
 
-    // var name = 'shamalka'
-    // var password = '1234'
-    // var email = 's@gmail.com'
-    // var district = 'galle'
-    // var qualifications = 'dfajksdhfakldfhlkdf'
-    // var contact_num = 0112255455
-    // var brand_name = 'sha'
-    // var facebook = 'kjhafsadfhlsadfks'
-    // var instagram = 'lakhfalkdf'
-    // var twitter = 'alkdfalkdsjf'
-
-    var {name, password, email, district, qualifications, contact_num, brand_name, facebook, instagram, twitter} = req.body
+    var {name, password, email, district, qualifications, contact_num, brandName, facebook, instagram, twitter} = req.body
 
     console.log(req.body)
 
@@ -73,7 +63,7 @@ cakeMakerRoute.post('/signin', async(req, res) => {
             res.json({exist: true, msg:"You already have an account"})
         }else{
             
-            const dataSet = await signInCakeMaker(name, password, email, district, qualifications, contact_num, brand_name, facebook, instagram, twitter, imageFile)
+            const dataSet = await signInCakeMaker(name, password, email, district, qualifications, contact_num, brandName, facebook, instagram, twitter, imageFile)
 
             console.log("signInCakeMaker",dataSet)
 
@@ -99,5 +89,7 @@ cakeMakerRoute.use('/createpost', postRoute)
 cakeMakerRoute.use('/posts', postRoute)
 
 cakeMakerRoute.use('/orders', allOrdersRoute)
+
+cakeMakerRoute.use('/profile', cakeMakerProfileRoute)
 
 module.exports = cakeMakerRoute

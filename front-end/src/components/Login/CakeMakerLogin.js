@@ -27,7 +27,8 @@ const CakeMakerLogin = () => {
             setMsg("Input is empty")
         }else{
             if (data.success == true) {
-                navigate('/')
+                // console.log("Login Id: ",data.data[0].cake_makers_id)
+                navigate(`/user/${data.data[0].cake_makers_id}`)
                 setSuccess(data.success)
             }else{
                 setMsg(data.msg)

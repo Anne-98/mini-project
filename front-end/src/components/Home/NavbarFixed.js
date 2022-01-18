@@ -1,8 +1,21 @@
 import React, { Fragment } from "react";
 import './../../css/navbar.css';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const NavbarFixed = () => {
+
+    var navigate = useNavigate()
+    const setLogOut = async() => {
+
+        var {data} = await axios.get('http://localhost:8000/general/logout')
+
+        console.log(data)
+        if (data.isLog == false) {
+            navigate('/')
+        }
+    }
+
     return(
         <Fragment>
             <nav className="navbar fixed-top navbar-expand-lg" id="navbarWrapper">
@@ -23,7 +36,8 @@ const NavbarFixed = () => {
                             <Link className="navItem" to="/signin">Sign In</Link>
                         </li>
                         <li className="nav-item  text-center">
-                            <Link className="navItem" to="/logout">Logout</Link>
+                            <button className="navItem" onClick={setLogOut}>Logout</button>
+
                         </li>
                     </ul>
                     <form className="d-flex">
