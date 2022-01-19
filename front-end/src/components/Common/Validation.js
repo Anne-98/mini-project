@@ -47,5 +47,33 @@
                 return {result: res, msg};
             }
 
+        function  checkOrderCompleteDate(str){
+            var current_date = new Date()
+            var complete_date = str
+
+            // console.log("current_date",current_date.getTime())
+            // console.log("complete_date",Date.parse(complete_date))
+
+            //because input date format is 2021-01-26 but Date() function is input another long string format 
+
+            var duration_hours = Date.parse(complete_date) - current_date.getTime() 
+            var duration_days = duration_hours / (1000*60*60*24)
+
+            // console.log("duration_days: ",duration_days)
+            // console.log("duration_hours: ",duration_hours)
+
+            var result = duration_days > 2
+            if (duration_days > 0) {
+                if (duration_days > 2) {
+                    var msg = ''
+                }else{
+                    var msg = 'Please be kind to order a cake before 3 days'
+                }
+            }else{
+                var msg = 'Date is not valid'
+            }
+
+            return {result, msg}
+        }
 // module.exports = {}
-export {checkImageType, checkContactNum, checkName,checkPassword}
+export {checkImageType, checkContactNum, checkName,checkPassword, checkOrderCompleteDate}

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { Fragment, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CustomerSignIn = () => {
 
@@ -13,6 +14,8 @@ const CustomerSignIn = () => {
     var [passwordValidate, setPasswordValidate] = useState('')
     var [nameValidate, setNameValidate] = useState('')
     var [contactNumValidate, setContactNumValidate] = useState('')
+
+    var navigate = useNavigate()
 
     // var [body, setBody] = useState({password, name, city, brandName, tel, facebook, instagram, twitter, qualifications, file, email})
 
@@ -66,8 +69,10 @@ const CustomerSignIn = () => {
         if (isValidPassword && isValidName && isValidContact) {
             var {data} = await axios.post('http://localhost:8000/customer/signin', body)
 
+            console.log("customer_id",data.data[0].cus_id)
             if (!data.exist) {
-                setMsg(data.msg)
+                navigate(`customer/logged/${data.data[0].cus_id}`)
+                // setMsg(data.msg)
             }else{
                 setMsg(data.msg)
             }

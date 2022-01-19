@@ -1,6 +1,6 @@
 const connection = require('./database')
 
-const allOrders = (cake_makers_id) => {
+const cakeMakersAllOrders = (cake_makers_id) => {
     return new Promise((resolve, reject) => {
         connection.query(`SELECT*FROM direct_orders WHERE cake_makers_id = '${cake_makers_id}'`, (error, direct_row) => {
             if (error) {
@@ -19,4 +19,4 @@ const allOrders = (cake_makers_id) => {
     })
 }
 
-module.exports = {allOrders}
+module.exports = {cakeMakersAllOrders}

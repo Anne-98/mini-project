@@ -4,8 +4,8 @@ const {loginCakeMaker, findExistCakeMaker} = require('./../database/CakeMakerDB'
 const {signInCakeMaker} = require('./../database/CakeMakerDB')
 const designRoute = require('./designRoute')
 const postRoute = require('./postRoute')
-const allOrdersRoute = require('./allOrdersRoute')
 const cakeMakerProfileRoute = require('./cakeMakerProfileRoute')
+const cakeMakersAllOrdersRoute = require('./cakeMakersAllOrdersRoute')
 
 
 const cakeMakerRoute = express.Router()
@@ -88,7 +88,7 @@ cakeMakerRoute.use('/createpost', postRoute)
 
 cakeMakerRoute.use('/posts', postRoute)
 
-cakeMakerRoute.use('/orders', allOrdersRoute)
+cakeMakerRoute.use('/orders', cakeMakersAllOrdersRoute)
 
 cakeMakerRoute.use('/profile', cakeMakerProfileRoute)
 

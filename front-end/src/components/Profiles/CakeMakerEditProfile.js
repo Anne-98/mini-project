@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 axios.defaults.withCredentials = true
 
-const EditProfile = () => {
+const CakeMakerEditProfile = () => {
 
     var params = useParams()
     var cake_makers_id = params.cake_makers_id
@@ -96,56 +96,56 @@ const EditProfile = () => {
             <form className="mt-5" onSubmit={updateProfile}>
                     <p>{msg}</p>
                 
-                <div class="row mb-2">
+                <div className="row mb-2">
                     <label className="col-sm-4" for="inputName">Name</label>
                     <div className="col-sm-8">
-                        <small id="passwordHelpInline" class="text-danger">
+                        <small id="passwordHelpInline" className="text-danger">
                     {nameValidate}
                     </small>
-                        <input type="text" class="form-control" placeholder="First name" onChange={e => setName(e.target.value)} value={name} required={true} />
+                        <input type="text" className="form-control" placeholder="First name" onChange={e => setName(e.target.value)} value={name} required={true} />
                     </div>
                 </div>
-                <div class="row mb-2">
+                <div className="row mb-2">
                     <label className="col-sm-4" for="inputCity">City</label>
                     <div className="col-sm-8">
-                        <input value={city} type="text" class="form-control" id="inputCity" onChange={e =>setCity(e.target.value)} required={true}/>
+                        <input value={city} type="text" className="form-control" id="inputCity" onChange={e =>setCity(e.target.value)} required={true}/>
                 </div>
                     </div>
-                <div class="row mb-2">
+                <div className="row mb-2">
                     <label className="col-sm-4" for="formGroupExampleInput">Brand Name</label>
                     <div className="col-sm-8">
-                        <input value={brandName} type="text" class="form-control" id="formGroupExampleInput" placeholder="Cake Mount" onChange={e => setBrandName(e.target.value)} />
+                        <input value={brandName} type="text" className="form-control" id="formGroupExampleInput" placeholder="Cake Mount" onChange={e => setBrandName(e.target.value)} />
                     </div>
                 </div>
-                <div class="row mb-2">
+                <div className="row mb-2">
                     <label className="col-sm-4" for="formGroupExampleInput">Contact Number</label>
                     <div className="col-sm-8">
-                        <small id="passwordHelpInline" class="text-danger">
+                        <small id="passwordHelpInline" className="text-danger">
                     {contactNumValidate}
                     </small>
-                        <input value={contact_num} type="number" class="form-control" id="formGroupExampleInput" placeholder="0711118898 / 0112255447" onChange={e => setContact_num(e.target.value)} required={true}/>
+                        <input value={contact_num} type="number" className="form-control" id="formGroupExampleInput" placeholder="0711118898 / 0112255447" onChange={e => setContact_num(e.target.value)} required={true}/>
                     </div>
                 </div>
-                <div class="row">
+                <div className="row">
                     <label className="col-sm-4 mb-1" for="exampleFormControlTextarea1">Social Media Links</label>
-                    <div class="col">
-                    <input value={facebook} type="text" class="form-control" placeholder="Facebook" onChange={e => setFacebook(e.target.value)}/>
+                    <div className="col">
+                    <input value={facebook} type="text" className="form-control" placeholder="Facebook" onChange={e => setFacebook(e.target.value)}/>
                     </div>
-                    <div class="col">
-                    <input value={instagram} type="text" class="form-control" placeholder="Instagram" onChange={e => setInstagram(e.target.value)}/>
+                    <div className="col">
+                    <input value={instagram} type="text" className="form-control" placeholder="Instagram" onChange={e => setInstagram(e.target.value)}/>
                     </div>
-                    <div class="col">
-                    <input value={twitter} type="text" class="form-control" placeholder="Twitter" onChange={e => setTwitter(e.target.value)}/>
+                    <div className="col">
+                    <input value={twitter} type="text" className="form-control" placeholder="Twitter" onChange={e => setTwitter(e.target.value)}/>
                     </div>
                 </div>
-                <div class="row mb-5">
+                <div className="row mb-5">
                     <label className="col-sm-4 mb-1" for="exampleFormControlTextarea1">Qualifications</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" value={qualifications} rows="3" onChange={e => setQual(e.target.value)}></textarea>
+                    <textarea className="form-control" id="exampleFormControlTextarea1" value={qualifications} rows="3" onChange={e => setQual(e.target.value)}></textarea>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <img src={file} style={{width:"200px"}}/>
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1" onChange={e => setFile(e.target.files[0])} />
-                    <small id="passwordHelpInline" class="text-danger">
+                    <input type="file" className="form-control-file" id="exampleFormControlFile1" onChange={e => setFile(e.target.files[0])} />
+                    <small id="passwordHelpInline" className="text-danger">
                     {imageValidate}
                     </small>
                 </div>
@@ -157,4 +157,4 @@ const EditProfile = () => {
 
 }
 
-export default EditProfile
+export default CakeMakerEditProfile

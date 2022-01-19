@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 axios.defaults.withCredentials = true
 
@@ -16,11 +16,10 @@ const CakeMakerProfile = () => {
         var {data} =await axios.post('http://localhost:8000/cakemaker/profile/myprofile', {cake_makers_id})
 
         setRow(data.data[0])
-
     },[])
 
     const editProfile = () => {
-        navigate(`/profiles/edit/${cake_makers_id}`)
+        navigate(`/profiles/cakemaker/edit/${cake_makers_id}`)
     }
 
     return(
@@ -31,7 +30,7 @@ const CakeMakerProfile = () => {
             <br/>
             <div className="card text-center">
                 <div className="card-header">
-                    <h1>Profile</h1>
+                    <h1>Cake Maker Profile</h1>
                 </div>
                 <div className="card-body ">
                     <img style={{width: '200px', borderRadius:"50px"}} src={row.profile_picture} className="rounded mx-auto d-block" alt="..."/>
@@ -55,7 +54,8 @@ const CakeMakerProfile = () => {
                             <a href={row.twitter}className="text-decoration-none">Twitter</a>
                             </button>
                     </div><br/><br/>
-                    <button href="#" onClick={editProfile} className="btn btn-primary">Edit</button>
+                    <button href="#" onClick={editProfile} className="btn btn-primary" style={{marginRight:"15px"}}>Edit</button>
+                    <Link to={`/orders/indirect/${cake_makers_id}`}><button href="#" className="btn btn-primary">Make Order</button></Link>
                 </div>
                 <div className="card-footer text-muted">
                     2 days ago

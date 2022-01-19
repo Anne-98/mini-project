@@ -5,6 +5,8 @@ const {signInCustomer} = require('./../database/customerDB')
 const postRoute = require('./postRoute')
 const indirectOrdersRoute = require('./indirectOrderRoute')
 const directOrderRoute = require('./directOrderRoute')
+const customerProfileRoute = require('./customerProfileRoute')
+const customerOrderHistoryRoute = require('./customerOrderHistoryRoute')
 
 const customerRoute = express.Router()
 customerRoute.use(bodyParser.json())
@@ -74,5 +76,7 @@ customerRoute.post('/signin', async(req, res) => {
 customerRoute.use('/posts', postRoute)
 customerRoute.use('/indirect_orders', indirectOrdersRoute)
 customerRoute.use('/direct_orders', directOrderRoute)
+customerRoute.use('/profile', customerProfileRoute)
+customerRoute.use('/orders', customerOrderHistoryRoute)
 
 module.exports = customerRoute

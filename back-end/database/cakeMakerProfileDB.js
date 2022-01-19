@@ -1,5 +1,4 @@
 const connection = require('./database')
-const {loginCakeMaker} = require('./cakeMakerDB')
 
 const getCakeMakerProfile = (cake_makers_id) => {
 
