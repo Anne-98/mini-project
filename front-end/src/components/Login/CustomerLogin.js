@@ -1,6 +1,8 @@
-import {React, useRef, useState} from 'react';
+import {React, useContext, useRef, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
+import { UserIdContext } from '../Context/UserIdContext';
+import { UserTypeContext } from '../Context/UserTypeContext';
 
 const CustomerLogin = () => {
 
@@ -9,6 +11,9 @@ const CustomerLogin = () => {
     var [msg, setMsg] = useState("")
     var [success, setSuccess] = useState('')
     var navigate = useNavigate()
+    var [type, setType] = useContext(UserTypeContext)
+    var [userId, setUserId] = useContext(UserIdContext)
+
     // var [email, setEmail] = useState('')
     // var [password, setPassword] = useState('')
 
@@ -30,8 +35,11 @@ const CustomerLogin = () => {
         }else{
             if (data.success == true) {
                 setMsg(data.msg)
+                setType('customer')
+                setUserId(data.data[0].cus_id)
+                localStorage.setItem('type','customer')
+                localStorage.setItem('userId',data.data[0].cus_id)
                 navigate('/')
-                setSuccess(data.success)
             }else{
                 setMsg(data.msg)
                 setSuccess(data.success)

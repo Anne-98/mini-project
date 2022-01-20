@@ -1,17 +1,27 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import './../../css/navbar.css';
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { UserIdContext } from "../Context/UserIdContext";
+import { UserTypeContext } from "../Context/UserTypeContext";
 
 const NavbarFixed = () => {
 
     var navigate = useNavigate()
+
+    var [type, setType] = useContext(UserTypeContext)
+    var [userId, setUserId] = useContext(UserIdContext)
+
     const setLogOut = async() => {
 
         var {data} = await axios.get('http://localhost:8000/general/logout')
 
         console.log(data)
         if (data.isLog == false) {
+            setUserId('')
+            setType('')
+            localStorage.setItem('userId','')
+            localStorage.setItem('type','')
             navigate('/')
         }
     }
@@ -36,11 +46,15 @@ const NavbarFixed = () => {
                             <Link className="navItem" to="/signin">Sign In</Link>
                         </li>
                         <li className="nav-item  text-center">
-                            <button className="navItem" onClick={setLogOut}>Logout</button>
-
+                            {
+                                type == 'customer' ? <Link className="navItem" to={`/profiles/customer/${userId}`}>Profile</Link> : type == 'cakemaker' ? <Link className="navItem" to={`/profiles/cakemaker/${userId}`}>Profile</Link> : type == 'admin' ? <Link className="navItem" to={`/profiles/admin/${userId}`}>Profile</Link> : <span></span>
+                                
+                            }
                         </li>
                     </ul>
                     <form className="d-flex">
+                            <button className="navItem btn" onClick={setLogOut}>Logout</button>
+
                         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                         <button className="btn btn-outline-success" type="submit">Search</button>
                     </form>

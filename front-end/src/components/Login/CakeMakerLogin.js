@@ -1,6 +1,8 @@
 import axios from 'axios'
-import {React, useState, useRef} from 'react';
+import {React, useState, useRef, useContext} from 'react';
 import { useNavigate } from "react-router-dom";
+import { UserIdContext } from '../Context/UserIdContext';
+import { UserTypeContext } from '../Context/UserTypeContext';
 
 axios.defaults.withCredentials = true
 
@@ -11,7 +13,8 @@ const CakeMakerLogin = () => {
     var passwordRef = useRef()
     var navigate = useNavigate()
     var [success, setSuccess] = useState('')
-
+    var [type, setType] = useContext(UserTypeContext)
+    var [userId, setUserId] = useContext(UserIdContext)
 
     const loginCakeMaker = async(event) => {
 
@@ -28,6 +31,10 @@ const CakeMakerLogin = () => {
         }else{
             if (data.success == true) {
                 // console.log("Login Id: ",data.data[0].cake_makers_id)
+                setType('cakemaker')
+                setUserId(data.data[0].cake_makers_id)
+                localStorage.setItem('type', 'cakemaker')
+                localStorage.setItem('userId', data.data[0].cake_makers_id)
                 navigate(`/user/${data.data[0].cake_makers_id}`)
                 setSuccess(data.success)
             }else{
@@ -35,7 +42,6 @@ const CakeMakerLogin = () => {
                 setSuccess(data.success)
             }
         }
-
     }
 
     return(

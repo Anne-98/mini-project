@@ -14,28 +14,35 @@ import SignInPage from "./pages/SignInPage";
 import CakeMakerEditProfile from "./components/Profiles/CakeMakerEditProfile";
 import CustomerEditProfile from "./components/Profiles/CustomerEditProfile";
 import CustomerOrderHistory from "./components/Orders/CustomerOrderHistory";
+import {UserIdContextProvider} from "./components/Context/UserIdContext";
+import { UserTypeContextProvider } from "./components/Context/UserTypeContext";
 
 const App = () =>{
 
   return(
-    <HashRouter>
-      <NavbarFixed/>
-      <Routes>
-        <Route path="/" element = {<HomePage />} />
-        <Route path="/categories" element = {<CategoriesPage />} />
-        <Route path="/login" element = {<LoginPage />} />
-        <Route path="/user/:cake_makers_id" element = {<HomePage />} />
-        <Route path="/customer/logged/:customer_id" element = {<HomePage />} />
-        <Route path="/signin" element = {<SignInPage/>} />
-        <Route path="/profiles/customer/:customer_id" element = {<CustomerProfile />} />
-        <Route path="/profiles/cakemaker/:cake_makers_id" element = {<CakeMakerProfile />} />
-        <Route path="/profiles/cakemaker/edit/:cake_makers_id" element={<CakeMakerEditProfile/>} />
-        <Route path="/profiles/customer/edit/:customer_id" element={<CustomerEditProfile/>} />
-        <Route path="/orders/indirect/:customer_id" element={<IndirectOrders />}/>
-        <Route path="/customer/orders/history/:customer_id" element={<CustomerOrderHistory />}/>
-        <Route path="*" element= {<ErrorPage />}/>
-      </Routes>
-    </HashRouter>
+    <BrowserRouter>
+      <UserIdContextProvider>
+      <UserTypeContextProvider>
+        <NavbarFixed />
+          <Routes>
+            <Route path="/" element = {<HomePage />} />
+            <Route path="/categories" element = {<CategoriesPage />} />
+            <Route path="/login" element = {<LoginPage />} />
+            <Route path="/user/:cake_makers_id" element = {<HomePage />} />
+            <Route path="/customer/logged/:customer_id" element = {<HomePage />} />
+            <Route path="/customer/cakemaker_profile/:cake_makers_id" element = {<CakeMakerProfile />} />
+            <Route path="/signin" element = {<SignInPage/>} />
+            <Route path="/profiles/customer/:customer_id" element = {<CustomerProfile />} />
+            <Route path="/profiles/cakemaker/:cake_makers_id" element = {<CakeMakerProfile />} />
+            <Route path="/profiles/cakemaker/edit/:cake_makers_id" element={<CakeMakerEditProfile/>} />
+            <Route path="/profiles/customer/edit/:customer_id" element={<CustomerEditProfile/>} />
+            <Route path="/orders/indirect/:customer_id" element={<IndirectOrders />}/>
+            <Route path="/customer/orders/history/:customer_id" element={<CustomerOrderHistory />}/>
+            <Route path="*" element= {<ErrorPage />}/>
+          </Routes>
+      </UserTypeContextProvider>
+      </UserIdContextProvider>
+    </BrowserRouter>
   )
 
 }
