@@ -9,22 +9,24 @@ const NavbarFixed = () => {
 
     var navigate = useNavigate()
 
-    var [type, setType] = useContext(UserTypeContext)
-    var [userId, setUserId] = useContext(UserIdContext)
+    let [type, setType] = useContext(UserTypeContext)
+    let [userId, setUserId] = useContext(UserIdContext)
 
-    const setLogOut = async() => {
-
+    const LogOut = async() => {
+        
         var {data} = await axios.get('http://localhost:8000/general/logout')
+        console.log("isLog",data.isLog)
 
-        console.log(data)
-        if (data.isLog == false) {
-            setUserId('')
-            setType('')
-            localStorage.setItem('userId','')
-            localStorage.setItem('type','')
+        if (!data.isLog) {
+            console.log(type, userId)
+            localStorage.setItem('type',"")
+            localStorage.setItem('userId',"")
+            setUserId("")
+            setType("")
             navigate('/')
         }
     }
+
 
     return(
         <Fragment>
@@ -53,10 +55,17 @@ const NavbarFixed = () => {
                         </li>
                     </ul>
                     <form className="d-flex">
-                            <button className="navItem btn" onClick={setLogOut}>Logout</button>
+                        {
+                            type == 'cakemaker' ? <Link to={`/cakemaker/calender/${userId}`}> <button  className="btn" ><i style={{fontSize:"25px", color:"#b89472"}} className="far fa-calendar"></i></button></Link> : <></>
+                        }
 
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-success" type="submit">Search</button>
+                        {
+                            type == 'customer' ? <Link to={`/profiles/customer/${userId}`}> <button  className="btn" ><i style={{fontSize:"25px", color:"#b89472"}} className="fas fa-bell"></i></button></Link> : <></>
+                        }
+                        
+                        <button className="btn me-1" style={{border:"2px solid #b89472"}} type="submit"><i style={{color:"#b89472"}} className="fas fa-search"></i></button>
+                        <input className="form-control me-2" style={{background:"transparent", borderBottom:"2px solid #b89472"}} type="search" placeholder="Search" aria-label="Search" />
+                        <button style={{background:"#b89472", color:"#ffe8d6e0"}} className="btn" onClick={LogOut}>Logout</button>
                     </form>
                     </div>
                 </div>

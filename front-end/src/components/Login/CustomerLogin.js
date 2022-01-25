@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import { UserIdContext } from '../Context/UserIdContext';
 import { UserTypeContext } from '../Context/UserTypeContext';
+import { IsLogContext } from '../Context/IsLogContext';
 
 const CustomerLogin = () => {
 
@@ -11,9 +12,8 @@ const CustomerLogin = () => {
     var [msg, setMsg] = useState("")
     var [success, setSuccess] = useState('')
     var navigate = useNavigate()
-    var [type, setType] = useContext(UserTypeContext)
-    var [userId, setUserId] = useContext(UserIdContext)
-
+    let [type, setType] = useContext(UserTypeContext)
+    let [userId, setUserId] = useContext(UserIdContext)
     // var [email, setEmail] = useState('')
     // var [password, setPassword] = useState('')
 
@@ -34,11 +34,11 @@ const CustomerLogin = () => {
             setMsg("Input is empty")
         }else{
             if (data.success == true) {
-                setMsg(data.msg)
-                setType('customer')
-                setUserId(data.data[0].cus_id)
                 localStorage.setItem('type','customer')
                 localStorage.setItem('userId',data.data[0].cus_id)
+                // setMsg(data.msg)
+                setType('customer')
+                setUserId(data.data[0].cus_id)
                 navigate('/')
             }else{
                 setMsg(data.msg)

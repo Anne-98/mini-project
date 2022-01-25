@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {React, useState, useRef, useContext} from 'react';
 import { useNavigate } from "react-router-dom";
+import { IsLogContext } from '../Context/IsLogContext';
 import { UserIdContext } from '../Context/UserIdContext';
 import { UserTypeContext } from '../Context/UserTypeContext';
 
@@ -13,8 +14,8 @@ const CakeMakerLogin = () => {
     var passwordRef = useRef()
     var navigate = useNavigate()
     var [success, setSuccess] = useState('')
-    var [type, setType] = useContext(UserTypeContext)
-    var [userId, setUserId] = useContext(UserIdContext)
+    let [type, setType] = useContext(UserTypeContext)
+    let [userId, setUserId] = useContext(UserIdContext)
 
     const loginCakeMaker = async(event) => {
 
@@ -31,12 +32,12 @@ const CakeMakerLogin = () => {
         }else{
             if (data.success == true) {
                 // console.log("Login Id: ",data.data[0].cake_makers_id)
-                setType('cakemaker')
-                setUserId(data.data[0].cake_makers_id)
                 localStorage.setItem('type', 'cakemaker')
                 localStorage.setItem('userId', data.data[0].cake_makers_id)
+                setType('cakemaker')
+                setUserId(data.data[0].cake_makers_id)
                 navigate(`/user/${data.data[0].cake_makers_id}`)
-                setSuccess(data.success)
+                // setSuccess(data.success)
             }else{
                 setMsg(data.msg)
                 setSuccess(data.success)

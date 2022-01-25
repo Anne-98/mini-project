@@ -29,6 +29,7 @@ generalRoute.get('/get_all_designs', async(req, res) => {
 
 generalRoute.get('/logout', (req, res) => {
     req.session.destroy()
+
     // req.session.user_id = null
     console.log(req.session)
     res.json({msg: "successfully logged out", isLog: false})

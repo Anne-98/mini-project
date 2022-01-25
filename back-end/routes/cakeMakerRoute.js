@@ -6,6 +6,9 @@ const designRoute = require('./designRoute')
 const postRoute = require('./postRoute')
 const cakeMakerProfileRoute = require('./cakeMakerProfileRoute')
 const cakeMakersAllOrdersRoute = require('./cakeMakersAllOrdersRoute')
+const cakeMakerOrdersConfirmedRoute = require('./cakeMakerOrdersConfirmedRoute')
+const cakemakersOrdersResponseRoute = require('./cakemakersOrdersResponseRoute')
+const displayOneOrderDetailsRoute = require('./displayOneOrderDetailsRoute')
 
 
 const cakeMakerRoute = express.Router()
@@ -91,5 +94,8 @@ cakeMakerRoute.use('/posts', postRoute)
 cakeMakerRoute.use('/orders', cakeMakersAllOrdersRoute)
 
 cakeMakerRoute.use('/profile', cakeMakerProfileRoute)
+cakeMakerRoute.use('/order', cakemakersOrdersResponseRoute)
+cakeMakerRoute.use('/confirmed', cakeMakerOrdersConfirmedRoute)
+cakeMakerRoute.use("/one_order", displayOneOrderDetailsRoute)
 
 module.exports = cakeMakerRoute

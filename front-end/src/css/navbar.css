@@ -1,23 +1,23 @@
 #navbarWrapper{
     background: #ffe8d6e0;
-    border-bottom: 10px solid #aa968a;
+    border-bottom: 10px solid #b89472;
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     font-family: 'Langar', cursive;
 }
 
 .navbar-brand{
-    color: #aa968a;
+    color: #b89472;
     font-family: 'Meie Script', cursive;
     font-size: 30px;
 }
 .navItem {
-    color: #887970;
+    color: #b89472;
     text-decoration: none;
     margin-right: 40px;
 }
 
 #toggler-icon{
-    color: #aa968a;
+    color: #b89472;
     /* z-index: 5; */
 }
 

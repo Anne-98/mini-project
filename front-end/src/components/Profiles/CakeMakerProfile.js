@@ -32,6 +32,8 @@ const CakeMakerProfile = () => {
                 <div className="card-header">
                     <h1>Cake Maker Profile</h1>
                 </div>
+                <Link to={`/cakemaker/orders/all/${cake_makers_id}`}><button href="#" style={{float:"right"}} className="btn btn-info  m-3">Your Orders</button></Link>
+
                 <div className="card-body ">
                     <img style={{width: '200px', borderRadius:"50px"}} src={row.profile_picture} className="rounded mx-auto d-block" alt="..."/>
                     <h5 className="card-title">{row.name}</h5>
@@ -55,7 +57,7 @@ const CakeMakerProfile = () => {
                             </button>
                     </div><br/><br/>
                     <button href="#" onClick={editProfile} className="btn btn-primary" style={{marginRight:"15px"}}>Edit</button>
-                    <Link to={`/orders/indirect/${cake_makers_id}`}><button href="#" className="btn btn-primary">Make Order</button></Link>
+                    
                 </div>
                 <div className="card-footer text-muted">
                     2 days ago
