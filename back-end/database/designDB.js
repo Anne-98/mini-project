@@ -28,15 +28,36 @@ const getDesigns = () => {
     return new Promise((resolve, reject) => {
         connection.query(`SELECT*FROM designs`, (error, row) => {
             if (error) {
-                console.log("eeeeeeeeeeeee")
                 return reject(error)
             }else{
-                // console.log("ffffffffffff")
-                // console.log(row)
                 return resolve(row)
             }
         })
     })
 }
 
-module.exports = {insertDesign, getDesigns}
+const getCakemakerDesigns = (cake_makers_id) => {
+    return new Promise((resolve, reject) => {
+        connection.query(`SELECT*FROM designs WHERE cake_makers_id = '${cake_makers_id}'`, (err, row) => {
+            if (err) {
+                return reject(err)
+            }else{
+                row.length == 1
+                return resolve(row)
+            }
+        })
+    })
+}
+
+const getOneDesignDetails = (design_id) => {
+    return new Promise((resolve, reject) => {
+        connection.query(`SELECT*FROM designs WHERE design_id = '${design_id}'`, (err, row) => {
+            if (err) {
+                return reject(err)
+            }else{
+                return resolve(row)
+            }
+        })
+    })
+}
+module.exports = {insertDesign, getDesigns, getCakemakerDesigns, getOneDesignDetails}

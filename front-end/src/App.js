@@ -19,6 +19,8 @@ import { UserTypeContextProvider } from "./components/Context/UserTypeContext";
 import CakeMakersAllDetails from "./components/Orders/CakeMakersAllOrders";
 import CakeMakerCalender from "./components/Orders/CakeMakerCalender";
 import OrderDetails from "./components/Orders/OrderDeitals";
+import CakeMakerAllProfiles from "./components/Profiles/CakeMakerAllProfiles";
+import DesignDetails from "./components/Orders/DesignDetails";
 
 
 const App = () =>{
@@ -35,7 +37,6 @@ const App = () =>{
                 <Route path="/login" element = {<LoginPage />} />
                 <Route path="/user/:cake_makers_id" element = {<HomePage />} />
                 <Route path="/customer/logged/:customer_id" element = {<HomePage />} />
-                <Route path="/customer/cakemaker_profile/:cake_makers_id" element = {<CakeMakerProfile />} />
                 <Route path="/signin" element = {<SignInPage/>} />
                 <Route path="/profiles/customer/:customer_id" element = {<CustomerProfile />} />
                 <Route path="/profiles/cakemaker/:cake_makers_id" element = {<CakeMakerProfile />} />
@@ -46,6 +47,8 @@ const App = () =>{
                 <Route path="/cakemaker/orders/all/:cake_makers_id" element={<CakeMakersAllDetails />} />
                 <Route path="/cakemaker/calender/:cake_makers_id" element={<CakeMakerCalender />} />
                 <Route path="/orders/order/details/:order_id" element={<OrderDetails />}/>
+                <Route path="/profiles/allcakemakers" element={<CakeMakerAllProfiles />}/>
+                <Route path="/designs/details/:design_id" element={<DesignDetails />}/>
                 <Route path="*" element= {<ErrorPage />}/>
               </Routes>
           </UserTypeContextProvider>

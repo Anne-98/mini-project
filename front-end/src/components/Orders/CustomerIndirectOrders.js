@@ -95,7 +95,7 @@ const IndirectOrders = () => {
                                                 <h5 class="card-title">{item.brand_name}</h5>
                                                 <img className="m-4" src={item.profile_picture} style={{width:"5rem", borderRadius:"50px", float:"right"}}/>
                                                 <p class="card-text">{item.qualifications}</p>
-                                                <Link to={`/customer/cakemaker_profile/${item.cake_makers_id}`}><button className="btn btn-primary">Profile</button></Link>
+                                                <Link to={`/profiles/cakemaker/${item.cake_makers_id}`}><button className="btn btn-primary">Profile</button></Link>
                                             </div>
                                         </div>
                                     )

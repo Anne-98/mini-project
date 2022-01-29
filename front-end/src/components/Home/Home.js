@@ -7,10 +7,10 @@ import {Container, Row, Col} from 'react-bootstrap';
 
 const Home = () => {
 
-    var para = useParams()
-    var cake_makers_id = para.cake_makers_id
+    var params = useParams()
+    var cake_makers_id = localStorage.getItem('userId')
 
-    // let localStorageId = localStorage.getItem('userId')
+    let type = localStorage.getItem('type')
     // if (localStorageId.length > 0) {
     //     localStorage.clear();
     // }
@@ -47,7 +47,9 @@ const Home = () => {
                             <Link to='/categories'> <button className="btn home-cake-btn" id="home-cake-designs" type="button" >Categories</button></Link>
                         </div>
                         <div className="text-center">
-                            <Link to={`/profiles/cakemaker/${cake_makers_id}`}><button className="btn home-cake-btn" id="home-cake-profiles" type="button" >Profiles</button></Link>
+
+                            {type == 'cakemaker'? <Link to={`/profiles/cakemaker/${cake_makers_id}`}><button className="btn home-cake-btn" id="home-cake-profiles" type="button" >Profiles</button></Link> : <Link to={`/profiles/allcakemakers`}><button className="btn home-cake-btn" id="home-cake-profiles" type="button" >Cakemakers</button></Link>}
+                            
                         </div>
                         <div className="text-center">
                             <div className="btn" id="home-cake-bottom"></div>

@@ -1,5 +1,5 @@
 const express = require('express')
-const { insertDesign } = require('../database/designDB')
+const { insertDesign, getCakemakerDesigns, getOneDesignDetails } = require('../database/designDB')
 
 const designRoute = express.Router()
 
@@ -26,6 +26,33 @@ designRoute.post('/insert', async(req, res) => {
         }
     }else{
         res.json({logged: false, msg:"You are not logged In"})
+    }
+})
+
+designRoute.post('/get_cakemaker_designs',async(req, res) => {
+    var cake_makers_id = req.body.cake_makers_id
+    // var cake_makers_id = 'ec5395ff-8dd0-44a4-bc2f-4ece9744327e'
+    let data = await getCakemakerDesigns(cake_makers_id)
+
+    if (data.length > 0) {
+        res.json({msg: "Design details successfully fetched", data, sucess: true})
+    }else{
+        res.json({msg: "Something went wrong", sucess: false})
+
+    }
+})
+
+designRoute.post('/design_details', async(req, res) => {
+
+    var design_id = req.body.design_id
+
+    var data = await getOneDesignDetails(design_id)
+
+    if (data.length > 0) {
+        res.json({msg:"Data Successfully fetched", success:true, data})
+    }else{
+        res.json({msg:"Something went wrong", success:false})
+
     }
 })
 

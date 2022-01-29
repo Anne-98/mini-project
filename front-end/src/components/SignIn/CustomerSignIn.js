@@ -68,10 +68,9 @@ const CustomerSignIn = () => {
 
         if (isValidPassword && isValidName && isValidContact) {
             var {data} = await axios.post('http://localhost:8000/customer/signin', body)
-
-            console.log("customer_id",data.data[0].cus_id)
-            if (!data.exist) {
-                navigate(`customer/logged/${data.data[0].cus_id}`)
+            console.log("customer_id",data)
+            if (data.success) {
+                navigate(`/profiles/customer/${data.data[0].cus_id}`)
                 // setMsg(data.msg)
             }else{
                 setMsg(data.msg)
@@ -86,7 +85,7 @@ const CustomerSignIn = () => {
                 <br/>
                 <h1 className='mt-5'>Customer SignIn</h1>
             <form className="mt-5" onSubmit={signInCustomer}>
-                    <p>{msg}</p>
+                    <p className="text-danger text-end">{msg}</p>
                 <div className="row mb-2">
                     <label for="exampleInputEmail1" className="col-sm-4">Email address</label>
                     <div className="col-sm-8">

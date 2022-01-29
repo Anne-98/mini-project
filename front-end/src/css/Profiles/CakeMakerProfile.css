@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  font-size: 13px;
+  height: 100vh;
+  background: url('./../../../src/images/backgrounds/bg_3.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'PT Sans', sans-serif;
+  background-color: rgba(0, 0, 0, .2);
+  background-blend-mode: overlay;
+}
+
+.container-glass,
+.container-glass::before,
+.container-glass::after {
+  border-radius: 7px;
+  background-color: rgba(236, 199, 168, 0.466);
+  backdrop-filter: blur(5px);
+  box-shadow: 0px 0px 22px rgba(0, 0, 0, 0.08);
+}
+.container-glass {
+  position: relative;
+  padding: 2rem 1.5rem;
+  width: 80%;
+  max-width: 280px;
+}
+
+
+.container-glass .img {
+  width: 100%;
+  border-radius: 7px;
+}
+
+.container-glass .text {
+  font-size: 1.01rem;
+  color: #DDD;
+  margin: 2rem 0;
+  text-align: justify;
+}
+
+.container-glass .btn {
+  display: block;
+  margin: auto;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 1.02rem;
+  width: 80%;
+  max-width: 200px;
+  padding: .6rem 1rem;
+  background-color: transparent;
+  border-radius: 5px;
+  color: #ffe8d6;
+  border: 1px solid #ffe8d6;
+  cursor: pointer;
+  transition: all .2s linear;
+}
+.container-glass .btn:hover {
+  background-color: #b89472;
+  border: 1px solid #b89472;
+  color: #ffe8d6;
+}
+

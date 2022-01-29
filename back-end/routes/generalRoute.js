@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const { getProfiles } = require('../database/generalDB')
 const { getDesigns } = require('../database/designDB')
+const designRoute = require('./designRoute')
 
 const generalRoute = express.Router()
 generalRoute.use(bodyParser.json())
@@ -35,4 +36,5 @@ generalRoute.get('/logout', (req, res) => {
     res.json({msg: "successfully logged out", isLog: false})
 })
 
+generalRoute.use('/get_one_design', designRoute)
 module.exports = generalRoute

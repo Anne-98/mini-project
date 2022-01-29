@@ -1,6 +1,8 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import './../../css/Profiles/CakeMakerProfile.css'
+import bg_1 from './../../../src/images/backgrounds/bg_1.jpg'
 
 axios.defaults.withCredentials = true
 
@@ -10,18 +12,27 @@ const CakeMakerProfile = () => {
     var cake_makers_id = params.cake_makers_id
     var [row, setRow] = useState({})
     var navigate = useNavigate()
+    var [designs, setDesigns] = useState([])
+    var userId = localStorage.getItem('userId')
+    console.log(cake_makers_id)
 
     useEffect(async()=>{
 
-        var {data} =await axios.post('http://localhost:8000/cakemaker/profile/myprofile', {cake_makers_id})
+        var {data} = await axios.post('http://localhost:8000/cakemaker/profile/myprofile', {cake_makers_id})
 
         setRow(data.data[0])
+
+        console.log(row)
+        var dataSet = await axios.post('http://localhost:8000/cakemaker/cakemaker_designs/get_cakemaker_designs', {cake_makers_id})
+
+        if (dataSet.data.sucess) {
+            setDesigns(dataSet.data.data)
+        }
     },[])
 
     const editProfile = () => {
         navigate(`/profiles/cakemaker/edit/${cake_makers_id}`)
     }
-
     return(
         <Fragment>
             <br/>
@@ -32,7 +43,9 @@ const CakeMakerProfile = () => {
                 <div className="card-header">
                     <h1>Cake Maker Profile</h1>
                 </div>
-                <Link to={`/cakemaker/orders/all/${cake_makers_id}`}><button href="#" style={{float:"right"}} className="btn btn-info  m-3">Your Orders</button></Link>
+                {
+                    cake_makers_id ==  userId ? <Link to={`/cakemaker/orders/all/${cake_makers_id}`}><button href="#" style={{float:"right"}} className="btn btn-info  m-3">Your Orders</button></Link> : <></>
+                }
 
                 <div className="card-body ">
                     <img style={{width: '200px', borderRadius:"50px"}} src={row.profile_picture} className="rounded mx-auto d-block" alt="..."/>
@@ -56,13 +69,44 @@ const CakeMakerProfile = () => {
                             <a href={row.twitter}className="text-decoration-none">Twitter</a>
                             </button>
                     </div><br/><br/>
-                    <button href="#" onClick={editProfile} className="btn btn-primary" style={{marginRight:"15px"}}>Edit</button>
+                    {
+                       cake_makers_id ==  userId ? <button href="#" onClick={editProfile} className="btn btn-primary" style={{marginRight:"15px"}}>Edit</button>: <></>
+                    }
+                    
                     
                 </div>
                 <div className="card-footer text-muted">
                     2 days ago
                 </div>
             </div>
+
+
+            
+           <div className='wrapper'>
+               <div className='container'>
+                   <div className='row'>
+                        {
+                    designs.map((item) => {
+
+                        return(
+                            <div class="container-glass col m-4">
+                                <img class="img" src={item.image} alt="" />
+                                <p class="text">
+                                    {item.description}
+                                </p>
+                                <p><b>${item.price}</b></p>
+                                <div>{item.category}</div>
+                                <Link to={`/designs/details/${item.design_id}`}className='text-decoration-none'><button class="btn">Discover</button></Link>
+                            </div>
+                        )
+                    })
+                }
+                   </div>
+               </div>
+           </div>
+
+
+           
         </Fragment>
     )
 }

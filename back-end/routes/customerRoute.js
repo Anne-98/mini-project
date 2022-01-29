@@ -38,33 +38,32 @@ customerRoute.post('/login', async(req, res) => {
             res.json({success: false, msg: "Invalid credentials", isLog: false})
         }
     }else{
-        res.json({success:false, msg:"You have already Logged In"})
+        res.json({success:false, msg:"You have already Logged In", isLog: true})
     }
 })
 
 customerRoute.post('/signin', async(req, res) => {
     var {name, password, email, address, question, contact_num} = req.body
 
-    
     if (!req.session.isLog) {
         const data = await findExistUser(email)
-
-        if (data.exist == true) {
+        console.log("findExist: ",data.length)
+        if (data.length > 0) {
             req.session.isLog = false
             req.session.user_id = null
-            res.json({exist: true, msg:"You already have an account"})
+            res.json({exist: true, msg:"This email has account already", success:false})
         }else{
             
             const dataSet = await signInCustomer(name, password, email, address, question, contact_num)
-
+            
             if (dataSet.length > 0) {
                 req.session.isLog = true
                 req.session.user_id = dataSet[0].cake_makers_id
-                res.json({exist: false, success: true, data: dataSet, msg:"Successfully created", isLog: req.session.isLog})
+                res.json({exist: false, success: true, data: dataSet, msg:"Successfully created", isLog: true})
             }else{
                 req.session.isLog = false
                 req.session.user_id = null
-                res.json({exist: false, success: false, msg: "Something went wrong", isLog: req.session.isLog})
+                res.json({exist: false, success: false, msg: "Something went wrong", isLog: true})
             }
     }
     

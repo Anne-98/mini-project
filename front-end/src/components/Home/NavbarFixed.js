@@ -11,6 +11,7 @@ const NavbarFixed = () => {
 
     let [type, setType] = useContext(UserTypeContext)
     let [userId, setUserId] = useContext(UserIdContext)
+    console.log(userId)
 
     const LogOut = async() => {
         
@@ -19,11 +20,11 @@ const NavbarFixed = () => {
 
         if (!data.isLog) {
             console.log(type, userId)
+            navigate('/')
             localStorage.setItem('type',"")
             localStorage.setItem('userId',"")
             setUserId("")
             setType("")
-            navigate('/')
         }
     }
 
@@ -46,6 +47,9 @@ const NavbarFixed = () => {
                         </li>
                         <li className="nav-item  text-center">
                             <Link className="navItem" to="/signin">Sign In</Link>
+                        </li>
+                        <li className="nav-item  text-center">
+                            <Link className="navItem" to="/profiles/allcakemakers">Bakers</Link>
                         </li>
                         <li className="nav-item  text-center">
                             {
