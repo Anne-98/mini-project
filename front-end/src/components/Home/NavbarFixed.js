@@ -1,9 +1,10 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import './../../css/navbar.css';
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserIdContext } from "../Context/UserIdContext";
 import { UserTypeContext } from "../Context/UserTypeContext";
+import { OrderContext } from "../Context/OrderContext";
 
 const NavbarFixed = () => {
 
@@ -11,7 +12,15 @@ const NavbarFixed = () => {
 
     let [type, setType] = useContext(UserTypeContext)
     let [userId, setUserId] = useContext(UserIdContext)
+    let [orders, setOrders] = useContext(OrderContext)
+    var [searched_item, setSearchedItem] = useState('')
     console.log(userId)
+
+    setOrders(localStorage.getItem('orders'))
+
+    const refreshPage = () => {
+        window.location.reload(true)
+    }
 
     const LogOut = async() => {
         
@@ -23,17 +32,21 @@ const NavbarFixed = () => {
             navigate('/')
             localStorage.setItem('type',"")
             localStorage.setItem('userId',"")
+            localStorage.setItem('orders',"")
             setUserId("")
+            setOrders("")
             setType("")
         }
+
+        refreshPage()
     }
 
-
+console.log(searched_item)
     return(
         <Fragment>
             <nav className="navbar fixed-top navbar-expand-lg" id="navbarWrapper">
                 <div className="container-fluid" >
-                    <a className="navbar-brand" href="#">Black Mount</a>
+                    <a className="navbar-brand" href="#">Cake Mount</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
                     <span className="navbar-toggler-icon" id="toggler-icon"></span>
                     </button>
@@ -51,6 +64,11 @@ const NavbarFixed = () => {
                         <li className="nav-item  text-center">
                             <Link className="navItem" to="/profiles/allcakemakers">Bakers</Link>
                         </li>
+                        {
+                            type == 'customer' ? <li className="nav-item  text-center">
+                            <Link className="navItem" to={`/customer/orders/history/${userId}`}>Order history</Link>
+                        </li> : <></>
+                        }
                         <li className="nav-item  text-center">
                             {
                                 type == 'customer' ? <Link className="navItem" to={`/profiles/customer/${userId}`}>Profile</Link> : type == 'cakemaker' ? <Link className="navItem" to={`/profiles/cakemaker/${userId}`}>Profile</Link> : type == 'admin' ? <Link className="navItem" to={`/profiles/admin/${userId}`}>Profile</Link> : <span></span>
@@ -64,11 +82,14 @@ const NavbarFixed = () => {
                         }
 
                         {
-                            type == 'customer' ? <Link to={`/profiles/customer/${userId}`}> <button  className="btn" ><i style={{fontSize:"25px", color:"#b89472"}} className="fas fa-bell"></i></button></Link> : <></>
+                            type == 'customer' ? <Link to={`/customer/notifications/${userId}`}> <button  className="btn navbar-notification" ><i style={{fontSize:"25px", color:"#b89472"}} className="fas fa-bell"><span className="text-monospace p-1" style={{background:"#e63946", color:"white", borderRadius:"50px", position:"absolute", margin:"-8px", fontSize:"10px", fontFamily:"sans-serif"}}>{orders}</span></i></button></Link> : <></>
                         }
-                        
-                        <button className="btn me-1" style={{border:"2px solid #b89472"}} type="submit"><i style={{color:"#b89472"}} className="fas fa-search"></i></button>
-                        <input className="form-control me-2" style={{background:"transparent", borderBottom:"2px solid #b89472"}} type="search" placeholder="Search" aria-label="Search" />
+                        {
+                            type == 'cakemaker' ? <Link to={`cakemaker/orders/all/${userId}`}> <button  className="btn" ><i style={{fontSize:"25px", color:"#b89472"}} className="fas fa-birthday-cake"><span className="text-monospace p-1" style={{background:"#e63946", color:"white", borderRadius:"50px", position:"absolute", margin:"-8px", fontSize:"10px", fontFamily:"sans-serif"}}>{orders}</span></i></button></Link> : <></>
+                        }
+                        <Link to={`/search/${searched_item}`}><button className="btn me-1" style={{border:"2px solid #b89472"}} type="submit"><i style={{color:"#b89472"}} className="fas fa-search"></i></button></Link>
+
+                        <input className="form-control me-2" style={{background:"transparent", borderBottom:"2px solid #b89472"}} type="search" placeholder="Search" aria-label="Search" value={searched_item} onChange={(e) => {setSearchedItem(e.target.value)}}/>
                         <button style={{background:"#b89472", color:"#ffe8d6e0"}} className="btn" onClick={LogOut}>Logout</button>
                     </form>
                     </div>

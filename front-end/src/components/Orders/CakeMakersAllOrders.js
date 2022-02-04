@@ -1,6 +1,7 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { OrderContext } from "../Context/OrderContext";
 
 const CakeMakersAllDetails = () => {
 
@@ -10,6 +11,7 @@ const CakeMakersAllDetails = () => {
     var [indirect, setIndirect] = useState([])
     var [msg, setMsg] = useState('')
     var [id, setId] = useState('')
+    const [orders, setOrders] = useContext(OrderContext)
     
     useEffect(async()=>{
         var {data} = await axios.post('http://localhost:8000/cakemaker/orders/display_orders', {cake_makers_id})
@@ -30,6 +32,11 @@ const CakeMakersAllDetails = () => {
 
     const orderDirect = async(direct_order_id, confirm, reject)=>{
         
+        // to reduce orders in the order context
+        var number_of_orders = localStorage.getItem('orders') - 1
+        localStorage.setItem('orders', number_of_orders)
+        setOrders(number_of_orders)
+
         let indirect_order_id = 'empty'
         let indirect_reject = 0
         let indirect_confirm = 0
@@ -46,12 +53,16 @@ const CakeMakersAllDetails = () => {
     }
     const orderIndirect = async(indirect_order_id, confirm, reject)=>{
 
+        // to reduce orders in the order context
+        var number_of_orders = localStorage.getItem('orders') - 1
+        localStorage.setItem('orders', number_of_orders)
+        setOrders(number_of_orders)
+
         let direct_order_id = 'empty'
         let direct_reject = 0
         let direct_confirm = 0
         let indirect_reject = reject
         let indirect_confirm = confirm
-
         var body = {indirect_order_id, direct_order_id, indirect_reject, indirect_confirm, direct_reject, direct_confirm}
         var {data} = await axios.post('http://localhost:8000/cakemaker/order/accpect_order', body)
 
@@ -61,6 +72,7 @@ const CakeMakersAllDetails = () => {
 
         console.log(data.msg)
     }
+    
 
     return(
         <div>

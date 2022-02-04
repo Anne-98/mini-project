@@ -41,8 +41,8 @@ console.log("imageFile:", imageFile)
         // console.log("successfully data came to back-end :",imageFile)
 // brandName,
         var data = await updateCakeMakerProfile(name, district, qualifications, contact_num, brandName, facebook, instagram, twitter, imageFile, cake_makers_id)
-        console.log('data.changedRows: ',data.changedRows)
-        console.log(name, district, qualifications, contact_num, brandName, facebook, instagram, twitter, imageFile, cake_makers_id)
+        // console.log('data.changedRows: ',data.changedRows)
+        // console.log(name, district, qualifications, contact_num, brandName, facebook, instagram, twitter, imageFile, cake_makers_id)
 
         console.log("cakeMakerProfileRoue",data)
         if (data.changedRows > 0) {

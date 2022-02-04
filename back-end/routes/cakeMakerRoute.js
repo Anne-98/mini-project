@@ -96,5 +96,6 @@ cakeMakerRoute.use('/confirmed', cakeMakerOrdersConfirmedRoute)
 cakeMakerRoute.use("/one_order", displayOneOrderDetailsRoute)
 cakeMakerRoute.use("/allprofiles", cakeMakerAllProfiles)
 cakeMakerRoute.use('/cakemaker_designs', designRoute)
+cakeMakerRoute.use('/update_designs', designRoute)
 
 module.exports = cakeMakerRoute

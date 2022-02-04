@@ -37,7 +37,7 @@ const CustomerProfile = () => {
                     <h5 className="card-title">{row.name}</h5>
                     Address: <span className="card-text ">{row.address}</span><br/><br/>
                     What is your favorite cake flavour: <span className="card-text">{row.question}</span><br/><br/>
-                    Contact Number: <span className="card-text">{row.contact_num}</span><br/><br/>
+                    Contact Number: <span className="card-text">0{row.contact_num}</span><br/><br/>
                     
                     <button href="#" onClick={editProfile} className="btn btn-primary" style={{marginRight:"15px"}}>Edit</button>
                     <Link to={`/orders/indirect/${customer_id}`}><button href="#" className="btn btn-primary">Make Order</button></Link>

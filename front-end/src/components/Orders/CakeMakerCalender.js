@@ -37,7 +37,6 @@ const onChange = useCallback(
                 setMsg(data.msg)
                 setDirect_row(data.data.direct_row)
                 setIndirect_row(data.data.indirect_row)
-                // console.log(direct_row)
             }
         }else{
             setMsg(data.msg)
@@ -53,10 +52,10 @@ const onChange = useCallback(
             <br/>
             <br/>
             <h1 className="m-5 text-center">Calender</h1>
-            <p className="danger">{msg}</p>
 
            <div className="text-center"> 
             </div>
+            <h5 className="text-danger text-center mb-3">{msg}</h5>
             <div className="container">
                 <div className="row">
                     <div className="col-6 text-center">

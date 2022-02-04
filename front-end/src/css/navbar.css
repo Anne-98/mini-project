@@ -20,6 +20,8 @@
     color: #b89472;
     /* z-index: 5; */
 }
+button:focus { outline: none !important; box-shadow: none !important; }
+input:focus { outline: none !important; box-shadow: none !important; }
 
 @import url('https://fonts.googleapis.com/css2?family=Meie+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Langar&display=swap');

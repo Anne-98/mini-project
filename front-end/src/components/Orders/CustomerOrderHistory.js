@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { Fragment, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 axios.defaults.withCredentials = true
 
@@ -44,12 +44,11 @@ const CustomerOrderHistory = () => {
                             direct.map((item)=>{
                                 return(
                                     <div className="card" style={{width:"15rem", float:"left"}}>
-                                        <img className="card-img-top" src={item.image} alt="Card image cap" style={{width:"15rem", height:"15rem"}}/>
+                                        <img className="card-img-top" src={item.image} alt="Card image cap" style={{width:"15rem", height:"15rem", objectFit:"cover"}}/>
                                         <div className="card-body">
-                                            <h5 className="card-title">Card title</h5>
                                             <p className="card-text">{item.comment}</p>
                                             <p><i>{item.order_date.substring(0,10)}</i></p>
-                                            <a href="#" className="btn btn-primary">Go somewhere</a>
+                                            <Link to={`/orders/order/details/${item.direct_order_id}`}><a href="#" className="btn btn-primary">Go somewhere</a></Link>
                                         </div>
                                 </div>
                                 )
@@ -62,12 +61,11 @@ const CustomerOrderHistory = () => {
                             indirect.map((item)=>{
                                 return(
                                     <div className="card" style={{width:"15rem", float:"left"}}>
-                                        <img className="card-img-top" src={item.image} alt="Card image cap" style={{width:"15rem", height:"15rem"}}/>
+                                        <img className="card-img-top" src={item.image} alt="Card image cap" style={{width:"15rem", height:"15rem", objectFit:"cover"}}/>
                                         <div className="card-body">
-                                            <h5 className="card-title">Card title</h5>
                                             <p className="card-text">{item.comment}</p>
                                             <p><i>{item.order_date.substring(0,10)}</i></p>
-                                            <a href="#" className="btn btn-primary">Go somewhere</a>
+                                            <Link to={`/orders/order/details/${item.indirect_order_id}`}><a href="#" className="btn btn-primary">Details</a></Link>
                                         </div>
                                 </div>
                                 )

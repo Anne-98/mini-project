@@ -1,7 +1,8 @@
 import axios from "axios";
-import React, { Fragment, useRef, useState } from "react";
+import React, { Fragment, useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CakeMakerProfile from "../Profiles/CakeMakerProfile";
+import { UserIdContext } from "../Context/UserIdContext";
+import { UserTypeContext } from "../Context/UserTypeContext";
 
 const CakeMakerSignIn = () => {
 
@@ -25,6 +26,9 @@ const CakeMakerSignIn = () => {
     var [contactNumValidate, setContactNumValidate] = useState('')
     var [cake_makers_id, setCake_makers_id] = useState('')
     var navigate = useNavigate()
+
+    let [type, setType] = useContext(UserTypeContext)
+    let [userId, setUserId] = useContext(UserIdContext)
 
     // var [body, setBody] = useState({password, name, city, brandName, tel, facebook, instagram, twitter, qualifications, file, email})
 
@@ -112,7 +116,10 @@ const CakeMakerSignIn = () => {
 
             if (data.success) {
                 setCake_makers_id(data.data[0].cake_makers_id)
-                
+                localStorage.setItem('userId', data.data[0].cake_makers_id)
+                localStorage.setItem('type', 'cakemaker')
+                setType('cakemaker')
+                setUserId(data.data[0].cake_makers_id)
                 setMsg(data.msg)
                 navigate(`/profiles/cakemaker/${data.data[0].cake_makers_id}`)
             }else{

@@ -22,4 +22,4 @@ const rejectOrder = (indirect_order_id, direct_order_id, indirect_reject, indire
     })
 }
 
-module.exports = rejectOrder
+module.exports = {rejectOrder}

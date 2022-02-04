@@ -8,6 +8,8 @@ const Design = () => {
 
     var [designs, setDesigns] = useState([])
     // var [title, setTitle] = useState('')
+    var type = localStorage.getItem('type')
+    var userId = localStorage.getItem('userId')
     
     useEffect(async() => {
         var {data} = await axios.get('http://localhost:8000/general/get_all_designs')
@@ -19,6 +21,10 @@ const Design = () => {
         }
     }, [])
 
+    const userOnClick = () => {
+        alert("You should have an account to make order")
+    }
+
     return(
         <Fragment>
             <div className='row'>
@@ -26,27 +32,28 @@ const Design = () => {
                     designs.map((item) => {
                         console.log(item.title)
                         return(
-                            <Link to={`/designs/details/${item.design_id}`} className="text-decoration-none col">
-                            <div className="design-container">
- 
+                            <div className="design-container col">
                                 <div className="design-card">
                                     <div className="design-img-cover">
                                         <img src={item.image}/>
-                                        <div className="design-icon" >
+                                        {
+                                            type == 'customer' || type == 'cakemaker' ? <Link to={`/orders/direct/${item.design_id}`}><div className="design-icon" >
+                                            <i class="fas fa-cart-plus"></i>
+                                        </div></Link> : <div className="design-icon" onClick={userOnClick}>
                                             <i class="fas fa-cart-plus"></i>
                                         </div>
+                                        }
                                     </div>
                                     
                                     <div className="design-desc">
                                     <h1>{item.title}</h1>
                                     <p>{item.description}</p>
-                                    <a href ="">details <svg width="19" height="14" viewBox="0 0 23 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 9H22M12 1.5L20.9333 8.2C21.4667 8.6 21.4667 9.4 20.9333 9.8L12 16.5" stroke="white" stroke-width="3"/>
-                                </svg></a>
+                                    <Link to={`/designs/details/${item.design_id}`} className="text-decoration-none">
+                                    details
+                                    </Link>
                                     </div>
                                 </div>
                                 </div>
-                            </Link>
                         )
                     })
                 }

@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const { getProfiles } = require('../database/generalDB')
 const { getDesigns } = require('../database/designDB')
 const designRoute = require('./designRoute')
+const searchRoute = require('./searchRoute')
 
 const generalRoute = express.Router()
 generalRoute.use(bodyParser.json())
@@ -37,4 +38,6 @@ generalRoute.get('/logout', (req, res) => {
 })
 
 generalRoute.use('/get_one_design', designRoute)
+generalRoute.use('/search', searchRoute)
+
 module.exports = generalRoute

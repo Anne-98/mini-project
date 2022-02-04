@@ -7,6 +7,7 @@ const indirectOrdersRoute = require('./indirectOrderRoute')
 const directOrderRoute = require('./directOrderRoute')
 const customerProfileRoute = require('./customerProfileRoute')
 const customerOrderHistoryRoute = require('./customerOrderHistoryRoute')
+const customerNotificationsRoute = require('./customerNotificationsRoute')
 
 const customerRoute = express.Router()
 customerRoute.use(bodyParser.json())
@@ -77,5 +78,6 @@ customerRoute.use('/indirect_orders', indirectOrdersRoute)
 customerRoute.use('/direct_orders', directOrderRoute)
 customerRoute.use('/profile', customerProfileRoute)
 customerRoute.use('/orders', customerOrderHistoryRoute)
+customerRoute.use('/notifications', customerNotificationsRoute)
 
 module.exports = customerRoute

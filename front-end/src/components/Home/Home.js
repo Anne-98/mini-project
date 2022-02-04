@@ -1,19 +1,59 @@
-import React,{Fragment} from "react";
+import React,{Fragment, useContext, useEffect} from "react";
 import {Link, useParams} from 'react-router-dom';
 import video_1 from './../../videos/video_1.mp4';
 import './../../css/home.css';
 import {Container, Row, Col} from 'react-bootstrap';
+import { OrderContext } from "../Context/OrderContext";
+import axios from "axios";
 
 
 const Home = () => {
 
     var params = useParams()
+    const [orders, setOrders] = useContext(OrderContext)
+    
+    
     var cake_makers_id = localStorage.getItem('userId')
+    console.log(cake_makers_id)
+    var type = localStorage.getItem('type')
 
-    let type = localStorage.getItem('type')
-    // if (localStorageId.length > 0) {
-    //     localStorage.clear();
-    // }
+        useEffect(async()=>{
+            if (type == 'cakemaker') {
+                
+                var {data} = await axios.post('http://localhost:8000/cakemaker/orders/display_orders', {cake_makers_id})
+                console.log(data.success)
+
+                if (!data.success) {
+                    localStorage.setItem('orders', '0')
+                    setOrders('0')
+                }else if(data.data.direct_row.length > 0 || data.data.indirect_row.length > 0){
+                    var number_of_orders = data.data.direct_row.length + data.data.indirect_row.length
+                    
+                    localStorage.setItem('orders', number_of_orders)
+                    setOrders(number_of_orders)
+                }else{
+                    localStorage.setItem('orders', '0')
+                    setOrders('0')
+                }
+         }else if (type == 'customer') {
+                
+                var {data} = await axios.post('http://localhost:8000/customer/notifications/display', {cus_id:cake_makers_id})
+
+
+                if (!data.success) {
+                    localStorage.setItem('orders', '0')
+                    setOrders('0')
+                }else if(data.data.direct_row.length >= 0 || data.data.indirect_row.length >= 0){
+                    var number_of_notifications = data.data.direct_row.length + data.data.indirect_row.length
+                    
+                    localStorage.setItem('orders', number_of_notifications)
+                    setOrders(number_of_notifications)
+                }else{
+                    localStorage.setItem('orders', '0')
+                    setOrders('0')
+                }
+         }
+        }, [])
 
     return(
         <Fragment>
@@ -26,12 +66,12 @@ const Home = () => {
                 <div>
                     <Container id="popUp" style={{position:"absolute"}}>
                     <Row>
-                        <Col xs={3} md={6} lg={4}>
+                        <Col xs={1} md={6} lg={4}>
                             <i  class="fas fa-birthday-cake fa-2x carouselIcon" ></i>
                         </Col>
                         
-                        <Col xs={9} md={6} lg={8} id="carouselFollow">
-                            <p>Follow<br/> to get the latest recipes,<br/> articles and more!</p>
+                        <Col xs={11} md={6} lg={8} id="carouselFollow" >
+                            <p>Make<br/> Your Dream Cake Reality !<br/> Keep with touch with us</p>
                         </Col>
                     </Row>
                 </Container >
@@ -39,7 +79,7 @@ const Home = () => {
                 
                 <div className="home-cake-structure">
                     <div className="text-center">
-                        <h1 id="home-cake-header">Black Mount</h1>
+                        <h1 id="home-cake-header">Cake Mount</h1>
                         <div className="text-center">
                             <i class="fas fa-birthday-cake fa-5x" id="home-cake-icon"></i>
                         </div>

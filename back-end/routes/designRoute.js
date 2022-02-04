@@ -1,31 +1,26 @@
 const express = require('express')
-const { insertDesign, getCakemakerDesigns, getOneDesignDetails } = require('../database/designDB')
+const { insertDesign, getCakemakerDesigns, getOneDesignDetails, updateDesigns } = require('../database/designDB')
 
 const designRoute = express.Router()
 
 designRoute.post('/insert', async(req, res) => {
 
-        console.log(req.session)
-
-    var title = 'Gatto'
-    var description = 'made with sponch cake. chocolate and pineapple gatou are available'
-    var category = 'sponch cakes'
-    var price = 1000
-    var rates = 5
-    var imageFile = req.files.file
     var cake_makers_id = req.session.user_id
-    // var imageFile = '/http:8000//public/images/designs/ksjhfaksjhf'
-    console.log(cake_makers_id)
-    
+    var {title, description, category, price} = req.body
+    var imageFile = req.files.file
+
+    console.log(imageFile)
     if (req.session.isLog == true) {
-        var data = await insertDesign(title, description, imageFile, category, price, cake_makers_id, rates)
-        if (data.length > 0) {
-            res.json({success: true, msg: "Successfully added a new design"})
+        var data = await insertDesign(title, description, imageFile, category, price, cake_makers_id)
+
+        console.log(data)
+        if (data.affectedRows > 0) {
+            res.json({success: true, msg: "Successfully added a new design", isLog: true})
         }else{
-            res.json({success: false, msg: "Some data are missing"})
+            res.json({success: false, msg: "Some data are missing", isLog: true})
         }
     }else{
-        res.json({logged: false, msg:"You are not logged In"})
+        res.json({logged: false, msg:"You are not logged In", isLog: false})
     }
 })
 
@@ -53,6 +48,29 @@ designRoute.post('/design_details', async(req, res) => {
     }else{
         res.json({msg:"Something went wrong", success:false})
 
+    }
+})
+
+designRoute.post('/design', async(req, res) => {
+
+    var {title, description, category, price, design_id} = req.body
+
+    if (req.files != undefined) {
+        var imageFile = req.files.file
+    }else{
+        var imageFile = {name: ''}
+    }
+
+    if (req.session.isLog) {
+        var data = await updateDesigns(title, description, imageFile, category, price, design_id)
+
+        if (data.changedRows > 0) {
+            res.json({success:true, msg:"Successfully updated", isLog: true})
+        }else{
+            res.json({success:false, msg:"Data type or content doesn't match to the database", isLog:true})
+        }
+    }else{
+        res.json({isLog:false, msg:"You are not logged in"})
     }
 })
 
