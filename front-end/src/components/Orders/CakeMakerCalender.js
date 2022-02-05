@@ -48,10 +48,7 @@ const onChange = useCallback(
 
     return(
         <div>
-            <br/>
-            <br/>
-            <br/>
-            <h1 className="m-5 text-center">Calender</h1>
+            <h1 className="text-center common-header">Calendar</h1>
 
            <div className="text-center"> 
             </div>

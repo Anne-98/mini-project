@@ -50,14 +50,14 @@ const CustomerNotifications = () => {
 console.log(indirect)
     return(
         <Fragment>
-            <h1 className="text-center pt-5 mt-5" style={{position:"relative"}}>Notifications</h1>
+            <h1 className="text-center common-header">Notifications</h1>
             {/* {msg} */}
-            <div className="notifications__wrapper container" style={{position:"relative"}}>
+            <div className="notifications__wrapper container pt-5 " >
                 <div className="notifications row">
 
             {   direct.length ?
                 <div>
-                        <h4 className="text-center pb-4" style={{position:"relative"}}>Direct Orders</h4>
+                        <h2 className="text-center pb-4 common_sub_header" style={{position:"relative"}}>Direct Orders</h2>
                         {
                         direct.map((item) => {
 
@@ -97,7 +97,7 @@ console.log(indirect)
             }
             {   indirect.length ?
                 <div>
-                        <h4 className="text-center pb-4" style={{position:"relative"}}>Indirect Orders</h4>
+                        <h2 className="text-center pb-4  pt-4 common_sub_header" style={{position:"relative"}}>Indirect Orders</h2>
                         {
                         indirect.map((item) => {
 

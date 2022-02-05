@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { Fragment, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { OrderContext } from "../Context/OrderContext";
 
@@ -75,9 +75,8 @@ const CakeMakersAllDetails = () => {
     
 
     return(
-        <div>
-            <br/>
-            <h1 className="text-center mt-5 pt-5">Your Orders</h1>
+        <Fragment>
+            <h1 className="text-center common-header">Your Orders</h1>
             <div className="text-center" style={{width:"45%", float:"left"}}>
                         <h1>Direct Orders</h1>
                         {
@@ -144,7 +143,7 @@ const CakeMakersAllDetails = () => {
             })
         }
     </div>
-        </div>
+        </Fragment>
     )
 }
 

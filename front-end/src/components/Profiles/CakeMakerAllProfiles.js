@@ -27,9 +27,9 @@ const CakeMakerAllProfiles = () => {
     console.log(row)
 
     return(
-        <div className="container mt-5 pt-5">
-            <div className='row mt-5'>
-                <h1 className='text-center pb-5'>Cake Maker Profiles</h1>
+        <div>
+             <h1 className="text-center common-header">Cake Maker Profiles</h1>
+            <div className='row mt-5' style={{'--bs-gutter-x':"0rem"}}>
             {
                 row.map((item) => {
 

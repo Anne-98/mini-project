@@ -68,10 +68,8 @@ const IndirectOrders = () => {
 
     return(
         <Fragment>
+                <h1 className="text-center common-header">Order Your Own Designs</h1>
             <div className='mt-5 mx-auto' style={{width:"70%"}}>
-                <br/>
-                <br/>
-                <h1 className='mt-5'>Order your own Design</h1>
             <form className="mt-5" onSubmit={makeIndirectOrder}>
                 <div className="form-group">
                     <p className="text-danger">{msg}</p>

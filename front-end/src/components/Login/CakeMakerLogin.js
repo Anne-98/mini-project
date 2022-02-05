@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {React, useState, useRef, useContext} from 'react';
+import {React, useState, useRef, useContext, Fragment} from 'react';
 import { useNavigate } from "react-router-dom";
 import { IsLogContext } from '../Context/IsLogContext';
 import { UserIdContext } from '../Context/UserIdContext';
@@ -47,8 +47,9 @@ const CakeMakerLogin = () => {
 
     return(
         <div>
-            <div className='mt-5' style={{width:"45%", float:"right"}}>
-                <h1 className='mt-5'>Cake Maker Log In</h1>
+        <h1 className="text-center common-header">Cake Maker Log In</h1>
+        <div className='m-auto' style={{width:"75vw"}}>
+            <div className='mt-5' style={{width:"45%"}}>
             <form className="mt-5" onSubmit={loginCakeMaker}>
                 <div className="form-group">
                     <p style={success ? {color:"green"} : {color:"red"}}>{msg}</p>
@@ -65,6 +66,7 @@ const CakeMakerLogin = () => {
                 </div><br/>
                 <button type="submit"  className="btn btn-primary">Submit</button>
                 </form>
+            </div>
             </div>
         </div>
     )

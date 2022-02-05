@@ -34,13 +34,9 @@ const CakeMakerProfile = () => {
     }
     return(
         <Fragment>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+            <h1 className="text-center common-header">Cake Maker Profile</h1>
             <div className="card text-center">
                 <div className="card-header">
-                    <h1>Cake Maker Profile</h1>
                 </div>
                 {
                     cake_makers_id ==  userId ? 

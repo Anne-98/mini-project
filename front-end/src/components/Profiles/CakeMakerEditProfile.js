@@ -89,10 +89,8 @@ const CakeMakerEditProfile = () => {
 
     return(
         <Fragment>
+                <h1 className="text-center common-header">Edit Profile</h1>
             <div className='mt-5 mx-auto' style={{width:"70%"}}>
-                <br/>
-                <br/>
-                <h1 className='mt-5'>Edit Profile</h1>
             <form className="mt-5" onSubmit={updateProfile}>
                     <p>{msg}</p>
                 

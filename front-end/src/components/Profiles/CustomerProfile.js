@@ -25,13 +25,9 @@ const CustomerProfile = () => {
 
     return(
         <Fragment>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+            <h1 className="text-center common-header">Customer Profile</h1>
             <div className="card text-center">
                 <div className="card-header">
-                    <h1>Customer Profile</h1>
                 </div>
                 <div className="card-body ">
                     <h5 className="card-title">{row.name}</h5>

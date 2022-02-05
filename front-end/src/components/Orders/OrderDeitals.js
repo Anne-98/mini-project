@@ -34,10 +34,7 @@ const OrderDetails = () => {
     console.log("cusDetails",cusDetails)
     return(
         <Fragment>
-            <br/>
-            <br/>
-            <br/>
-            <h1 className="mt-5 text-center">Order Details</h1>
+             <h1 className="text-center common-header">Order Details</h1>
             <div className="card m-auto" style={{width:"35rem"}}>
                 {
                     indirect.map((item) => {

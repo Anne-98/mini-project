@@ -2,31 +2,36 @@
 @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 
 .profile-picture {
-	border: 5px solid white;
-	border-radius: 50%;
-	box-shadow: 0px 0px 5px -2px black;
-	width: 115px;
+    border: 5px solid white;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px -2px black;
+    width: 115px;
+    height: 115px;
     position:absolute;
-     margin-left: 150px;
-    z-index:2
+    margin: 0px 150px;
+    z-index:2;
+    object-fit:cover; 
 }
+
 figure.snip0056 {
   font-family: 'Raleway', Arial, sans-serif;
   position: relative;
   overflow: hidden;
   margin: 10px;
-  /* min-width: 400px; */
-  /* max-width: 600px; */
   width: 600px;
+  height: 300px;
   background: #ffffff;
   color: #000000;
+  border-radius: 5px;
 }
+
 figure.snip0056 * {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+  /* -webkit-box-sizing: border-box;
+  box-sizing: border-box; */
 }
 figure.snip0056 > img {
   width: 200px;
+  height: 200px;
   border-radius: 50%;
   border: 4px solid #ffffff;
   -webkit-transition: all 0.35s ease-in-out;
@@ -53,6 +58,7 @@ figure.snip0056 figcaption p {
   width: 100%;
 }
 figure.snip0056 figcaption h2 {
+  color: #866e58;
   font-size: 1.3em;
   font-weight: 300;
   text-transform: uppercase;
@@ -81,7 +87,7 @@ figure.snip0056 figcaption a {
   transition: opacity 0.35s;
 }
 figure.snip0056 figcaption a:hover {
-  opacity: 0.8;
+  opacity: 0.7;
 }
 figure.snip0056 .position {
   width: 100%;
@@ -91,7 +97,7 @@ figure.snip0056 .position {
   opacity: 1;
   font-style: italic;
   color: #ffffff;
-  background: #000000;
+  background: #b89472;
   clear: both;
 }
 figure.snip0056.blue .position {
@@ -110,7 +116,8 @@ figure.snip0056.hover > img {
 
 @media screen and (max-width:600px){
     figure.snip0056 {
-  width: 350px;
+  width: 450px;
+  height: 270px;
 }
 figure.snip0056 > img {
   width: 150px;
@@ -119,7 +126,7 @@ figure.snip0056 > img {
 	border: 5px solid white;
 	border-radius: 50%;
 	box-shadow: 0px 0px 5px -2px black;
-	margin-bottom: -57px;
+	/* margin-bottom: -60px; */
 	transform: translateY(-50%);
 	width: 115px;
     position:absolute;

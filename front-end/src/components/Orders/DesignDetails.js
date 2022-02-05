@@ -25,10 +25,7 @@ const DesignDetails = () => {
     return(
 
         <Fragment>
-            <br/>
-            <br/>
-            <br/>
-            <h1 className="mt-5 text-center">Design Details</h1>
+            <h1 className="text-center common-header">Design Details</h1>
             <p>{msg}</p>
             <div className="card m-auto" style={{width:"35rem"}}>
                 {

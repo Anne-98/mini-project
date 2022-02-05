@@ -49,8 +49,7 @@ const CakeMakerUploadDesigns = () => {
 console.log(file)
     return(
         <Fragment>
-            <br/>
-            <h1 className="text-center mt-5 pt-5">Upload new Designs</h1>
+            <h1 className="text-center common-header">Upload New Designs</h1>
             <div className="container">
         <form
            

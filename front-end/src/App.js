@@ -43,7 +43,7 @@ const App = () =>{
                 <Route path="/categories" element = {<CategoriesPage />} />
                 <Route path="/login" element = {<LoginPage />} />
                 <Route path="/user/:cake_makers_id" element = {<HomePage />} />
-                {/* <Route path="/search/:searched_item" element={<Search />}/> */}
+                <Route path="/search/:searched_item" element={<Search />}/>
                 <Route path="/customer/logged/:customer_id" element = {<HomePage />} />
                 <Route path="/signin" element = {<SignInPage/>} />
                 <Route path="/profiles/customer/:customer_id" element = {<CustomerProfile />} />

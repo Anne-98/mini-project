@@ -14,6 +14,7 @@ const NavbarFixed = () => {
     let [userId, setUserId] = useContext(UserIdContext)
     let [orders, setOrders] = useContext(OrderContext)
     var [searched_item, setSearchedItem] = useState('')
+    var navigate = useNavigate()
     console.log(userId)
 
     setOrders(localStorage.getItem('orders'))
@@ -40,8 +41,12 @@ const NavbarFixed = () => {
 
         refreshPage()
     }
+    
+    const searchPage = () => {
+        refreshPage()
+        navigate(`/search/${searched_item}`)
+    }
 
-console.log(searched_item)
     return(
         <Fragment>
             <nav className="navbar fixed-top navbar-expand-lg" id="navbarWrapper">
@@ -76,20 +81,21 @@ console.log(searched_item)
                             }
                         </li>
                     </ul>
-                    <form className="d-flex">
                         {
                             type == 'cakemaker' ? <Link to={`/cakemaker/calender/${userId}`}> <button  className="btn" ><i style={{fontSize:"25px", color:"#b89472"}} className="far fa-calendar"></i></button></Link> : <></>
                         }
-
                         {
                             type == 'customer' ? <Link to={`/customer/notifications/${userId}`}> <button  className="btn navbar-notification" ><i style={{fontSize:"25px", color:"#b89472"}} className="fas fa-bell"><span className="text-monospace p-1" style={{background:"#e63946", color:"white", borderRadius:"50px", position:"absolute", margin:"-8px", fontSize:"10px", fontFamily:"sans-serif"}}>{orders}</span></i></button></Link> : <></>
                         }
                         {
                             type == 'cakemaker' ? <Link to={`cakemaker/orders/all/${userId}`}> <button  className="btn" ><i style={{fontSize:"25px", color:"#b89472"}} className="fas fa-birthday-cake"><span className="text-monospace p-1" style={{background:"#e63946", color:"white", borderRadius:"50px", position:"absolute", margin:"-8px", fontSize:"10px", fontFamily:"sans-serif"}}>{orders}</span></i></button></Link> : <></>
                         }
-                        <Link to={`/search/${searched_item}`}><button className="btn me-1" style={{border:"2px solid #b89472"}} type="submit"><i style={{color:"#b89472"}} className="fas fa-search"></i></button></Link>
+                    <form className="d-flex">
+
 
                         <input className="form-control me-2" style={{background:"transparent", borderBottom:"2px solid #b89472"}} type="search" placeholder="Search" aria-label="Search" value={searched_item} onChange={(e) => {setSearchedItem(e.target.value)}}/>
+
+                        <button className="btn me-1" style={{border:"2px solid #b89472"}} onClick={searchPage}><i style={{color:"#b89472"}} aria-label="Search" className="fas fa-search"></i></button>
                         <button style={{background:"#b89472", color:"#ffe8d6e0"}} className="btn" onClick={LogOut}>Logout</button>
                     </form>
                     </div>

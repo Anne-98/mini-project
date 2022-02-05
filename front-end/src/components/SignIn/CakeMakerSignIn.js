@@ -129,10 +129,8 @@ const CakeMakerSignIn = () => {
     }
     return(
         <Fragment>
+                <h1 className="text-center common-header">Cake Maker Sign In</h1>
             <div className='mt-5 mx-auto' style={{width:"70%"}}>
-                <br/>
-                <br/>
-                <h1 className='mt-5'>Cake Maker SignIn</h1>
             <form className="mt-5" onSubmit={signInCakeMaker}>
                     <p className="text-center text-danger">{msg}</p>
                 <div className="row mb-2">

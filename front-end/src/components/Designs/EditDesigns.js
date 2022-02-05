@@ -68,8 +68,7 @@ const EditDesigns = () =>{
     }
     return(
         <Fragment>
-            <br/>
-            <h1 className="text-center mt-5 pt-5">Edit Designs</h1>
+           <h1 className="text-center common-header">Edit Designs</h1>
             <div className="container">
         <form onSubmit={onSubmit}>
             <p className="text-danger">{msg}</p>

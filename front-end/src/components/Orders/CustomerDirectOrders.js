@@ -62,11 +62,11 @@ const CustomerDirectOrders = () => {
     }
 
     return(
-        <Fragment>
-                <br/>
-                <br/>   
-            <h1 className="text-center mt-5 pt-5">Direct Orders</h1>
-            <p>{msg}</p>
+        <div >
+                <h1 className="text-center common-header">Direct Orders</h1>
+            <div >
+                {/* style={{background:"rgba(245, 245, 220, 0.5)"}} */}
+                <p>{msg}</p>
            <Link to={`/profiles/cakemaker/${cake_makers_id}`}>
                <div className="text-center pt-2" > <button className="btn btn-primary btn-lg btn-block">Cake maker Profile</button></div>
            </Link>
@@ -109,7 +109,8 @@ const CustomerDirectOrders = () => {
                 <button type="submit" className="btn btn-primary mt-3">Submit</button>
                 </form>
             </div>
-        </Fragment>
+            </div>
+        </div>
     )
 }
 

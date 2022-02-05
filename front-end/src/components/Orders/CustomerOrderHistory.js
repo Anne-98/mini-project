@@ -31,11 +31,8 @@ const CustomerOrderHistory = () => {
 
     return(
         <Fragment>
-            <br/>
-            <br/>
-            <br/>
+                <h1 className="text-center common-header">My Orders</h1>
             <div className="mt-5 text-center">
-                <h1>My Orders</h1>
                 <h5 id="passwordHelpInline" className="text-danger">{msg}</h5>
                 <div className="text-center mx-auto mt-5">
                     <div className="" style={{width:"45%", float:"left"}}>

@@ -80,6 +80,7 @@ const CustomerSignIn = () => {
 
     return(
         <Fragment>
+            <h1 className="text-center common-header">Customer Sign In</h1>
             <div className='mt-5 mx-auto' style={{width:"70%"}}>
                 <br/>
                 <br/>

@@ -1,4 +1,4 @@
-import {React, useContext, useRef, useState} from 'react';
+import {Fragment, React, useContext, useRef, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import { UserIdContext } from '../Context/UserIdContext';
@@ -51,13 +51,10 @@ const CustomerLogin = () => {
     }
 
     return(
-        <div>
-            <br/>
-            <br/>
-            <br/>
+        <div >
+            <h1 className="text-center common-header">Customer Log In</h1>
             <div className='m-auto' style={{width:"75vw"}}>
-            <div className='mt-5 mr-4' style={{width:"45%", float:"left"}}>
-                <h1 className='mt-5'>Customer Log In</h1>
+            <div className='mt-5 mr-4' style={{width:"45%"}}>
             <form className="mt-5" onSubmit={loginCustomer}>
                 <p style={success ? {color:"green"} : {color:"red"}}>{msg}</p>
                 <div class="form-group">
