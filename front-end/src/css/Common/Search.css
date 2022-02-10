@@ -5,7 +5,7 @@
 .common-header{
     font-family: 'IM Fell English SC', serif;
     background-color: #b89472;
-    color: #ffe8d6e0;
+    color: #ffe8d6;
     padding-top: 100px;
     padding-bottom: 20px;
     position: -webkit-sticky; /* Safari & IE */
@@ -19,7 +19,6 @@
   margin: 50px auto;
   position: absolute;
 }
-
 
 .search_item {
   display: flex;
@@ -49,7 +48,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0;
+    padding: 5px;
 }
 .search_item_content{
     padding-left: 10px;
@@ -57,18 +56,18 @@
 }
 .search_img {
   border-radius: 50%;
-  width: 80px;
-  /* height: 100%; */
+  width: 100%;
+  height: 100%;
   border: 1px solid #ffe8d6e0;
   padding: 5px;
   object-fit: cover;
 }
 #search_title_img{
-    /* border-radius: 0px;
-  width: 90px;
-  height: 100%;
+    border-radius: 0px;
+  /* width: 90px;
+  height: 100%; */
   border: 1px solid #ffe8d6e0;
-  padding: 5px; */
+  padding: 5px;
   width: 100%;
   height: 100%;
   object-fit: cover;

@@ -1,0 +1,128 @@
+::-webkit-scrollbar {
+  width: 10px;
+  background: #ffe8d6;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #ffe8d6; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #b89472bd; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b89472; 
+}
+.workplace-wrapper{
+
+    background: #b89472;
+    z-index: -1;
+    /* height: 100vh; */
+    
+}
+#wp-design-edit{
+    height:fit-content;
+    width: fit-content;
+    /* width: 400px; */
+    margin: 0px auto;
+    margin-top: 60px;
+}
+
+.wp-design-edit-wrapper{
+    background: url('./../../../../src/images/backgrounds/wp_bg_7.png');
+    object-fit: cover;
+    background-size: cover;
+    /* height: 100vh; */
+    background-repeat: repeat;
+    background-color: #ffe8d6;
+    border-radius: 10px;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.486), 0 15px 12px rgba(0,0,0,0.22);
+    
+}
+.wp-export-btn{
+    background-color: #ffe8d6;
+    color: #b89472;
+    font-family: 'Averia Serif Libre', cursive;
+    font-weight: bold;
+    letter-spacing: 2px;
+    width: 70%;
+}
+.wp-confirm-btn{
+    background-color: #b89472;
+    color: #ffe8d6e0;
+    font-family: 'Averia Serif Libre', cursive;
+    font-weight: bold;
+    letter-spacing: 2px;
+    top: 0;
+    position: absolute;
+}
+.design-container{
+    width: 25vw;
+}
+.wp-cakelist-wrapper{
+    background-color: #ffe8d6;
+    padding: 10px;
+    margin-top: 5px;
+    margin-left: 5px;
+    border-radius: 5px;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.63);
+    z-index: 2;
+    cursor: pointer;
+}
+.wp-cakelist-wrapper:first-child, .wp-cakelist-wrapper:nth-child(2){
+    margin-top: 0px;
+}
+.wp-cakelist-img{
+    filter: drop-shadow(0px 5px 2px #b89472);
+    transition: transform 1s  ease-out;
+}
+
+.wp-cakelist-img:hover{
+    transform: translate(5%) ;
+}
+
+@media screen and (max-width:800px) {
+    .wp-cakelist-wrapper:nth-child(2){
+    margin-top: 5px;
+}
+    .design-container{
+        width: 50vw;
+        
+    }
+    .wp-confirm-btn{
+        background-color: #b89472;
+        color: #ffe8d6e0;
+        font-family: 'Averia Serif Libre', cursive;
+        font-weight: bold;
+        letter-spacing: 2px;
+        /* margin: 20px auto; */
+        /* float: right; */
+        /* top: 0; */
+        position: relative;
+        margin-top: 20px;
+    }
+    .wp-cakelist-wrapper{
+        background-color: #9e7862;
+    }
+    .wp-export-btn{
+    background-color:  #b89472;
+    color: #ffe8d6;
+    width: 100px;
+    margin: 20px 0px;
+    }
+    .wp-export-wrapper{
+        top: 5;
+        right: 20px;
+        position: absolute;
+        align-items: flex-end;
+        display: flex;
+        justify-content: end;
+    }
+}
+
+/* style={{background:"#b89472", color:"#ffe8d6e0"} */

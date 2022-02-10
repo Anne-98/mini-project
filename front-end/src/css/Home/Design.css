@@ -6,15 +6,20 @@ body {
   padding : 0 ;
 }
 
+.design-container{
+  margin: 10px;
+}
 .design-card{
-  margin : auto;
+  margin :0px auto;
   width: 250px;
+  height: 550px;
   overflow : hidden;
   border-radius : 20px;
   background : white;
-  margin-top:50px;
   transition: all .2s;
   box-shadow:5px 5px 15px rgba(0,0,0, .3);
+    position: relative;
+
 }
 
 .design-card:hover {
@@ -30,6 +35,7 @@ body {
   width: 250px;
   height:250px;
   object-fit:cover;
+  
 }
 
 .design-icon{
@@ -62,7 +68,7 @@ body {
   overflow: auto;
 }
 
-.design-desc a{
+.design-details-btn{
   text-decoration: none;
   background-color: #b89472;
   padding: 15px 25px;
@@ -71,7 +77,14 @@ body {
   display:block;
   text-align: center;
   transition: all .2s;
+  border-top-left-radius: 0px;
+  /* border-top-right-radius: 0px; */
+  /* top: 200px; */
+  bottom: 0;
+  width: 100%;
+  position: absolute;
 }
+
 .design-desc a:hover{
   background-color: #b88c72;
 }
@@ -93,4 +106,3 @@ body {
     transform:translateX(-100%);
   }
 }
-

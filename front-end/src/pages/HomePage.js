@@ -10,6 +10,8 @@ const HomePage = () => {
                     <Row>
                         <Col><Home/></Col>
                     </Row>
+                    <br/>
+                    <br/>
                     <Row>
                         <Col><Design/></Col>
                     </Row>

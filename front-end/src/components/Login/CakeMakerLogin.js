@@ -1,9 +1,11 @@
 import axios from 'axios'
 import {React, useState, useRef, useContext, Fragment} from 'react';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IsLogContext } from '../Context/IsLogContext';
 import { UserIdContext } from '../Context/UserIdContext';
 import { UserTypeContext } from '../Context/UserTypeContext';
+import './../../css/Home/Login.css';
+
 
 axios.defaults.withCredentials = true
 
@@ -46,25 +48,28 @@ const CakeMakerLogin = () => {
     }
 
     return(
-        <div>
-        <h1 className="text-center common-header">Cake Maker Log In</h1>
-        <div className='m-auto' style={{width:"75vw"}}>
-            <div className='mt-5' style={{width:"45%"}}>
+        <div className='login-wrapper'>
+        <h1 className="text-center common-header" style={{zIndex:"3"}}>Cake Maker Log In</h1>
+        <div className='login-common-container d-flex justify-content-center container'>
+            <Link to={'/login'}><button className='btn login-login-btn text-end'><i class="fas fa-arrow-left"></i></button></Link>
+            <div className='mt-5' style={{width:"65%"}}>
             <form className="mt-5" onSubmit={loginCakeMaker}>
-                <div className="form-group">
-                    <p style={success ? {color:"green"} : {color:"red"}}>{msg}</p>
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name='cakemaker_email' ref={emailRef} required
+                    {
+                        msg.length > 0 ? <p className='common-error-msg'>{msg}</p> : <></>
+                    }
+                <div className="form-group row mb-5">
+                    <label for="exampleInputEmail1" className='col-2 m-auto'><i className="fas fa-envelope-square login-icons"></i></label>
+                    <input type="email" className="form-control col" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name='cakemaker_email' ref={emailRef} required
                     />
 
                     {/* value={email} onChange={e => setEmail(e.target.value)} */}
                 </div>
-                <div className="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" name='cakemaker_password' 
+                <div className="form-group row">
+                    <label for="exampleInputPassword1" className='col-2 m-auto'><i className="fas fa-key login-icons"></i></label>
+                    <input type="password" className="form-control col" id="exampleInputPassword1" placeholder="Password" name='cakemaker_password' 
                     ref={passwordRef} required/>
                 </div><br/>
-                <button type="submit"  className="btn btn-primary">Submit</button>
+                <button type="submit"  className="btn login-submit-button">Submit</button>
                 </form>
             </div>
             </div>

@@ -69,6 +69,9 @@ const NavbarFixed = () => {
                         <li className="nav-item  text-center">
                             <Link className="navItem" to="/profiles/allcakemakers">Bakers</Link>
                         </li>
+                        <li className="nav-item  text-center">
+                            <Link className="navItem" to={`/workplace`}>Workplace</Link>
+                        </li>
                         {
                             type == 'customer' ? <li className="nav-item  text-center">
                             <Link className="navItem" to={`/customer/orders/history/${userId}`}>Order history</Link>
@@ -93,7 +96,7 @@ const NavbarFixed = () => {
                     <form className="d-flex">
 
 
-                        <input className="form-control me-2" style={{background:"transparent", borderBottom:"2px solid #b89472"}} type="search" placeholder="Search" aria-label="Search" value={searched_item} onChange={(e) => {setSearchedItem(e.target.value)}}/>
+                        <input className="form-control me-2" style={{background:"transparent", borderBottom:"2px solid #b89472"}} type="search" placeholder="Search" aria-label="Search" value={searched_item} onChange={(e) => {setSearchedItem(e.target.value)}} id="navbar-search-input"/>
 
                         <button className="btn me-1" style={{border:"2px solid #b89472"}} onClick={searchPage}><i style={{color:"#b89472"}} aria-label="Search" className="fas fa-search"></i></button>
                         <button style={{background:"#b89472", color:"#ffe8d6e0"}} className="btn" onClick={LogOut}>Logout</button>

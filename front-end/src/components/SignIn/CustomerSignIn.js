@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { Fragment, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import './../../css/Home/SignIn.css'
+
 
 const CustomerSignIn = () => {
 
@@ -79,67 +81,69 @@ const CustomerSignIn = () => {
     }
 
     return(
-        <Fragment>
-            <h1 className="text-center common-header">Customer Sign In</h1>
-            <div className='mt-5 mx-auto' style={{width:"70%"}}>
-                <br/>
-                <br/>
-                <h1 className='mt-5'>Customer SignIn</h1>
-            <form className="mt-5" onSubmit={signInCustomer}>
-                    <p className="text-danger text-end">{msg}</p>
-                <div className="row mb-2">
+        <div className='signin-wrapper'>
+            <h1 className="text-center common-header" style={{zIndex:"3"}}>Customer Sign In</h1>
+            <div className='signin-common-container d-flex justify-content-center container'>
+                    <Link to={'/signin'}><button className='btn signin-signin-btn'><i className="fas fa-arrow-left"></i></button></Link>
+                <div className="mt-5" style={{width:"65%"}}>
+                     <form className="mt-5" onSubmit={signInCustomer}>
+                          {
+                        msg.length > 0 ? <p className='common-error-msg'>{msg}</p> : <></>
+                    }
+                <div className="form-group  row mb-5">
                     <label for="exampleInputEmail1" className="col-sm-4">Email address</label>
                     <div className="col-sm-8">
                         <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name='cakemaker_email' value={email} onChange={e => setEmail(e.target.value)} required={true}
                     /></div>
                 </div>
-                <div className="row mb-2">
+                <div className="form-group  row mb-5">
                     <label className="col-sm-4" for="exampleInputPassword1">Password</label>
                     <div className="col-sm-8">
-                    <small id="passwordHelpInline" class="text-danger">
-                    {passwordValidate}
-                    </small>
                         <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" name='cakemaker_password' 
                     onChange={e => setPassword(e.target.value)} required={true}/>
-                    <small id="passwordHelpBlock" class="form-text text-muted">
-                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                    <small id="passwordHelpInline" className="common-error-msg">
+                    {passwordValidate}
+                    </small><br/>
+                    <small id="passwordHelpBlock" className="form-text signin-help-text">
+                        Your password must be 8-20 characters long, contain letters and numbers, and symbols.
                     </small>
                     </div>
                 </div>
-                <div class="row mb-2">
+                <div className="form-group  row mb-5">
                     <label className="col-sm-4" for="inputName">Name</label>
                     <div className="col-sm-8">
-                        <small id="passwordHelpInline" class="text-danger">
+                        <input type="text" className="form-control" placeholder="First name" onChange={e => setName(e.target.value)} required={true}/>
+                        <small id="passwordHelpInline" className="common-error-msg">
                     {nameValidate}
                     </small>
-                        <input type="text" class="form-control" placeholder="First name" onChange={e => setName(e.target.value)} required={true}/>
                     </div>
                 </div>
-                <div class="row mb-2">
+                <div className="form-group  row mb-5">
                     <label className="col-sm-4" for="inputAddress">Address</label>
                     <div className="col-sm-8">
-                        <input type="text" class="form-control" id="inputAddress" onChange={e => setAddress(e.target.value)} required={true} placeholder="111 Main street, Colombo" />
+                        <input type="text" className="form-control" id="inputAddress" onChange={e => setAddress(e.target.value)} required={true} placeholder="111 Main street, Colombo" />
                     </div>
                 </div>
-                <div class="row mb-2">
+                <div className="form-group  row mb-5">
                     <label className="col-sm-4" for="formGroupExampleInput">Contact Number</label>
                     <div className="col-sm-8">
-                        <small id="passwordHelpInline" class="text-danger">
+                        <input type="number" className="form-control" id="formGroupExampleInput" placeholder="0711118898 / 0112255447" onChange={e => setContact_num(e.target.value)} required={true}/>
+                        <small id="passwordHelpInline" className="common-error-msg">
                     {contactNumValidate}
                     </small>
-                        <input type="number" class="form-control" id="formGroupExampleInput" placeholder="0711118898 / 0112255447" onChange={e => setContact_num(e.target.value)} required={true}/>
                     </div>
                 </div>
-                <div class="row mb-5">
+                <div className="form-group  row mb-5">
                     <label className="col-sm-4 mb-1" for="exampleFormControlTextarea1">What is your favorite cake name</label>
                     <div className="col-sm-8">
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Butter cake" onChange={e => setQuestion(e.target.value)} required={true}/>
+                        <input type="text" className="form-control" id="formGroupExampleInput" placeholder="Butter cake" onChange={e => setQuestion(e.target.value)} required={true}/>
                     </div>
                 </div>
-                <button type="submit" className="btn btn-primary mt-3">Submit</button>
+                <button type="submit" className="btn signin-submit-button">Submit</button>
                 </form>
+                </div>
             </div>
-        </Fragment>
+        </div>
         
     )
 }

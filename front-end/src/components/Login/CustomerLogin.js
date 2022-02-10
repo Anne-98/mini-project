@@ -1,9 +1,10 @@
 import {Fragment, React, useContext, useRef, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import { UserIdContext } from '../Context/UserIdContext';
 import { UserTypeContext } from '../Context/UserTypeContext';
 import { IsLogContext } from '../Context/IsLogContext';
+import './../../css/Home/Login.css';
 
 const CustomerLogin = () => {
 
@@ -51,21 +52,25 @@ const CustomerLogin = () => {
     }
 
     return(
-        <div >
-            <h1 className="text-center common-header">Customer Log In</h1>
-            <div className='m-auto' style={{width:"75vw"}}>
-            <div className='mt-5 mr-4' style={{width:"45%"}}>
+        <div className='login-wrapper'>
+            <h1 className="text-center common-header" style={{zIndex:"3"}}>Customer Log In</h1>
+            <div className='login-common-container d-flex justify-content-center container'>
+                <Link to={'/login'}><button className='btn login-login-btn'><i class="fas fa-arrow-left"></i></button></Link>
+            <div className='mt-5' style={{width:"65%"}}>
             <form className="mt-5" onSubmit={loginCustomer}>
-                <p style={success ? {color:"green"} : {color:"red"}}>{msg}</p>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name='customer_email' ref={emailRef} required/>
+                {
+                        msg.length > 0 ? <p className='common-error-msg'>{msg}</p> : <></>
+                    }
+                <div className="form-group  row mb-5">
+                    <label for="exampleInputEmail1" className='col-2 m-auto'><i className="fas fa-envelope-square login-icons"></i></label>
+                    <input type="email" className="form-control col"  aria-describedby="emailHelp" placeholder="Enter email" name='customer_email' ref={emailRef} required/>
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name='customer_password' ref={passwordRef} required/>
+                <div className="form-group row">
+                    <label for="exampleInputPassword1" className='col-2 m-auto'><i className="fas fa-key login-icons"></i></label>
+                    <input type="password" className="form-control col" id="exampleInputPassword1" placeholder="Password" name='customer_password' ref={passwordRef} required/>
                 </div><br/>
-                <button type="submit"  class="btn btn-primary">Submit</button>
+                
+                <button type="submit"  className="btn login-submit-button">Submit</button>
                 </form>
             </div>
             </div>

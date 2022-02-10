@@ -27,12 +27,12 @@ const Design = () => {
 
     return(
         <Fragment>
-            <div className='row'>
+            <div className='row '>
                 {
                     designs.map((item) => {
                         console.log(item.title)
                         return(
-                            <div className="design-container col">
+                            <div className="design-container col ">
                                 <div className="design-card">
                                     <div className="design-img-cover">
                                         <img src={item.image}/>
@@ -45,13 +45,13 @@ const Design = () => {
                                         }
                                     </div>
                                     
-                                    <div className="design-desc">
-                                    <h1>{item.title}</h1>
+                                    <div className="design-desc ">
+                                    <h2>{item.title}</h2>
                                     <p>{item.description}</p>
-                                    <Link to={`/designs/details/${item.design_id}`} className="text-decoration-none">
-                                    details
-                                    </Link>
                                     </div>
+                                    <Link to={`/designs/details/${item.design_id}`} className="text-decoration-none design-details-btn">
+                                    Details
+                                    </Link>
                                 </div>
                                 </div>
                         )

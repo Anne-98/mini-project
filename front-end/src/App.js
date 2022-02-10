@@ -27,6 +27,12 @@ import { OrderContextProvider } from "./components/Context/OrderContext";
 import EditDesigns from "./components/Designs/EditDesigns";
 import CustomerNotifications from "./components/Orders/CustomerNotifications";
 import Search from "./components/Common/Search";
+import CakeMakerLogin from "./components/Login/CakeMakerLogin";
+import CustomerLogin from "./components/Login/CustomerLogin";
+import CustomerSignIn from "./components/SignIn/CustomerSignIn";
+import CakeMakerSignIn from "./components/SignIn/CakeMakerSignIn";
+import WorkPlace from "./components/Designs/Workplace";
+import IsConfirmDesignProvider from "./components/Context/IsConfirmDesign";
 
 
 const App = () =>{
@@ -37,15 +43,21 @@ const App = () =>{
         <UserIdContextProvider>
           <UserTypeContextProvider>
             <OrderContextProvider>
-              <NavbarFixed />
+              <IsConfirmDesignProvider>
+                <NavbarFixed />
               <Routes>
                 <Route path="/" element = {<HomePage />} />
                 <Route path="/categories" element = {<CategoriesPage />} />
+                <Route path="/workplace" element = {<WorkPlace />} />
                 <Route path="/login" element = {<LoginPage />} />
+                <Route path="/login/customer" element = {<CustomerLogin />} />
+                <Route path="/login/cakemaker" element = {<CakeMakerLogin />} />
                 <Route path="/user/:cake_makers_id" element = {<HomePage />} />
                 <Route path="/search/:searched_item" element={<Search />}/>
                 <Route path="/customer/logged/:customer_id" element = {<HomePage />} />
                 <Route path="/signin" element = {<SignInPage/>} />
+                <Route path="/signin/customer" element = {<CustomerSignIn />} />
+                <Route path="/signin/cakemaker" element = {<CakeMakerSignIn />} />
                 <Route path="/profiles/customer/:customer_id" element = {<CustomerProfile />} />
                 <Route path="/profiles/cakemaker/:cake_makers_id" element = {<CakeMakerProfile />} />
                 <Route path="/profiles/cakemaker/edit/:cake_makers_id" element={<CakeMakerEditProfile/>} />
@@ -63,6 +75,7 @@ const App = () =>{
                 <Route path='/cakemaker/designs/edit/:design_id' element={<EditDesigns />}/>
                 <Route path="*" element= {<ErrorPage />}/>
               </Routes>
+              </IsConfirmDesignProvider>
             </OrderContextProvider>
           </UserTypeContextProvider>
         </UserIdContextProvider>
