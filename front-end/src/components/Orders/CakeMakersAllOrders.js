@@ -16,7 +16,7 @@ const CakeMakersAllDetails = () => {
     useEffect(async()=>{
         var {data} = await axios.post('http://localhost:8000/cakemaker/orders/display_orders', {cake_makers_id})
 
-        // console.log(data.data.direct_row)
+        console.log(data.data)
         if (data.isLog) {
             if (data.success) {
                 setDirect(data.data.direct_row)
@@ -46,6 +46,7 @@ const CakeMakersAllDetails = () => {
         var body = {indirect_order_id, direct_order_id, indirect_reject, indirect_confirm, direct_reject, direct_confirm}
         var {data} = await axios.post('http://localhost:8000/cakemaker/order/accpect_order', body)
 
+        console.log("accept_order",data)
         if (data.success) {
             setId(direct_order_id)
         }

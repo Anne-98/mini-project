@@ -85,19 +85,47 @@ const CustomerSignIn = () => {
             <h1 className="text-center common-header" style={{zIndex:"3"}}>Customer Sign In</h1>
             <div className='signin-common-container d-flex justify-content-center container'>
                     <Link to={'/signin'}><button className='btn signin-signin-btn'><i className="fas fa-arrow-left"></i></button></Link>
-                <div className="mt-5" style={{width:"65%"}}>
+                <div className="mt-5 signin-inner-container">
                      <form className="mt-5" onSubmit={signInCustomer}>
                           {
                         msg.length > 0 ? <p className='common-error-msg'>{msg}</p> : <></>
                     }
-                <div className="form-group  row mb-5">
-                    <label for="exampleInputEmail1" className="col-sm-4">Email address</label>
+                <div className="row">
+                    <div className="form-group  col-lg-6 row mb-5">
+                    <label className="col-sm-4 col-lg-3" for="inputName">Name</label>
+                    <div className="col-sm-8">
+                        <input type="text" className="form-control" placeholder="First name" onChange={e => setName(e.target.value)} required={true}/>
+                        <small id="passwordHelpInline" className="common-error-msg">
+                    {nameValidate}
+                    </small>
+                    </div>
+                </div>
+                <div className="form-group  col-lg-6 row mb-5">
+                    <label for="exampleInputEmail1" className="col-sm-4 col-lg-3">Email address</label>
                     <div className="col-sm-8">
                         <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name='cakemaker_email' value={email} onChange={e => setEmail(e.target.value)} required={true}
                     /></div>
                 </div>
+                </div>
+                <div className="row">
+                    <div className="form-group  col-lg-6 row mb-5">
+                    <label className="col-sm-4 col-lg-3" for="inputAddress">Address</label>
+                    <div className="col-sm-8">
+                        <input type="text" className="form-control" id="inputAddress" onChange={e => setAddress(e.target.value)} required={true} placeholder="111 Main street, Colombo" />
+                    </div>
+                </div>
+                <div className="form-group  col-lg-6 row mb-5">
+                    <label className="col-sm-4 col-lg-3" for="formGroupExampleInput">Contact Number</label>
+                    <div className="col-sm-8">
+                        <input type="number" className="form-control" id="formGroupExampleInput" placeholder="0711118898 / 0112255447" onChange={e => setContact_num(e.target.value)} required={true}/>
+                        <small id="passwordHelpInline" className="common-error-msg">
+                    {contactNumValidate}
+                    </small>
+                    </div>
+                </div>
+                </div>
                 <div className="form-group  row mb-5">
-                    <label className="col-sm-4" for="exampleInputPassword1">Password</label>
+                    <label className="col-sm-4 col-lg-3" for="exampleInputPassword1">Password</label>
                     <div className="col-sm-8">
                         <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" name='cakemaker_password' 
                     onChange={e => setPassword(e.target.value)} required={true}/>
@@ -109,32 +137,10 @@ const CustomerSignIn = () => {
                     </small>
                     </div>
                 </div>
+                
+                
                 <div className="form-group  row mb-5">
-                    <label className="col-sm-4" for="inputName">Name</label>
-                    <div className="col-sm-8">
-                        <input type="text" className="form-control" placeholder="First name" onChange={e => setName(e.target.value)} required={true}/>
-                        <small id="passwordHelpInline" className="common-error-msg">
-                    {nameValidate}
-                    </small>
-                    </div>
-                </div>
-                <div className="form-group  row mb-5">
-                    <label className="col-sm-4" for="inputAddress">Address</label>
-                    <div className="col-sm-8">
-                        <input type="text" className="form-control" id="inputAddress" onChange={e => setAddress(e.target.value)} required={true} placeholder="111 Main street, Colombo" />
-                    </div>
-                </div>
-                <div className="form-group  row mb-5">
-                    <label className="col-sm-4" for="formGroupExampleInput">Contact Number</label>
-                    <div className="col-sm-8">
-                        <input type="number" className="form-control" id="formGroupExampleInput" placeholder="0711118898 / 0112255447" onChange={e => setContact_num(e.target.value)} required={true}/>
-                        <small id="passwordHelpInline" className="common-error-msg">
-                    {contactNumValidate}
-                    </small>
-                    </div>
-                </div>
-                <div className="form-group  row mb-5">
-                    <label className="col-sm-4 mb-1" for="exampleFormControlTextarea1">What is your favorite cake name</label>
+                    <label className="col-sm-4 col-lg-3 mb-1" for="exampleFormControlTextarea1">What is your favorite cake name</label>
                     <div className="col-sm-8">
                         <input type="text" className="form-control" id="formGroupExampleInput" placeholder="Butter cake" onChange={e => setQuestion(e.target.value)} required={true}/>
                     </div>

@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useState } from "react";
+import React, { Fragment, useContext, useEffect, useState } from "react";
 import './../../css/navbar.css';
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -14,6 +14,7 @@ const NavbarFixed = () => {
     let [userId, setUserId] = useContext(UserIdContext)
     let [orders, setOrders] = useContext(OrderContext)
     var [searched_item, setSearchedItem] = useState('')
+    var [cakemakerDetails, setCakemakerDetails] = useState([])
     var navigate = useNavigate()
     console.log(userId)
 
@@ -22,6 +23,14 @@ const NavbarFixed = () => {
     const refreshPage = () => {
         window.location.reload(true)
     }
+
+    useEffect(async()=>{
+        var {data} = await axios.post('http://localhost:8000/cakemaker/profile/myprofile', {cake_makers_id: userId})
+        console.log("dataCkaemra",data)
+        // if (data.isLog) {
+            setCakemakerDetails(data.data[0])
+        // }
+    }, [])
 
     const LogOut = async() => {
         
@@ -47,6 +56,7 @@ const NavbarFixed = () => {
         navigate(`/search/${searched_item}`)
     }
 
+
     return(
         <Fragment>
             <nav className="navbar fixed-top navbar-expand-lg" id="navbarWrapper">
@@ -69,21 +79,40 @@ const NavbarFixed = () => {
                         <li className="nav-item  text-center">
                             <Link className="navItem" to="/profiles/allcakemakers">Bakers</Link>
                         </li>
-                        <li className="nav-item  text-center">
-                            <Link className="navItem" to={`/workplace`}>Workplace</Link>
+                        <li className="nav-item  text-center navbar-workplace">
+                            <div style={{overflowX:"hidden", width:"75px"}}>
+                                <Link className="navItem " to={`/workplace`}>Workplace</Link><div className=" navbar-workplace-icon"></div>
+                            </div>
                         </li>
                         {
-                            type == 'customer' ? <li className="nav-item  text-center">
+                            type == 'customer' ? <li className="nav-item  text-center orderHistory-navItem">
                             <Link className="navItem" to={`/customer/orders/history/${userId}`}>Order history</Link>
                         </li> : <></>
                         }
-                        <li className="nav-item  text-center">
+                        {
+                            type == 'admin' ? <li className="nav-item  text-center orderHistory-navItem" 
+                            onClick={()=>{
+                                localStorage.setItem('orders', '0')
+                                refreshPage()
+                                }} >
+                            <Link className="navItem" to={`/admin/workplace/dashboard/${userId}`} style={{color:"#6b705c"}}>Dashboard</Link>
+                        </li> : <></>
+                        }
+                        
                             {
-                                type == 'customer' ? <Link className="navItem" to={`/profiles/customer/${userId}`}>Profile</Link> : type == 'cakemaker' ? <Link className="navItem" to={`/profiles/cakemaker/${userId}`}>Profile</Link> : type == 'admin' ? <Link className="navItem" to={`/profiles/admin/${userId}`}>Profile</Link> : <span></span>
+                                type == 'customer' ? <Link className="navItem " to={`/profiles/customer/${userId}`}><li className="nav-item text-center orderHistory-navItem" >Profile</li></Link> : type == 'cakemaker' ? <Link className="navItem orderHistory-navItem"  to={`/profiles/cakemaker/${userId}`}><li className="nav-item text-center " >Profile</li></Link>  : <span></span>
                                 
                             }
-                        </li>
+                        
                     </ul>
+                        {
+                            type == 'cakemaker' ? <Link to={`/cakemaker/overdues/${cakemakerDetails.warning}`}> 
+                            <i  style={{fontSize:"25px", color:"#b89472", position:"relative"}}  className={`fas fa-exclamation-circle ${cakemakerDetails.warning > 0 ? 'warning-icon' : ''}`}>
+                                {
+                                    cakemakerDetails.warning > 0 ? <span className="text-monospace p-1" style={{background:"#e63946", color:"white", borderRadius:"50px", position:"absolute", margin:"-8px", fontSize:"10px", fontFamily:"sans-serif"}}>{cakemakerDetails.warning}</span> : <></>
+                                }
+                                </i></Link> : <></>
+                        }
                         {
                             type == 'cakemaker' ? <Link to={`/cakemaker/calender/${userId}`}> <button  className="btn" ><i style={{fontSize:"25px", color:"#b89472"}} className="far fa-calendar"></i></button></Link> : <></>
                         }

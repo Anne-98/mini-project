@@ -18,5 +18,22 @@ const cakeMakersAllOrders = (cake_makers_id) => {
         })
     })
 }
+const getAllOrders = () => {
+    return new Promise((resolve, reject) => {
+        connection.query(`SELECT*, DATE_FORMAT(order_date, '%m') AS order_date FROM direct_orders`, (error, direct_row) => {
+            if (error) {
+                return reject(error)
+            }else{
+                connection.query(`SELECT*, DATE_FORMAT(order_date, '%m') AS order_date FROM indirect_orders`, (err, indirect_row) => {
+                    if (err) {
+                        return reject(err)
+                    }else{
+                        return resolve({direct_row , indirect_row})
+                    }
+                })
+            }
+        })
+    })
+}
 
-module.exports = {cakeMakersAllOrders}
+module.exports = {cakeMakersAllOrders, getAllOrders}

@@ -43,6 +43,7 @@ const CakeMakerProfile = () => {
                     <Fragment>
                         <Link to={`/cakemaker/orders/all/${cake_makers_id}`}><button href="#" style={{float:"right", display:"block"}} className="btn btn-success  m-3">Your Orders</button></Link>
                         <Link to={`/cakemaker/designs/new/${cake_makers_id}`}><button href="#" style={{float:"right", display:"block"}} className="btn btn-success  m-3">Upload Designs + </button></Link>
+                        <Link to={`/cakemaker/create/post/${row.name}`}><button href="#" style={{float:"right", display:"block"}} className="btn btn-success  m-3">Create Post</button></Link>
                     </Fragment> : <></>
                 }
                 <div className="card-body ">
@@ -77,8 +78,6 @@ const CakeMakerProfile = () => {
                     2 days ago
                 </div>
             </div>
-
-
             
            <div className='wrapper'>
                <div className='container'>
@@ -103,9 +102,6 @@ const CakeMakerProfile = () => {
                    </div>
                </div>
            </div>
-
-
-           
         </Fragment>
     )
 }

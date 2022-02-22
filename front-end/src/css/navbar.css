@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Meie+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Langar&display=swap');
 #navbarWrapper{
     background: #ffe8d6e0;
     border-bottom: 10px solid #b89472;
@@ -24,8 +26,78 @@
  color:#b89472
 
 }
+.navbar-workplace{
+    justify-content: center;
+    align-items: center;
+    display: flex;    
+}
+.navbar-workplace-icon{
+    border-bottom: 2px solid #b89472;
+    /* width: fit-content;/ */
+    animation-name: underline_animation;
+    animation-duration: 2.5s;
+    animation-fill-mode: forwards;
+    z-index: 3;
+    background-color: #b89472;
+    animation-iteration-count: infinite;
+    padding: 0;
+}
+.orderHistory-navItem{
+    margin-left: 40px;
+}
+.warning-icon{
+    border-radius: 50px;
+    animation-name: warning;
+    animation-duration: 2.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    margin-right: 10px;
+}
+
+@keyframes warning {
+    0%{
+        /* transition: all 0.8s ease; */
+        box-shadow: 0px 0px 0px 5px #e63947a6;
+    }
+    100%{
+        /* transition: all 0.8s ease; */
+        box-shadow: 0px 0px 0px 10px #e6394700;
+    }
+}
 button:focus { outline: none !important; box-shadow: none !important; }
 input:focus { outline: none !important; box-shadow: none !important; }
+@media screen and (max-width:800px) {
+    .navbar-workplace-icon{
+        align-items: center
+    }
+    .navItem{
+        margin-right: 0px;
+    }
+    .orderHistory-navItem{
+        margin-left: 0px;
+    }
+}
 
-@import url('https://fonts.googleapis.com/css2?family=Meie+Script&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Langar&display=swap');
+@keyframes underline_animation {
+    /* from{transform: translateX(0px);opacity: 1;}
+    to{transform: translateX(50px); opacity: 0;} */
+    0%{
+        transform: translateX(-10px);opacity: 0.5;
+        width: 10px;
+    }
+    /* 25%{
+        transform: translateX(0px); opacity: 1;
+        width: 50px;
+    } */
+    /* 50%{
+        transform: translateX(100px); opacity: 1;
+        width: 75px;
+    } */
+    /* 75%{
+        transform: translateX(50px); opacity: 0.5;
+    } */
+    100%{
+        transform: translateX(120px); opacity: 1;
+        width: 75px;
+    }
+}

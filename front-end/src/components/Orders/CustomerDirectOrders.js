@@ -29,8 +29,9 @@ const CustomerDirectOrders = () => {
         }
     },[])
     
-    const makeDirectOrder = async() => {
+    const makeDirectOrder = async(e) => {
 
+        e.preventDefault()
         var body = new FormData()
 
         body.append('cake_makers_id', cake_makers_id)

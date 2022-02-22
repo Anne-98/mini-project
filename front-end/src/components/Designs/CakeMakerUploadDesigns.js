@@ -18,7 +18,9 @@ const CakeMakerUploadDesigns = () => {
     var navigate = useNavigate()
     var [isValidImage, setIsValidImage] = useState('')
 
-    const onSubmit = async() => {
+    const onSubmit = async(e) => {
+
+        e.preventDefault()
         var body = new FormData
 
         body.append('title', title)

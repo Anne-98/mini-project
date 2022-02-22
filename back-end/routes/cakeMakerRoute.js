@@ -10,6 +10,7 @@ const cakeMakerOrdersConfirmedRoute = require('./cakeMakerOrdersConfirmedRoute')
 const cakemakersOrdersResponseRoute = require('./cakemakersOrdersResponseRoute')
 const displayOneOrderDetailsRoute = require('./displayOneOrderDetailsRoute')
 const cakeMakerAllProfiles = require('./cakemakersAllPrfilesRoute')
+const cakemakerDispatchOrderRoute = require('./cakemakerDispatchOrderRoute')
 
 
 const cakeMakerRoute = express.Router()
@@ -27,11 +28,12 @@ cakeMakerRoute.post('/login', async(req, res) => {
         const data = await loginCakeMaker(email, password)
 
         if (data.length > 0) {
-            console.log(data[0].cake_makers_id)
+
             req.session.isLog = true
+
             var cake_makers = data[0].cake_makers_id
             req.session.user_id = cake_makers
-            console.log(req.session)
+
             res.json({success: true, data, msg: "Successfully logged", isLog: true})
         }else if (data.exist ==  false) {
             req.session.isLog = false
@@ -97,5 +99,7 @@ cakeMakerRoute.use("/one_order", displayOneOrderDetailsRoute)
 cakeMakerRoute.use("/allprofiles", cakeMakerAllProfiles)
 cakeMakerRoute.use('/cakemaker_designs', designRoute)
 cakeMakerRoute.use('/update_designs', designRoute)
+cakeMakerRoute.use('/dispatch_order', cakemakerDispatchOrderRoute)
+cakeMakerRoute.use('/set_overdue', cakemakerDispatchOrderRoute)
 
 module.exports = cakeMakerRoute

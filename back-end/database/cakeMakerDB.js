@@ -32,6 +32,7 @@ const signInCakeMaker = (name, password, email, district, qualifications, contac
 
         bcrypt.hash(password, saltRounds, (err, hashed_password) => {
             if (err) {
+                return reject(err)
             }
             
             let hashed_email = SHA256(email).toString()

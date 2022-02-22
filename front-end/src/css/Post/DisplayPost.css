@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Akaya+Telivigala&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Akaya+Telivigala&family=Secular+One&display=swap");
+
+.displaypost-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.display-post img {
+  max-width: 100%;
+  min-height: 100%;
+}
+.display-post-inner-head{
+    color: #524233;
+    border-bottom: 3px solid #524233;
+    display: inline-block;
+    font-weight: bold;
+    
+}
+.display-post{
+    color: #fcdec7;
+    
+}
+.display-post-head {
+  margin: 70px;
+}
+.display-post-inner-head {
+  font-family: "Akaya Telivigala", cursive;
+  font-family: "Secular One", sans-serif;
+}
+.display-post-head h3 {
+  color: #a58262;
+  position: relative;
+  display: inline-block;
+  text-transform: capitalize;
+  font-family: "Bebas Neue", cursive;
+}
+
+.display-post-head h3:after,
+.display-post-head h3:before {
+  position: absolute;
+  content: "";
+  width: 50px;
+  height: 3px;
+  background: #a58262;
+  top: 50%;
+}
+
+.display-post-head h3:after {
+  right: 120%;
+}
+
+.display-post-head h3:before {
+  left: 120%;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+  
+}
+
+.display-post .item {
+  background-color: #a58262;
+  font-family: "Akaya Telivigala", cursive;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  height: 300px;
+}
+
+.display-post .item .more {
+  position: absolute;
+  right: 30px;
+  bottom: 20px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  color: #a58262;
+  font-size: 19px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  line-height: 40px;
+  text-align: center;
+  transform: translate(0, 100px);
+  transition: all 0.3s ease-in-out;
+  background-color: #fcdec7;
+  
+}
+
+.display-post .item:hover .more {
+  transform: translate(0, 0);
+}
+
+.display-post .item:hover .img img {
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.display-post .item:hover .img img {
+  transform: rotate(-5deg) scale(1.2);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0 100%, 0% 0%);
+  overflow: hidden;
+}
+
+.display-post .item img{
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%, 0 100%, 0% 0%);
+  position: relative;
+}
+
+.display-post .item .info {
+  padding: 30px;
+  position: relative;
+  
+}
+
+.display-post-date {
+  position: absolute;
+  /* left: calc(0% -50px); */
+  /* left: -112.5px; */
+  /* top: 100px; */
+  width: 50px;
+  height: 50px;
+  line-height: 20px;
+  text-align: center;
+  background-color: #a58262;
+  color: #fff;
+  padding: 5px;
+  transform: rotate(-45deg);
+}
+
+.display-post .item .info .date span {
+  transform: rotate(-45deg);
+  display: inline-block;
+}
+
+.display-post .item .info .user {
+  margin-top: 20px;
+  color: #a58262;
+}
+
+.display-post .item .info .user i {
+  margin-right: 5px;
+  font-size: 14px;
+}
+
+.post-collection-wrapper{
+  height: 315px;
+  align-items: right;
+  justify-content: right;
+}
+.post-collection-container{
+  height: 45%;
+  width: 20%;
+  padding: 10px;
+  margin: 1%;
+  border-radius: 10px;
+  border: #a58262 1px solid ;
+  cursor: pointer;
+}
+.post-collection-img{
+  object-fit: cover;
+  border-radius: 5px;
+  height: 50%;
+}
+.post-collection-title{
+  background-color: #a58262;
+  position: absolute;
+  height: fit-content;
+  width: 40px;
+  /* padding: 5px; */
+  transform: rotate(-45deg);
+  font-family: "Akaya Telivigala", cursive;
+  text-align: center;
+}

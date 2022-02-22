@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const rejectOrder = require('../database/cakemakersOrderRejectDB')
+const {rejectOrder} = require('../database/cakemakersOrderRejectDB')
 
 const cakemakersOrdersResponseRoute = express.Router()
 cakemakersOrdersResponseRoute.use(bodyParser.json())
@@ -17,9 +17,9 @@ cakemakersOrdersResponseRoute.post('/accpect_order', async(req, res) => {
         // let direct_reject = 0
         // let direct_confirm = 1
 
-    // console.log(body)
+    console.log(req.body)
 
-    if (req.session.isLog == true) {
+    if (req.session.isLog) {
 
         var data = await rejectOrder(indirect_order_id, direct_order_id, indirect_reject, indirect_confirm, direct_reject, direct_confirm)
 

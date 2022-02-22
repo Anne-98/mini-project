@@ -39,6 +39,7 @@ const CakeMakerLogin = () => {
                 setType('cakemaker')
                 setUserId(data.data[0].cake_makers_id)
                 navigate(`/user/${data.data[0].cake_makers_id}`)
+                window.location.reload(true)
                 // setSuccess(data.success)
             }else{
                 setMsg(data.msg)

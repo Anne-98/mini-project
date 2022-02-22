@@ -9,17 +9,15 @@ cakeMakerProfileRoute.use(bodyParser.json(true))
 cakeMakerProfileRoute.post('/myprofile',async(req, res) => {
 
     var cake_makers_id = req.body.cake_makers_id
-    // var cake_makers_id = '1550497d-e528-4e28-bede-de88895a5056'
 
     // if (req.session.isLog) {
         var data = await getCakeMakerProfile(cake_makers_id)
 
         if (data.length > 0) {
-            res.json({data, msg:"Data successfully fetched into the profile page", isLog:true})
+            res.json({data, msg:"Data successfully fetched into the profile page", isLog:true, success: true})
         }else{
-            res.json({msg:"You haven't created any account", exist: false})
+            res.json({msg:"You haven't created any account", exist: false, success:false, isLog:true})
         }
-        
     // }else{
     //     res.json({isLog: false, msg: 'You are not logged In'})
     // }

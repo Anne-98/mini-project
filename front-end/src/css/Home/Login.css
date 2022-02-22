@@ -21,7 +21,7 @@ textarea:focus{
 .login-wrapper{ 
     /* width: 100vw;  */
     height: 100vh; 
-    background: url('./../../../src/images/backgrounds/bg_1.jpg');
+    background:linear-gradient(rgba(0, 0, 0, 0.288) , rgba(0, 0, 0, 0.13)), url('./../../../src/images/backgrounds/bg_login.jpg');
     z-index: -2;
     object-fit: cover;
     background-size: cover;
@@ -82,7 +82,7 @@ textarea:focus{
     color: #fcdec7;
 }
 .form-control::-webkit-input-placeholder {
-  color: #fcdec7;
+  color: #f5f0ed;
 }
 .login-icons{
     color: #fcdec7;

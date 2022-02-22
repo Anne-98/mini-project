@@ -35,8 +35,9 @@ const EditDesigns = () =>{
         }
     }, [])
 
-    const onSubmit = async() => {
+    const onSubmit = async(e) => {
 
+        e.preventDefault()
         var body = new FormData
 
         body.append('title', title)

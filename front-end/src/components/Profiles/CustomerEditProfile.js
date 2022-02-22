@@ -3,6 +3,7 @@ import React, { useEffect, Fragment, useState } from "react";
 import { useParams } from "react-router-dom";
 import {checkContactNum, checkImageType, checkName} from "../Common/Validation";
 import { useNavigate } from "react-router-dom";
+import './../../css/Profiles/CustomerEditProfile.css'
 
 axios.defaults.withCredentials = true
 
@@ -64,9 +65,9 @@ const CustomerEditProfile = () => {
         }
     }
     return(
-        <Fragment>
-            <h1 className="text-center common-header">Edit Profile</h1>
-            <div className='mt-5 mx-auto' style={{width:"70%"}}>
+        <div className="customer-editprofile-wrapper">
+            <h1 className="text-center common-header" style={{zIndex:"3"}}>Edit Profile</h1>
+            <div className='mt-5 mx-auto customer-editprofile-container'>
             <form className="mt-5" onSubmit={updateProfile}>
                     <p>{msg}</p>
                 
@@ -99,10 +100,10 @@ const CustomerEditProfile = () => {
                     <label className="col-sm-8 mb-1" for="exampleFormControlTextarea1">What is your favourite Cake Flavour ? </label>
                     <input type="text" className="form-control" placeholder="Vanilla" value={question} onChange={e => setQuestion(e.target.value)}/>
                 </div>
-                <button type="submit" className="btn btn-primary mt-3">Submit</button>
+                <button type="submit" className="btn mt-3 signin-submit-button">Submit</button>
                 </form>
             </div>
-        </Fragment>
+        </div>
     )
 
 }

@@ -2,9 +2,11 @@ const connection = require('./database')
 
 const rejectOrder = (indirect_order_id, direct_order_id, indirect_reject, indirect_confirm, direct_reject, direct_confirm) => {
 
+    console.log("backenddata: ", indirect_order_id, direct_order_id, indirect_reject, indirect_confirm, direct_reject, direct_confirm)
     return new Promise((resolve, reject)=>{
             connection.query(`UPDATE indirect_orders SET rejected = '${indirect_reject}' , confirm = '${indirect_confirm}' WHERE indirect_order_id = '${indirect_order_id}'`, (error, indirect_row) => {
             if (error) {
+                console.log("4")
                 return reject(error)
             }else{
                 console.log("1")
