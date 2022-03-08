@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
 * {
   margin: 0;
   padding: 0;
 }
 
-.wrapper {
+/* .wrapper {
   font-size: 13px;
   height: 100vh;
   background: black;
@@ -18,54 +19,160 @@
   font-family: 'PT Sans', sans-serif;
   background-color: #806754;
   background-blend-mode: overlay;
-}
-
-.container-glass,
-.container-glass::before,
-.container-glass::after {
-  border-radius: 7px;
-  background-color: #ffe8d627;
+} */
+.cm-design-wrapper{
+  background-color: rgba(245, 245, 220, 0.295);
   backdrop-filter: blur(5px);
+  top: 70vh;
+}
+.container-glass{
+  border-radius: 7px;
+  /* background-color: #ffe8d627; */
+  background-color: #b89472cc;
   box-shadow: 0px 0px 22px rgba(0, 0, 0, 0.08);
+  width: 250px;
+  margin: 20px;
+  padding: 25px;
 }
-.container-glass {
-  position: relative;
-  padding: 2rem 1.5rem;
-  width: 80%;
-  max-width: 280px;
-}
-
 
 .container-glass .img {
-  width: 100%;
-  border-radius: 7px;
+  width: 200px;
+  height: 250px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid white;
+  padding: 5px;
+  
+}
+.cm-designs-price{
+  position: absolute;
+  padding: 15px;
+  border-bottom-right-radius:20px;
+  backdrop-filter: blur(20px);
+  background-color: rgba(240, 232, 232, 0.5);
+  font-weight: 900;
+  color: rgb(177, 62, 62);
 }
 
 .container-glass .text {
   font-size: 1.01rem;
-  color: #DDD;
+  color: white;
   margin: 2rem 0;
   text-align: justify;
 }
 
-.container-glass .btn {
-  display: block;
-  margin: auto;
+.cm-designs-discover{
+  /* display: block; */
+  /* margin: auto; */
   font-family: 'PT Sans', sans-serif;
   font-size: 1.02rem;
-  width: 80%;
+  width: 100%;
   max-width: 200px;
   padding: .6rem 1rem;
-  background-color: transparent;
+  background-color: #ffe8d6;
+  color: #b89472;
   border-radius: 5px;
-  color: #ffe8d6;
-  border: 1px solid #ffe8d6;
-  cursor: pointer;
-  transition: all .2s linear;
+  transition: all .3s linear;
+  font-weight: bold;
 }
-.container-glass .btn:hover {
-  background-color: #b89472;
-  border: 1px solid #b89472;
+.cm-designs-discover:hover {
+  
+  background-color: transparent;
   color: #ffe8d6;
+  border: 1px solid #ffe8d6 ;
+}
+.cm-designs-title{
+  font-family: 'Secular One', sans-serif;
+  color: white;
+  font-size: 25px;
+  height: 70px;
 }
 
+/* cakemaker profile............................... */
+.cm-profile-wrapper{
+  position: fixed;
+}
+
+.cm-profile-img{
+  border-radius: 50%;
+  width:200px;
+  height:200px;
+  object-fit: cover;
+  border: beige 4px solid;
+  /* border: .3em solid rgb(233, 190, 157); */
+  /* border-bottom-color: #ffe8d6; */
+  margin: 5px;
+}
+.cm-profile-img-div{
+  border-radius: 50%;
+  width: fit-content;
+  height: fit-content;
+  background: linear-gradient(121deg, #b89472 0%, #ffe8d6 100%);
+  transition: all 0.5s ease;
+}
+.cm-profile-details-body{
+  font-family: "Open Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 10px;
+  text-align: left;
+}
+.cm-profile-details-body h1{
+  font-size: 2.4rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #b89472;
+}
+.details-heading{
+  padding-right: 10px;
+  font-weight: bold;
+}
+.cm-details-body{
+  padding-top: 10px;
+}
+.cm-profile-links a i{
+  color: #b89472;
+  font-size: 30px;
+  padding:20px 25px 20px 0px;
+  transition: all 0.8s ease;
+}
+.cm-profile-btns{
+  border: 2px solid #b89472;
+  color: #b89472;
+  transition: all 0.5s ease;
+}
+.cm-profile-edit-btn{
+  color:#b89472;
+  transition: all 0.8s ease;
+}
+.cm-profile-edit-btn:hover, .cm-profile-links a i:hover{
+  color:#97795d;
+}
+.cm-profile-btns:hover{
+  background-color: #b89472;
+  color: #ffe8d6;
+}
+.cm-profile-img-div:hover{
+  transform: scale(1.1);
+}
+
+@media screen and (max-width:800px) {
+  .cm-profile-img{
+    width:170px;
+    height:170px;
+  }
+  .cm-profile-wrapper{
+  position: relative;
+}
+}
+@media screen and (max-width:500px) {
+  .cm-profile-details-body{
+    width: 100%;
+    padding-left: 15px;
+    padding-top: 20px;
+  }
+  .cm-design-wrapper{
+    top:0vh
+  }
+
+}

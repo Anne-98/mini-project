@@ -10,6 +10,8 @@ const CakeMakerProfile = () => {
     var params = useParams()
     var cake_makers_id = params.cake_makers_id
     var [row, setRow] = useState({})
+    var [totalOrders, setTotalOrders] = useState('')
+    var [totalDesigns, setTotalDesigns] = useState('')
     var navigate = useNavigate()
     var [designs, setDesigns] = useState([])
     var userId = localStorage.getItem('userId')
@@ -18,14 +20,19 @@ const CakeMakerProfile = () => {
     useEffect(async()=>{
 
         var {data} = await axios.post('http://localhost:8000/cakemaker/profile/myprofile', {cake_makers_id})
-
+        
         setRow(data.data[0])
 
-        console.log(row)
+        var dispatch_orders = await axios.post('http://localhost:8000/cakemaker/dispatch_order/number_of_dispatches', {cake_makers_id})
+
+        setTotalOrders(dispatch_orders.data.data.direct_row.length + dispatch_orders.data.data.direct_row.length)
+
         var dataSet = await axios.post('http://localhost:8000/cakemaker/cakemaker_designs/get_cakemaker_designs', {cake_makers_id})
 
         if (dataSet.data.sucess) {
             setDesigns(dataSet.data.data)
+            setTotalDesigns(designs.length)
+
         }
     },[])
 
@@ -34,74 +41,94 @@ const CakeMakerProfile = () => {
     }
     return(
         <Fragment>
-            <h1 className="text-center common-header">Cake Maker Profile</h1>
-            <div className="card text-center">
-                <div className="card-header">
-                </div>
+            <h1 className="text-center common-header" style={{zIndex:"3"}}>Cake Maker Profile</h1>
+                
+            <div className="container cm-profile-wrapper">
                 {
                     cake_makers_id ==  userId ? 
-                    <Fragment>
-                        <Link to={`/cakemaker/orders/all/${cake_makers_id}`}><button href="#" style={{float:"right", display:"block"}} className="btn btn-success  m-3">Your Orders</button></Link>
-                        <Link to={`/cakemaker/designs/new/${cake_makers_id}`}><button href="#" style={{float:"right", display:"block"}} className="btn btn-success  m-3">Upload Designs + </button></Link>
-                        <Link to={`/cakemaker/create/post/${row.name}`}><button href="#" style={{float:"right", display:"block"}} className="btn btn-success  m-3">Create Post</button></Link>
-                    </Fragment> : <></>
+                    <div style={{display:"flex", alignItems:"right", justifyContent:"right"}}>
+                        <Link to={`/cakemaker/orders/all/${cake_makers_id}`}><button className="btn m-3 cm-profile-btns">Orders</button></Link>
+                        <Link   to={`/cakemaker/create/post/${row.name}`}><button className="btn m-3 cm-profile-btns" >Create Post</button></Link>
+                        <Link to={`/cakemaker/designs/new/${cake_makers_id}`}><button className="btn m-3 cm-profile-btns">Upload <i class="fas fa-upload"></i> </button></Link>
+                    </div> : <></>
                 }
-                <div className="card-body ">
-                    <img style={{width: '200px', borderRadius:"50px"}} src={row.profile_picture} className="rounded mx-auto d-block" alt="..."/>
-                    <h5 className="card-title">{row.name}</h5>
-                    District: <span className="card-text ">{row.district}</span><br/><br/>
-                    Qualifications: <span className="card-text">{row.qualifications}</span><br/><br/>
-                    Contact Number: <span className="card-text">0{row.contact_num}</span><br/><br/>
-                    Brand Name: <span className="card-text">{row.brand_name}</span>
+                <div className='mt-5' >
+                    <div className="row justify-content-center">
+                    <div className='cm-profile-img-div col-4 mx-auto'>
+                        <img src={row.profile_picture} className="cm-profile-img" alt="..."/>
+                    </div>
                     
-                    
-                    <br/><br/>
+                    {/* <div className='col-1 ></div> */}
+                    <div className='col-8 cm-profile-details-body '>
+                        <h1 className="">{row.name} {
+                       cake_makers_id ==  userId ? <button onClick={editProfile} className="btn cm-profile-edit-btn" ><i className="fas fa-pen "></i></button>: <></>
+                    }   </h1>
 
-                    <div className="btn-group" role="group" aria-label="Basic outlined example">
-                        <button type="button" className="btn btn-outline-primary">
-                            <a href={row.facebook} className="text-decoration-none">Facebook</a>
-                            </button>
-                        <button type="button" className="btn btn-outline-primary">
-                            <a href={row.instagram}className="text-decoration-none">Instagram</a>
-                            </button>
-                        <button type="button" className="btn btn-outline-primary">
-                            <a href={row.twitter}className="text-decoration-none">Twitter</a>
-                            </button>
-                    </div><br/><br/>
-                    {
-                       cake_makers_id ==  userId ? <button href="#" onClick={editProfile} className="btn btn-primary" style={{marginRight:"15px"}}>Edit</button>: <></>
-                    }
-                    
-                    
+                        <div className='row mb-3'>
+                            <div className='col-4' style={{color:"#f9c74f"}}>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>    
+                            </div>
+                            <div className='col-4'><b>{totalOrders}</b> Total Orders</div>
+                            <div className='col-4'><b>{totalDesigns}</b> Designs</div>
+                        </div>
+                        
+                        <div className='cm-details-body row'>
+                            <span className='details-heading col-4 '>District:</span> 
+                            <span className="col-8 ">{row.district}</span>
+                        </div>
+                        <div className='cm-details-body row'>
+                            <span className='details-heading col-4 '>Qualifications: </span>
+                            <span className="col-8 ">{row.qualifications}</span>
+                        </div>
+                        <div className='cm-details-body row'>
+                            <span className='details-heading col-4 '>Contact Number: </span>
+                            <span className="col-8 ">0{row.contact_num}</span>
+                        </div>
+                        <div className='cm-details-body row'>
+                            <span className='details-heading col-4 '>Brand Name: </span>
+                            <span className="col-8 ">{row.brand_name}</span>
+                        </div>
+                        <div className="cm-profile-links ">
+                            <a href={row.facebook} className="text-decoration-none"><i class="fab fa-facebook"></i></a>
+
+                            <a href={row.instagram}className="text-decoration-none"><i class="fab fa-instagram"></i></a>
+                            <a href={row.twitter}className="text-decoration-none"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
                 </div>
-                <div className="card-footer text-muted">
-                    2 days ago
+                
                 </div>
             </div>
-            
-           <div className='wrapper'>
-               <div className='container'>
-                   <div className='row'>
+
+           <div className='cm-design-wrapper'  style={{position:"relative"}}>
+                   <div className='row justify-content-center' style={{margin:"0px auto"}}>
                         {
                     designs.map((item) => {
 
                         return(
-                            <div className="container-glass col m-4">
+                            <div className="container-glass col-4 text-center">
+                                
+
+                                <div className='cm-designs-title mb-2'>{item.title} </div>
+                                <div className='cm-designs-price'>${item.price}</div>
+                                
                                 <img className="img" src={item.image} alt="" />
-                                <Link to={`/cakemaker/designs/edit/${item.design_id}`}><button className='btn btn-primary'>Edit</button></Link>
-                                <p className="text">
+                                {/* <p className="text">
                                     {item.description}
-                                </p>
-                                <p><b>${item.price}</b></p>
-                                <div>{item.category}</div>
-                                <Link to={`/designs/details/${item.design_id}`}className='text-decoration-none'><button className="btn">Discover</button></Link>
+                                </p> */}
+                                {/* <div>{item.category}</div> */}
+                                <Link to={`/designs/details/${item.design_id}`}className='text-decoration-none'><button className="btn cm-designs-discover mt-3">Discover</button></Link>
                             </div>
                         )
                     })
                 }
                    </div>
-               </div>
            </div>
+           
         </Fragment>
     )
 }

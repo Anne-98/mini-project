@@ -70,12 +70,20 @@ const NavbarFixed = () => {
                         <li className="nav-item  text-center">
                             <Link className="navItem" to="/">Home</Link>
                         </li>
-                        <li className="nav-item  text-center">
-                            <Link className="navItem" to="/login">Log In</Link>
-                        </li>
-                        <li className="nav-item  text-center">
-                            <Link className="navItem" to="/signin">Sign In</Link>
-                        </li>
+                        
+                        {
+                            type == '' ? 
+                            <Fragment>
+                                <li className="nav-item  text-center">
+                                    <Link className="navItem" to="/login">Log In</Link>
+                                </li>
+                                <li className="nav-item  text-center">
+                                    <Link className="navItem" to="/signin">Sign In</Link>
+                                </li>
+                            </Fragment> : <></>
+                            
+                        }
+                        
                         <li className="nav-item  text-center">
                             <Link className="navItem" to="/profiles/allcakemakers">Bakers</Link>
                         </li>
@@ -98,12 +106,21 @@ const NavbarFixed = () => {
                             <Link className="navItem" to={`/admin/workplace/dashboard/${userId}`} style={{color:"#6b705c"}}>Dashboard</Link>
                         </li> : <></>
                         }
+                        {
+                            type == 'customer' ?
+                            <li className="nav-item  text-center">
+                                <Link className="navItem" to={`/chat/${userId}`}>Chat</Link>
+                            </li> : type == 'cakemaker' ?
+                            <li className="nav-item  text-center  orderHistory-navItem">
+                                <Link className="navItem" to={`/chat/${userId}`}>Chat</Link>
+                            </li> :
+                            <></>
+                        }                        
                         
                             {
                                 type == 'customer' ? <Link className="navItem " to={`/profiles/customer/${userId}`}><li className="nav-item text-center orderHistory-navItem" >Profile</li></Link> : type == 'cakemaker' ? <Link className="navItem orderHistory-navItem"  to={`/profiles/cakemaker/${userId}`}><li className="nav-item text-center " >Profile</li></Link>  : <span></span>
                                 
                             }
-                        
                     </ul>
                         {
                             type == 'cakemaker' ? <Link to={`/cakemaker/overdues/${cakemakerDetails.warning}`}> 
@@ -124,11 +141,14 @@ const NavbarFixed = () => {
                         }
                     <form className="d-flex">
 
-
                         <input className="form-control me-2" style={{background:"transparent", borderBottom:"2px solid #b89472"}} type="search" placeholder="Search" aria-label="Search" value={searched_item} onChange={(e) => {setSearchedItem(e.target.value)}} id="navbar-search-input"/>
 
                         <button className="btn me-1" style={{border:"2px solid #b89472"}} onClick={searchPage}><i style={{color:"#b89472"}} aria-label="Search" className="fas fa-search"></i></button>
-                        <button style={{background:"#b89472", color:"#ffe8d6e0"}} className="btn" onClick={LogOut}>Logout</button>
+                        {
+                            type != '' ? 
+                            <button style={{background:"#b89472", color:"#ffe8d6e0"}} className="btn" onClick={LogOut}>Logout</button> :
+                            <></> 
+                        }
                     </form>
                     </div>
                 </div>

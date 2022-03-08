@@ -3,7 +3,6 @@ import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import './../../components/Common/Validation.js';
 import { checkImageType } from "./../../components/Common/Validation.js";
- 
 
 const CakeMakerUploadDesigns = () => {
     

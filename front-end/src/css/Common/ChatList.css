@@ -1,0 +1,208 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+ *, *:before, *:after {
+	 box-sizing: border-box;
+}
+ /* body {
+	 background: #c5ddeb;
+	 font: 14px/20px "Lato", Arial, sans-serif;
+	 padding: 40px 0;
+	 color: white;
+} */
+li{
+	list-style: none;
+}
+ .chatlist-container {
+	 margin: 0 auto;
+	 width: 90vw;
+	 background: #b89472;
+	 border-radius: 5px;
+}
+ .chatlist-people-list {
+	 /* width: 100%; */
+	 float: left;
+}
+ .chatlist-people-list, .chatlist-search {
+	 /* padding: 10px; */
+	 padding: 5px;
+}
+ .chatlist-people-list input {
+	 border-radius: 3px;
+	 border: none;
+	 padding: 14px;
+	 color: white;
+	 background: #6a6c75;
+	 /* width: 90%; */
+	 /* font-size: 14px; */
+}
+.chatlist-search-icon {
+	 /* position: relative; */
+	 /* left: -25px; */
+	 /* margin: 5px; */
+	 justify-content: center;
+	 align-items: center;
+	 display: flex;
+}
+ .chatlist-people-list img {
+	 width: 50px;
+	 height: 50px;
+	 /* float: left; */
+
+	}
+.chatlist-about{
+	padding-left: 15px;
+	
+}
+.chatlist-list-img{
+	object-fit: cover;
+	border-radius: 50%;
+	border: 3.5px solid #c5b09c;
+}
+.chatlist-list-container{
+	padding: 10px;
+}
+/* chat container................................................. */
+ .chatlist-chat {
+	 /* width: 490px; */
+	 float: left;
+	 background: #ffe8d6;
+	 border-top-right-radius: 5px;
+	 border-bottom-right-radius: 5px;
+	 color: #434651;
+}
+ .chatlist-chat .chatlist-chat-header {
+	 padding: 20px;
+	 border-bottom: 2px solid white;
+}
+ .chatlist-chat .chatlist-chat-header img {
+	 width: 50px;
+	 height: 50px;
+	 float: left;
+}
+ .chatlist-chat .chatlist-chat-header .chatlist-chat-about {
+	 float: left;
+	 padding-left: 10px;
+	 margin-top: 6px;
+}
+ .chatlist-chat .chatlist-chat-header .chatlist-chat-with {
+	 font-weight: bold;
+	 font-size: 16px;
+}
+ .chatlist-chat .chatlist-chat-header .chatlist-chat-num-messages {
+	 color: #92959e;
+}
+ .chatlist-chat .chatlist-chat-header .chatlist-fa-star {
+	 float: right;
+	 color: #d8dadf;
+	 font-size: 20px;
+	 margin-top: 12px;
+}
+ .chatlist-chat .chatlist-chat-history {
+	 padding: 30px 30px 20px;
+	 border-bottom: 2px solid white;
+	 overflow-y: scroll;
+	 height: 75vh;
+}
+ .chatlist-chat .chatlist-chat-history .chatlist-message-data {
+	 margin-bottom: 15px;
+}
+ .chatlist-chat .chatlist-chat-history .chatlist-message-data-time {
+	 color: #a8aab1;
+	 padding-left: 6px;
+}
+ .chatlist-chat .chatlist-chat-history .chatlist-message {
+	 color: white;
+	 padding: 18px 20px;
+	 line-height: 26px;
+	 font-size: 16px;
+	 border-radius: 7px;
+	 margin-bottom: 30px;
+	 width: 90%;
+	 position: relative;
+}
+.chatlist-list{
+	padding: 0px;
+}
+ .chatlist-chat .chatlist-chat-history .chatlist-message:after {
+	 bottom: 100%;
+	 left: 7%;
+	 border: solid transparent;
+	 content: " ";
+	 height: 0;
+	 width: 0;
+	 position: absolute;
+	 pointer-events: none;
+	 border-bottom-color: #86bb71;
+	 border-width: 10px;
+	 margin-left: -10px;
+}
+ .chatlist-chat .chatlist-chat-history .chatlist-my-message {
+	 background: #86bb71;
+}
+ .chatlist-chat .chatlist-chat-history .chatlist-other-message {
+	 background: #94c2ed;
+}
+ .chatlist-chat .chatlist-chat-history .chatlist-other-message:after {
+	 border-bottom-color: #94c2ed;
+	 left: 93%;
+}
+ .chatlist-chat .chatlist-chat-message {
+	 padding: 30px;
+}
+ .chatlist-chat .chatlist-chat-message textarea {
+	 width: 100%;
+	 border: none;
+	 padding: 10px 20px;
+	 font: 14px/22px "Lato", Arial, sans-serif;
+	 margin-bottom: 10px;
+	 border-radius: 5px;
+	 resize: none;
+}
+ .chatlist-chat .chatlist-chat-message .chatlist-fa-file-o, .chatlist-chat .chatlist-chat-message .chatlist-fa-file-image-o {
+	 font-size: 16px;
+	 color: gray;
+	 cursor: pointer;
+}
+ .chatlist-chat .chatlist-chat-message button {
+	 float: right;
+	 color: #94c2ed;
+	 font-size: 16px;
+	 text-transform: uppercase;
+	 border: none;
+	 cursor: pointer;
+	 font-weight: bold;
+	 background: #f2f5f8;
+}
+ .chatlist-chat .chatlist-chat-message button:hover {
+	 color: #75b1e8;
+}
+ .chatlist-online, .chatlist-offline, .chatlist-me {
+	 margin-right: 3px;
+	 font-size: 10px;
+}
+ .chatlist-online {
+	 color: #86bb71;
+}
+ .chatlist-offline {
+	 color: #e38968;
+}
+ .chatlist-me {
+	 color: #94c2ed;
+}
+ .chatlist-align-left {
+	 text-align: left;
+}
+ .chatlist-align-right {
+	 text-align: right;
+}
+ .chatlist-float-right {
+	 float: right;
+}
+ .chatlist-clearfix:after {
+	 visibility: hidden;
+	 display: block;
+	 font-size: 0;
+	 content: " ";
+	 clear: both;
+	 height: 0;
+}
+ 

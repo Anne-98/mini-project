@@ -4,6 +4,7 @@ const { getProfiles, deleteRow } = require('../database/generalDB')
 const { getDesigns } = require('../database/designDB')
 const designRoute = require('./designRoute')
 const searchRoute = require('./searchRoute')
+const chatRoute = require('./chatRoute')
 
 const generalRoute = express.Router()
 generalRoute.use(bodyParser.json())
@@ -62,6 +63,8 @@ generalRoute.post('/delete_row', async(req, res) => {
 
     }
 })
+
+generalRoute.use('/chat', chatRoute)
 
 
 module.exports = generalRoute

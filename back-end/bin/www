@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+
 /**
  * Module dependencies.
  */
@@ -7,6 +8,9 @@
 var app = require('../app');
 var debug = require('debug')('back-end:server');
 var http = require('http');
+
+// var chat = require('../chat');
+// var socketio = require('socket.io');
 
 /**
  * Get port from environment and store in Express.
@@ -20,6 +24,13 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+// var io = socketio(server,{
+//   cors: {
+//     origin: '*',
+//     methods: ['GET', 'POST']
+//   }
+// });
+// chat(io);
 
 /**
  * Listen on provided port, on all network interfaces.

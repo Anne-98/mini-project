@@ -37,6 +37,8 @@ import AdminCakeMaker from "./components/Admin/AdminCakeMaker";
 import AdminDashBoard from "./components/Admin/AdminDashBoard";
 import CakeMakerOverdueOrders from "./components/Orders/CakeMakerOverdueOrders";
 import CreatePost from "./components/Post/CreatePost";
+import Chat from "./components/Common/Chat";
+import ChatList from "./components/Common/ChatList";
 
 
 const App = () =>{
@@ -98,6 +100,8 @@ var orders = localStorage.getItem('orders')
                       <Route path="/admin/workplace/cakemaker" element={<AdminCakeMaker />}/> 
                       <Route path="/cakemaker/overdues/:warnings" element={<CakeMakerOverdueOrders />}/> 
                       <Route path="/cakemaker/create/post/:cakemakers_name" element={<CreatePost />}/> 
+                      <Route path="/common/chat/:userId" element={<Chat />}/> 
+                      <Route path="/chat/:userId" element={<ChatList />}/> 
                     </Routes>
                     {/* </Routes> */}
                   {/* </> :

@@ -28,6 +28,7 @@ designRoute.post('/get_cakemaker_designs',async(req, res) => {
     var cake_makers_id = req.body.cake_makers_id
     // var cake_makers_id = 'ec5395ff-8dd0-44a4-bc2f-4ece9744327e'
     let data = await getCakemakerDesigns(cake_makers_id)
+    console.log("dataddddd", data)
 
     if (data.length > 0) {
         res.json({msg: "Design details successfully fetched", data, sucess: true})

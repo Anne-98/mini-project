@@ -1,5 +1,5 @@
 const express = require('express')
-const { dispatchOrder, setOverdue } = require('../database/DispatchOrderDB')
+const { dispatchOrder, setOverdue, getTotalDispatches } = require('../database/DispatchOrderDB')
 
 const cakemakerDispatchOrderRoute = express.Router()
 
@@ -53,5 +53,19 @@ cakemakerDispatchOrderRoute.post('/overdue', async(req, res) => {
 //         res.json({isLog:false, msg: "You are not logged In"})
 //     }
 // })
+
+cakemakerDispatchOrderRoute.post('/number_of_dispatches', async(req, res) => {
+    
+        let cake_makers_id = req.body.cake_makers_id
+        console.log("dispatch: ",cake_makers_id)  
+        
+        let data = await getTotalDispatches(cake_makers_id)  
+        
+        if (data.direct_row.length >= 0 || data.indirect_row.length) {
+            res.json({isLog:true , success:true, msg: "Success", data})
+        }else{
+            res.json({isLog:true, msg: "Something went wrong", success:false})
+        }
+})
 
 module.exports = cakemakerDispatchOrderRoute

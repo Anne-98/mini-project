@@ -45,7 +45,7 @@ const Design = () => {
                                         }
                                     </div>
                                     
-                                    <div className="design-desc ">
+                                    <div className="design-desc">
                                     <h2>{item.title}</h2>
                                     <p>{item.description}</p>
                                     </div>
