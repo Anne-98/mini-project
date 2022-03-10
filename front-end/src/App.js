@@ -4,7 +4,7 @@ import NavbarFixed from "./components/Home/NavbarFixed";
 import IndirectOrders from "./components/Orders/CustomerIndirectOrders";
 import CakeMakerProfile from "./components/Profiles/CakeMakerProfile";
 import CustomerProfile from "./components/Profiles/CustomerProfile";
-import CategoriesPage from "./pages/CategoriesPage";
+import CategoriesPage from "./components/Common/Categories";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import SignInPage from "./pages/SignInPage";
@@ -39,6 +39,8 @@ import CakeMakerOverdueOrders from "./components/Orders/CakeMakerOverdueOrders";
 import CreatePost from "./components/Post/CreatePost";
 import Chat from "./components/Common/Chat";
 import ChatList from "./components/Common/ChatList";
+import Footer from "./components/Home/Footer";
+import OneCategory from "./components/Common/OneCategory";
 
 
 const App = () =>{
@@ -102,7 +104,9 @@ var orders = localStorage.getItem('orders')
                       <Route path="/cakemaker/create/post/:cakemakers_name" element={<CreatePost />}/> 
                       <Route path="/common/chat/:userId" element={<Chat />}/> 
                       <Route path="/chat/:userId" element={<ChatList />}/> 
+                      <Route path="/category/selected_category/:category_name" element={<OneCategory/>} />
                     </Routes>
+                    
                     {/* </Routes> */}
                   {/* </> :
                     <Routes> */}

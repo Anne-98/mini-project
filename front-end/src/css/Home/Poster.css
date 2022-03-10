@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
+.poster-wrapper{
+    background: linear-gradient(to bottom, #ffe8d6fd, #ffe8d67a ), url('./../../images/backgrounds/home_wrapper6.jpg');
+    /* width: 100%; */
+    height: fit-content;
+    object-fit: cover;
+    background-size: cover;
+    backdrop-filter: blur(100px);
+    background-attachment: fixed;
+    background-color: rgba(245, 245, 220, 0.295);
+  backdrop-filter: blur(5px);
+}
+.poster-heading span{
+    font-size: 50px;
+    border-bottom: 1px solid #b89472;
+}
+.poster-heading {
+    justify-content: center;
+    padding: 0px;
+    margin: 0px;
+    align-items: center;
+}
+.poster-logo{
+    width: 270px;
+    object-fit: cover;
+    border: 1px solid #b89472;
+    border-radius: 50%;
+    padding: 5px;
+}
+.poster-col-1{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.poster-col-2 {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: #6e5d4d;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    padding: 0px 20px 50px 20px;
+}
+.poster-col-2 p>*{
+    margin-bottom: 0px;
+}
+
+@media screen and (max-width:1000px) {
+    .poster-wrapper{
+        background: linear-gradient(#ffe8d6, #b8947260 ), url('./../../images/backgrounds/home_wrapper7.jpg');
+        height: fit-content;
+        object-fit: cover;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+}
+@media screen and (max-width:600px) {
+    .poster-wrapper{
+        background: linear-gradient(#ffe8d6, #b8947260 ), url('./../../images/backgrounds/home_wrapper8.jpg');
+        height: fit-content;
+        object-fit: cover;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+}

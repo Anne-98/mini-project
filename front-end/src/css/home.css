@@ -37,7 +37,7 @@
 }
 @keyframes pop-up{
   0%{ transform: translateX(-80px); width: 300px;}
-  100%{ transform: translateX(80px);width: 45vw;}
+  100%{ transform: translateX(80px);width: 400px;}
 }
 @keyframes home-cake-structure{
   0%{ transform: translateY(-100px); height: 89vh;}
@@ -51,9 +51,9 @@
   animation-duration: 5s;
   animation-fill-mode: forwards;
   transition: all 0.2s ease;
-  margin-top: 450px;
+  margin-top: 25%;
   z-index: 2;
-  width: 50%;
+  width: 500px;
   padding: 5px;
 }
 .carouselIcon{
@@ -62,7 +62,7 @@
   background:#b89472;
   border-radius:10px;
   float:left;
-  font-size: 50px;
+  font-size: 30px;
 }
 #carouselFollow{
   color: #b89472;
@@ -99,6 +99,31 @@
     margin-top: 10px;
     width: 250px;
     border-radius: 50px;
+}
+
+@media screen and (max-width:600px){
+
+    @keyframes pop-up{
+        0%{width: 300px;}
+        100%{width: 350px;}
+    }
+
+    #popUp{
+    background-color: #ffe8d6;
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.404); 
+    border-radius: 5px;
+    animation-name: pop-up;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    margin-top: 250px;
+    z-index: 2;
+    transition: all 0.2s ease;
+    width: 300px;
+    padding: 5px;
+    }
+    .home-cake-structure {
+      opacity: 0;
+    }
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');

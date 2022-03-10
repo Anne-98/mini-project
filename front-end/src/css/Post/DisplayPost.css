@@ -8,8 +8,9 @@
   justify-content: center;
 }
 .display-post img {
-  max-width: 100%;
-  min-height: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .display-post-inner-head{
     color: #524233;
@@ -55,7 +56,7 @@
   left: 120%;
 }
 
-.overlay {
+/* .overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -64,7 +65,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 0;
   
-}
+} */
 
 .display-post .item {
   background-color: #a58262;
@@ -74,6 +75,7 @@
   overflow: hidden;
   position: relative;
   height: 300px;
+  width: 75vw;
 }
 
 .display-post .item .more {
@@ -93,6 +95,10 @@
   background-color: #fcdec7;
   
 }
+.displaypost-img{
+
+  transition: all 0.4s ease;
+}
 
 .display-post .item:hover .more {
   transform: translate(0, 0);
@@ -104,7 +110,7 @@
 }
 
 .display-post .item:hover .img img {
-  transform: rotate(-5deg) scale(1.2);
+  transform: scale(1.2);
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0 100%, 0% 0%);
   overflow: hidden;
 }
@@ -113,11 +119,14 @@
   clip-path: polygon(0% 0%, 100% 0%, 50% 100%, 0 100%, 0% 0%);
   position: relative;
 }
+.displaypost-container:hover .info{
+  display: none;
+  
+}
 
 .display-post .item .info {
   padding: 30px;
   position: relative;
-  
 }
 
 .display-post-date {
@@ -151,23 +160,34 @@
 }
 
 .post-collection-wrapper{
-  height: 315px;
-  align-items: right;
-  justify-content: right;
+  /* height: 315px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .post-collection-container{
-  height: 45%;
-  width: 20%;
+  /* height: 45%;
+  width: 20%; */
+  /* width: 100px; */
+  width: 150px;
+  height: 130px;
   padding: 10px;
-  margin: 1%;
+  /* margin: 1%; */
   border-radius: 10px;
   border: #a58262 1px solid ;
   cursor: pointer;
+  margin: 2px;
+  overflow: hidden;
+  
+}
+.post-collection-container:hover .post-collection-img{
+  transform: scale(1.2);
 }
 .post-collection-img{
   object-fit: cover;
   border-radius: 5px;
   height: 50%;
+  transition: 0.2s all ease;
 }
 .post-collection-title{
   background-color: #a58262;
@@ -179,3 +199,33 @@
   font-family: "Akaya Telivigala", cursive;
   text-align: center;
 }
+@media screen and (max-width:600px) {
+  .post-collection-wrapper{
+    padding-top: 50px;
+  }
+  .display-post img{
+      width: 75vw;
+      height: auto;
+  }
+  .display-post .item{
+    height: fit-content;
+  }
+  .display-post .item img{
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0 100%, 0% 0%);
+  }
+  .display-post .item:hover .img img {
+  transform: scale(1.2);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0 100%, 0% 0%);
+  overflow: hidden;
+  }
+  .displaypost-container:hover .info{
+    display: block;
+  }
+}
+
+@media screen and (max-width:950px) {
+    .post-collection-wrapper{
+    padding-top: 50px;
+  }
+}
+/* 300px */

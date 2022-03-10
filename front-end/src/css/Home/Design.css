@@ -84,6 +84,9 @@ body {
   width: 100%;
   position: absolute;
 }
+.design-details-btn:hover{
+  color:black
+}
 
 .design-desc a:hover{
   background-color: #b88c72;

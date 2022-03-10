@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300&display=swap');
+
+.categories-row{
+    width: 75vw;
+    padding: 20px;
+    margin: 0px auto;
+}
+.categories-col{
+    padding: 20px;
+}
+
+.categories-img-div{
+    height: 70%;
+    overflow: hidden;
+}
+.categories-img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s all ease;
+}
+.categories-img:hover{
+    transform: scale(1.2);
+}
+.categories-name-div{
+    text-align: center;
+    padding-top: 10px;
+    border-bottom: 1px solid #b89472;
+    border-right: 1px solid #b89472;
+    border-left: 1px solid #b89472;
+}
+.categories-name{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #9c7d5f;
+}
+a:-webkit-any-link:hover{
+    text-decoration: none;
+}
+
+@media screen and (max-width:600px) {
+    .categories-img-div{
+        height: 250px;
+    }
+    .categories-row{
+    width: 90vw;
+    padding: 20px;
+    margin: 0px auto;
+}
+}

@@ -161,15 +161,15 @@
     width:170px;
     height:170px;
   }
-  .cm-profile-wrapper{
-  position: relative;
-}
 }
 @media screen and (max-width:500px) {
   .cm-profile-details-body{
     width: 100%;
     padding-left: 15px;
     padding-top: 20px;
+  }
+  .cm-profile-wrapper{
+  position: relative;
   }
   .cm-design-wrapper{
     top:0vh

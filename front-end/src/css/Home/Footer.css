@@ -1,0 +1,44 @@
+.footer-div{
+    background-color: #b89472;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-family: 'Zen Kurenaido', sans-serif;
+}
+.footer-headings{
+      font-family: 'Lobster', cursive;
+}
+.footer-div-1{
+    padding-top: 5%;
+}
+.footer-div-1, .footer-div-2, .footer-div-3{
+    display: inline-block;
+
+}
+.footer-links{
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+}
+.footer-icon{
+    color: white;
+    font-size: 25px;
+}
+.footer-icon:hover, .footer-links:hover{
+    color: #f08080;
+    
+}
+.footer-div-1, .footer-div-2{
+    border-right: 2px solid #ffe8d6;
+    
+}
+
+@media screen and (max-width: 768px) {
+    .footer-div-1, .footer-div-2{
+        border-bottom: 2px solid #ffe8d6;
+        border-right: none;
+    }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap');

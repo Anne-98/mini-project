@@ -65,11 +65,11 @@ const CakeMakerProfile = () => {
                     }   </h1>
 
                         <div className='row mb-3'>
-                            <div className='col-4' style={{color:"#f9c74f"}}>
+                            <div className='col-12 mb-3' style={{color:"#f9c74f"}}>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
+                                <i class="fas fa-star-half-alt fa-star"></i>
                                 <i class="far fa-star"></i>    
                             </div>
                             <div className='col-4'><b>{totalOrders}</b> Total Orders</div>

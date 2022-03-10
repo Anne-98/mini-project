@@ -1,16 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Meie+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Langar&display=swap');
+
+.navItem:hover{
+    text-decoration: none;
+    color: #866b52;
+}
 #navbarWrapper{
     background: #ffe8d6e0;
     border-bottom: 10px solid #b89472;
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     font-family: 'Langar', cursive;
 }
-
 .navbar-brand{
     color: #b89472;
     font-family: 'Meie Script', cursive;
     font-size: 30px;
+}
+.navbar-brand:hover{
+    color: #866b52;
+    text-decoration: none;
 }
 .navItem {
     color: #b89472;
@@ -76,6 +84,13 @@ input:focus { outline: none !important; box-shadow: none !important; }
     .orderHistory-navItem{
         margin-left: 0px;
     }
+    .custom-toggler.navbar-toggler {
+            /* border-color: rgba(189, 149, 104, 0.938); */
+        }
+        .custom-toggler .navbar-toggler-icon {
+            background-image: url(
+"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(189, 149, 104, 0.938)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+        }
 }
 
 @keyframes underline_animation {

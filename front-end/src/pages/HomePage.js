@@ -4,10 +4,12 @@ import Design from "../components/Home/Design";
 import Home from "../components/Home/Home";
 import { Container, Row, Col } from "react-bootstrap"; 
 import DisplayPost from "../components/Post/DisplayPosts";
+import Poster from "../components/Home/Poster";
+import Footer from "../components/Home/Footer";
 
 const HomePage = () => {
     return(
-                <Container fluid="md">
+                <div fluid="md">
                     <Row>
                         <Col><Home/></Col>
                     </Row>
@@ -19,7 +21,13 @@ const HomePage = () => {
                     <Row>
                         <Col><DisplayPost /></Col>
                     </Row>
-                </Container>
+                    <Row>
+                        <Col><Poster /></Col>
+                    </Row>
+                    <Row>
+                        <Col><Footer /></Col>
+                    </Row>
+                </div>
                     
     )
 }

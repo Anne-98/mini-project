@@ -66,12 +66,12 @@ const Home = () => {
                 <div>
                     <Container id="popUp" style={{position:"absolute"}}>
                     <Row>
-                        <Col xs={1} md={6} lg={4}>
-                            <i  class="fas fa-birthday-cake fa-2x carouselIcon" ></i>
+                        <Col xs={3} md={6} lg={4}>
+                            <i  className="fas fa-utensils carouselIcon" ></i>
                         </Col>
                         
-                        <Col xs={11} md={6} lg={8} id="carouselFollow" >
-                            <p>Make<br/> Your Dream Cake Reality !<br/> Keep with touch with us</p>
+                        <Col xs={9} md={6} lg={8} id="carouselFollow">
+                            <p style={{paddingLeft:"15px"}}>Follow<br/> to get the latest recipes,<br/> articles and more!</p>
                         </Col>
                     </Row>
                 </Container >
@@ -81,7 +81,7 @@ const Home = () => {
                     <div className="text-center">
                         <h1 id="home-cake-header">Cake Mount</h1>
                         <div className="text-center">
-                            <i class="fas fa-birthday-cake fa-5x" id="home-cake-icon"></i>
+                            <i className="fas fa-birthday-cake fa-5x" id="home-cake-icon"></i>
                         </div>
                         <div className="text-center">
                             <Link to='/categories'> <button className="btn home-cake-btn" id="home-cake-designs" type="button" >Categories</button></Link>
