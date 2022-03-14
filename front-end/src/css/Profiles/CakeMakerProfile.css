@@ -32,7 +32,8 @@
   box-shadow: 0px 0px 22px rgba(0, 0, 0, 0.08);
   width: 250px;
   margin: 20px;
-  padding: 25px;
+  padding: 25px; 
+  position: relative;
 }
 
 .container-glass .img {
@@ -154,6 +155,40 @@
 }
 .cm-profile-img-div:hover{
   transform: scale(1.1);
+}
+
+.cm-profile-cart-icon{
+  position:absolute;
+  top:0;
+  padding : 10px;
+  right:0;
+  border-bottom-left-radius:20px;
+  backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+.cm-profile-cart-icon i {
+  font-size: 20px;
+  color: #b89472;
+}
+.cm-profile-cart-icon i:hover{
+  animation : cart 0.5s;
+}
+
+
+@keyframes cart{
+  0%, 100% {
+    opacity : 1;
+    transform: translateX(0%);
+  }
+  50%{
+    opacity:0;
+    transform: translateX(50%);
+  }
+  70%{
+    opacity:0;
+    transform:translateX(-50%);
+  }
 }
 
 @media screen and (max-width:800px) {

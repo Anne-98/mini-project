@@ -5,6 +5,7 @@ import { UserTypeContext } from "../Context/UserTypeContext";
 import {Calendar} from '@natscale/react-calendar';
 import '@natscale/react-calendar/dist/main.css';
 import { Link } from "react-router-dom";
+import './../../css/Orders/CakemakerCalendar.css';
 
 const CakeMakerCalender = () =>{
 
@@ -55,14 +56,14 @@ const CakeMakerCalender = () =>{
     
     return(
         <div className="calendar-wrapper">
-            <h1 className="text-center common-header">Calendar</h1>
+            <h1 className="text-center common-header" style={{zIndex:"3"}}>Calendar</h1>
             <h5 className="text-danger text-center mb-3">{msg}</h5>
             <div className="container">
-                <div className="row">
+                <div className="row calendar-order-wrapper">
 
-                    <div className="col-6 text-center">
-                        <h2 className="mb-4">Direct Orders</h2>
-                        <ul className="list-group m-auto">
+                    <div className="col-md-12 col-lg-6 col-12 text-center ">
+                        <div className="text-center cm-order-history-sub-heading"><span>Direct Orders</span></div>
+                        <ul className="list-group align-items-center mt-4">
                         {
                             direct_row.map((item, index) => {
                                 
@@ -82,61 +83,56 @@ const CakeMakerCalender = () =>{
 
                                 // }
                                 return(
-                                    <>
+                                    <div className="notifications__item" id="calendar-orderlist-div" >
                                     {
-                                        round_num > 0 ? <div className="row">
-                                    <div className="col">
-                                        <Link to={`/orders/order/details/${item.direct_order_id}`}>
-                                        <li className="list-group-item d-flex justify-content-between align-items-center">
-                                        {item.complete_date}
-                                        <span style={{color:"black", background: round_num < 0 ? 
+                                        round_num > 0 ? 
                                         
-                                        "red" : 3 > round_num > 0 ? "blue" : "green"}}     className="badge badge-primary badge-pill rounded-circle">{round_num}</span>
-                                    </li>
+                                <div className="row calendar-orderlist">
+                                    <div className="col-md-9 col-8">
+                                        <Link to={`/orders/order/details/${item.direct_order_id}`}>
+                                        
+                                        <li  className="calendar-list-item  d-flex justify-content-between align-items-center">
+                                        {item.complete_date}
+                                            <span style={{color:"black", background: round_num < 0 ? 
+                                            
+                                            "#c93d4d" : 8 > round_num > 0 ? "#3379a1" : "#36a374"}}     className="badge">{round_num}</span>
+                                        </li>
                                     </Link>
                                     </div>
 
-                                    <div className="col">
+                                    
                                     {
-                                        round_num > 0 ?  <button onClick={(e)=>{
+                                        round_num > 0 ?  <div className="col-md-3 col-4"><button onClick={(e)=>{
                                         clickDispatch(item.direct_order_id);
-                                        }} className="btn btn-success">Dispatch</button> : <></>
+                                        }} className=" calendar-dispatch-btn btn">Dispatch</button></div> : <></>
 
-                                        }
+                                    }
 
-                                    </div>
+                                    
                                 </div> : 
-
-                                <div className="row" >
-                                    <div className="col" >
+                                // OVERDUE ORDER LIST
+                                <div className="row calendar-orderlist" >
+                                    <div className="col"  id="calendar-overdue-div">
                                         <Link to={`/orders/order/details/${item.direct_order_id}`}>
-                                        <li className="list-group-item d-flex justify-content-between align-items-center" style={{background:"red"}}>
+                                        <li  className="calendar-list-item d-flex justify-content-between align-items-center" style={{color:"#ad2831"}}>
                                         {item.complete_date}
                                     </li>
                                     </Link>
                                     </div>
-
-                                    <div className="col">
-                                    {
-                                        round_num > 0 ?  <button onClick={(e)=>{
-                                        clickDispatch(item.direct_order_id);
-                                        }} className="btn btn-success">Dispatch</button> : <></>
-
-                                        }
-
-                                    </div>
+                                    <div className="col-4 col-md-3">
+                                        <button  className="calendar-overdue-btn disabled btn ">Overdue</button></div>
                                 </div>
                                     }
-                                    </>
+                                    </div>
                                     )
                             })
                         }
                     </ul>
                     </div>
 
-                    <div className="col-6 text-center">
-                        <h2 className="mb-4">Indirect Orders</h2>
-                        <ul className="list-group m-auto">
+                    <div className="col-md-12 col-lg-6 col-12 calendar-order-container text-center">
+                        <div className="text-center cm-order-history-sub-heading"><span>Indirect Orders</span></div>
+                        <ul className="list-group align-items-center mt-4">
 
                         {
                             indirect_row.map((item, index) => {
@@ -159,47 +155,46 @@ const CakeMakerCalender = () =>{
                                     overdueOrders(localStorage.getItem('userId', userId), i+j)
                                 }
                                 return(
-                                    <>
+                                    <div className="notifications__item" id="calendar-orderlist-div">
                                     {
                                         round_num > 0 ? 
-                                        <div className="row">
+                                        <div className="row calendar-orderlist">
                                     {/* <Calendar value={date} onChange={onChange}/> */}
-                                    <div className="col">
+                                    <div className="col-md-9 col-8">
                                         <Link to={`/orders/order/details/${item.indirect_order_id}`}>
-                                        <li className="list-group-item d-flex justify-content-between align-items-center">
+                                        <li  className="calendar-list-item  d-flex justify-content-between align-items-center">
                                         {item.complete_date}
                                         <span style={{color:"black", background: round_num < 0 ? 
-                                        "red" : 3 > round_num > 0 ? "blue" : "green"}}     className="badge badge-primary badge-pill rounded-circle">{round_num}</span>
+                                        "#c93d4d" : 8 > round_num > 0 ? "#3379a1" : "#36a374"}}     className="badge">{round_num}</span>
                                     </li>
                                     </Link>
                                     </div>
 
-                                    <div className="col">
+                                    
                                         {
-                                            round_num > 0 ?  <button onClick={(e)=>{
+                                            round_num > 0 ?  <div className="col-4 col-md-3"><button onClick={(e)=>{
                                         clickDispatch(item.indirect_order_id);
-                                        }} className="btn btn-success">Dispatch</button> : <></>
+                                        }} className="calendar-dispatch-btn btn ">Dispatch</button></div> : <></>
 
                                         }
-                                    </div>
+                                    
+                                    
                                 </div> :
-                                <div className="row">
+                                <div className="row calendar-orderlist" >
                                     {/* <Calendar value={date} onChange={onChange}/> */}
-                                    <div className="col">
+                                    <div className="col" id="calendar-overdue-div">
                                         <Link to={`/orders/order/details/${item.indirect_order_id}`}>
-                                        <li className="list-group-item d-flex justify-content-between align-items-center" style={{background:"red"}}>
+                                        <li  className="calendar-list-item d-flex justify-content-between align-items-center" style={{color:"#ad2831"}}>
                                         {item.complete_date}
                                     </li>
                                     </Link>
                                     </div>
-
-                                    <div className="col">
-
+                                    <div className="col-4 col-md-3">
+                                        <button  className="calendar-overdue-btn disabled btn ">Overdue</button></div>
                                     </div>
-                                </div>
                                     }
-                                    </>
-                                    )
+                                </div>
+                                )
                             })
                         }
                     </ul>

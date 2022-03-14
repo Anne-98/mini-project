@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab&display=swap');
+
+.calendar-sub-heading{
+    font-family: 'Cinzel', serif;
+    color: #b89472;
+    border-bottom: 1px solid #b89472;
+    font-size: 20px;
+}
+.calendar-orderlist{
+    width: 100%;
+}
+.calendar-orderlist a{
+    color: #b89472;
+}
+.calendar-orderlist a:hover{
+    color: #866c54;
+}
+.calendar-orderlist{
+    width: 100%;
+}
+.calendar-dispatch-btn{
+    font-family: 'Josefin Slab', serif;
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+    background-color: #b89472;
+    color: bisque;
+}
+.calendar-overdue-btn{
+    font-family: 'Josefin Slab', serif;
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+    background-color: #cf3131;
+    color: bisque;
+}
+.calendar-dispatch-btn:hover{
+    background-color: #b89472;
+    border: #b89472 1px solid;
+}
+#calendar-orderlist-div{
+    width: 70%;
+    height: auto;
+    padding: 0px;
+}
+#calendar-overdue-div{
+    background-color: #ffe8d6e0;
+}
+.calendar-list-item{
+    padding: 8px 16px;
+}

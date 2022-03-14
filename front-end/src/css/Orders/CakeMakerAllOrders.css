@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
+
+.cm-order-history-card-inner{
+    position: relative;
+    width: 15rem;
+    margin: 15px auto;
+    
+}
+.cm-order-history-wrapper{
+    margin: 0px auto;
+}
+.cm-order-history-sub-heading{
+    font-family: 'Cinzel', serif;
+    color: #b89472;
+    font-size: 25px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.cm-order-history-sub-heading span{
+    border-bottom: 1px solid #b89472;
+}
+.cm-order-history-img{
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+}
+.cm-order-history-plus-div{
+    color: #184e77;
+    padding: 10px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: fit-content;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.37);
+    border-bottom-right-radius: 10px;
+}
+.cm-order-history-minus-div{
+    color: #c9184a;
+    padding: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.37);
+    border-bottom-left-radius: 10px;
+    width: fit-content;
+}
+.order-history-date{
+    border: 1px solid #b89472;
+    padding: 10px;
+    background-color: beige;
+}
+
+.cm-order-history-date-div{
+    font-family: 'Fredoka', sans-serif;
+    letter-spacing: 2px;
+}
+.cm-order-history-date-div div:nth-child(2){
+    padding: 5px;
+    background-color: #b89472;
+    border-bottom-right-radius: 10px;
+    color: #fcdec7;
+}
+
+.cm-order-history-date-div div:nth-child(1){
+    background-color: #b89472;
+    color: #fcdec7;
+    border-bottom-left-radius: 10px;
+    padding: 5px;
+}

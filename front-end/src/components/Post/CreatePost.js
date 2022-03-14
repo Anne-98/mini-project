@@ -62,7 +62,7 @@ const CreatePost = () => {
                 <div className="form-group  row mb-3">
                     <label className="col-sm-4" for="inputName">Title</label>
                     <div className="col-sm-8">
-                        <input type="text" className="form-control" placeholder="Enter the event of the post" onChange={e => setTitle(e.target.value)} required={true}/>
+                        <input type="text" className="form-control" placeholder="The event of the post" onChange={e => setTitle(e.target.value)} required={true}/>
                     </div>
                 </div>
                 <div className="form-group  row mb-3">

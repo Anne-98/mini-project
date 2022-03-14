@@ -39,6 +39,9 @@ const CakeMakerProfile = () => {
     const editProfile = () => {
         navigate(`/profiles/cakemaker/edit/${cake_makers_id}`)
     }
+    const userOnClick = () => {
+        alert("You should have an account to make order")
+    }
     return(
         <Fragment>
             <h1 className="text-center common-header" style={{zIndex:"3"}}>Cake Maker Profile</h1>
@@ -121,6 +124,13 @@ const CakeMakerProfile = () => {
                                     {item.description}
                                 </p> */}
                                 {/* <div>{item.category}</div> */}
+                                {
+                                            userId.length > 0 ? <Link to={`/orders/direct/${item.design_id}`}><div className="cm-profile-cart-icon" >
+                                            <i class="fas fa-cart-plus"></i>
+                                        </div></Link> : <div className="cm-profile-cart-icon" onClick={userOnClick}>
+                                            <i class="fas fa-cart-plus"></i>
+                                        </div>
+                                        }
                                 <Link to={`/designs/details/${item.design_id}`}className='text-decoration-none'><button className="btn cm-designs-discover mt-3">Discover</button></Link>
                             </div>
                         )

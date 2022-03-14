@@ -65,7 +65,7 @@ const CustomerEditProfile = () => {
         }
     }
     return(
-        <div className="customer-editprofile-wrapper">
+        <div className="login-wrapper">
             <h1 className="text-center common-header" style={{zIndex:"3"}}>Edit Profile</h1>
             <div className='mt-5 mx-auto customer-editprofile-container'>
             <form className="mt-5" onSubmit={updateProfile}>

@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { Fragment, useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { OrderContext } from "../Context/OrderContext";
+import './../../css/Orders/CakeMakerAllOrders.css';
 
 const CakeMakersAllDetails = () => {
 
@@ -76,75 +77,88 @@ const CakeMakersAllDetails = () => {
     
 
     return(
-        <Fragment>
-            <h1 className="text-center common-header">Your Orders</h1>
-            <div className="text-center" style={{width:"45%", float:"left"}}>
-                        <h1>Direct Orders</h1>
-                        {
+        <div>
+            <h1 className="text-center common-header" style={{zIndex:"3"}}>Your Orders</h1>
+            <div className="row" style={{width:"75vw", margin:"0 auto"}}>
+                <div className="text-center cm-order-history-wrapper col-12 col-md-6 " >
+                        <div className="text-center cm-order-history-sub-heading"><span>Direct Orders</span></div>
+                        <div className="row">
+                            {
                             direct.map((item)=>{
 
                                 return(
-                                    <div className="card m-5"  style={{width:"15rem", float:"left"}}>
-                                            <div  style={{position:"absolute", top:"5px", color:"#184e77", cursor:"pointer"}} className="m-2">
+                                    <div className="col cm-order-history-card" >
+                                <div className="cm-order-history-card-inner ">
+                                <img className="cm-order-history-img" src={item.image} />
+
+                                <div className="cm-order-history-plus-div col-6 text-start">
                                 <i onClick={(e)=>{orderDirect(item.direct_order_id, 1, 0) 
                                 e.target.parentElement.parentElement.style.display = "none"
-
-                                }}  className="fas fa-plus-circle fa-3x" ></i>
+                                }} style={{cursor:"pointer"}}  className="fas fa-plus-circle fa-2x" ></i>
                             </div>
                             
-                            <div  style={{position:"absolute", top:"5px", color:"#c9184a", right:"0", cursor:"pointer"}} className="m-2">
+                            <div className="col-6 cm-order-history-minus-div text-end">
                                 <i  onClick={(e)=>{orderDirect(item.direct_order_id, 0,1)
                                 e.target.parentElement.parentElement.style.display = "none"
-                                }} className="fas fa-minus-circle fa-3x"></i>
+                                }} style={{cursor:"pointer"}} className="fas fa-minus-circle fa-2x"></i>
                             </div>
-                            <img className="card-img-top" src={item.image} malt="Card image cap" style={{width:"15rem", height:"15rem"}}/>
                              
-                            <div className="card-body">
-                                <h5 className="card-title">Card title</h5>
-                                            <p className="card-text">{item.comment}</p>
-                                            <p><i>{item.complete_date.substring(0,10)}</i></p>
-                                            <a href="#" className="btn btn-primary">Design</a>
+                            <Link to={`/orders/order/details/${item.direct_order_id}`}>
+                            <div className="cm-order-history-date-div row">
+                                <div className="order-history-date-item col-9">{item.complete_date.substring(0,10)}</div>
+                                <div className="col-3 "><i class="fas fa-angle-double-right"></i></div>
+                                {/* <div className="order-history-date">Complete Date</div> */}
                             </div>
-                                        </div>
-                                )
-                            })
-                        }
-                    </div>
-
-    <div className="text-center">
-        <h1>Indirect Orders</h1>
-        {
+                            </Link>
+                            </div>
+                            
+                        </div>
+                        )
+                    })
+                }
+                        </div>
+            </div>
+    <div className="text-center cm-order-history-wrapper col-12 col-md-6 ">
+        <div className="cm-order-history-sub-heading"><span>Indirect Orders</span></div>
+        <div className="row">
+            {
             indirect.map((item)=>{
 
                 return(
-                    <div  className="card m-5 justify-content" style={{width:"15rem", float:"left" }}>
-                        <div style={{backgroundColor:"black"}}>
-                            <div  style={{position:"absolute", top:"5px", color:"#184e77", cursor:"pointer"}} className="m-2">
-                                
-                                <i onClick={(e)=>{orderIndirect(item.indirect_order_id, 1, 0)
-                                e.target.parentElement.parentElement.parentElement.style.display = "none"
-                                }} className="fas fa-plus-circle fa-3x"></i>
+                    <div className="col cm-order-history-card " >
+                        <div className="cm-order-history-card-inner">                   
+                            <img className="cm-order-history-img" src={item.image}/>
+
+                            {/* <div className="row" style={{}}> */}
+                                <div className="cm-order-history-plus-div col-6 text-start" >
+                                <i onClick={(e)=>{orderIndirect(item.indirect_order_id, 1, 0) 
+                                e.target.parentElement.parentElement.style.display = "none"
+                                }} style={{cursor:"pointer"}}  className="fas fa-plus-circle fa-2x" ></i>
                             </div>
-                            <div style={{position:"absolute", top:"5px", color:"#c9184a", right:"0", cursor:"pointer"}} className="m-2" >
-                                
-                                <i onClick={(e)=>{orderIndirect(item.indirect_order_id, 0, 1)
-                                e.target.parentElement.parentElement.parentElement.style.display = "none"
-                                }} className="fas fa-minus-circle fa-3x"></i>
+                            
+                            <div className="col-6 cm-order-history-minus-div text-end" >
+                                <i  onClick={(e)=>{orderIndirect(item.direct_order_id, 0,1)
+                                e.target.parentElement.parentElement.style.display = "none"
+                                }} style={{cursor:"pointer"}} className="fas fa-minus-circle fa-2x"></i>
                             </div>
+                            {/* </div> */}
+                             
+                            <Link to={`/orders/order/details/${item.indirect_order_id}`}>
+                            <div className="cm-order-history-date-div row">
+                                <div className="order-history-date-item col-9">{item.complete_date.substring(0,10)}</div>
+                                <div className="col-3 "><i class="fas fa-angle-double-right"></i></div>
+                                {/* <div className="order-history-date">Complete Date</div> */}
+                            </div>
+                            </Link>
                         </div>
-                        <img className="card-img-top" src={item.image} malt="Card image cap" style={{width:"15rem", height:"15rem"}}/>
-                        <div className="card-body">
-                            <h5 className="card-title">Card title</h5>
-                            <p className="card-text">{item.comment}</p>
-                            <p><i>{item.order_date.substring(0,10)}</i></p>m
-                            <a href="#" className="btn btn-primary">Go somewhere</a>
-                        </div>
-                </div>
+                    </div>
                 )
             })
         }
+        </div>
     </div>
-        </Fragment>
+            </div>
+        </div>
     )
 }
 

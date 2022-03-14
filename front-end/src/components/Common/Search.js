@@ -24,7 +24,7 @@ const Search = () => {
 
     return(
         <Fragment>
-            <h1 className="text-center common-header">Search results</h1>
+            <h1 className="text-center common-header" style={{zIndex:"3"}}>Search results</h1>
             <div className="container">
                     {
                         district.length > 0 ? <div className="row">

@@ -31,45 +31,58 @@ const CustomerOrderHistory = () => {
 
     return(
         <Fragment>
-                <h1 className="text-center common-header">My Orders</h1>
-            <div className="mt-5 text-center">
-                <h5 id="passwordHelpInline" className="text-danger">{msg}</h5>
-                <div className="text-center mx-auto mt-5">
-                    <div className="" style={{width:"45%", float:"left"}}>
-                        <h1>Direct Orders</h1>
-                        {
+                <h1 className="text-center common-header" style={{zIndex:"3"}}>My Orders</h1>
+            <div className="row" style={{width:"75vw", margin:"0 auto"}}>
+                <div className="text-center cm-order-history-wrapper col-12 col-md-6 " >
+                        <div className="text-center cm-order-history-sub-heading"><span>Direct Orders</span></div>
+                        <div className="row">
+                            {
                             direct.map((item)=>{
+
                                 return(
-                                    <div className="card" style={{width:"15rem", float:"left"}}>
-                                        <img className="card-img-top" src={item.image} alt="Card image cap" style={{width:"15rem", height:"15rem", objectFit:"cover"}}/>
-                                        <div className="card-body">
-                                            <p className="card-text">{item.comment}</p>
-                                            <p><i>{item.order_date.substring(0,10)}</i></p>
-                                            <Link to={`/orders/order/details/${item.direct_order_id}`}><a href="#" className="btn btn-primary">Go somewhere</a></Link>
-                                        </div>
-                                </div>
-                                )
-                            })
-                        }
+                                    <div className="col cm-order-history-card" >
+                                <div className="cm-order-history-card-inner ">
+                                <img className="cm-order-history-img" src={item.image} />
+
+                            <Link to={`/orders/order/details/${item.direct_order_id}`}>
+                            <div className="cm-order-history-date-div row">
+                                <div className="order-history-date-item col-9">{item.complete_date.substring(0,10)}</div>
+                                <div className="col-3 "><i class="fas fa-angle-double-right"></i></div>
+                            </div>
+                            </Link>
+                            </div>
+                            
+                        </div>
+                        )
+                    })
+                }
+                        </div>
+            </div>
+    <div className="text-center cm-order-history-wrapper col-12 col-md-6 ">
+        <div className="cm-order-history-sub-heading"><span>Indirect Orders</span></div>
+        <div className="row">
+            {
+            indirect.map((item)=>{
+
+                return(
+                    <div className="col cm-order-history-card " >
+                        <div className="cm-order-history-card-inner">                   
+                            <img className="cm-order-history-img" src={item.image}/>
+
+                             
+                            <Link to={`/orders/order/details/${item.indirect_order_id}`}>
+                            <div className="cm-order-history-date-div row">
+                                <div className="order-history-date-item col-9">{item.complete_date.substring(0,10)}</div>
+                                <div className="col-3 "><i class="fas fa-angle-double-right"></i></div>
+                            </div>
+                            </Link>
+                        </div>
                     </div>
-                    <div>
-                        <h1>Indirect Orders</h1>
-                        {
-                            indirect.map((item)=>{
-                                return(
-                                    <div className="card" style={{width:"15rem", float:"left"}}>
-                                        <img className="card-img-top" src={item.image} alt="Card image cap" style={{width:"15rem", height:"15rem", objectFit:"cover"}}/>
-                                        <div className="card-body">
-                                            <p className="card-text">{item.comment}</p>
-                                            <p><i>{item.order_date.substring(0,10)}</i></p>
-                                            <Link to={`/orders/order/details/${item.indirect_order_id}`}><a href="#" className="btn btn-primary">Details</a></Link>
-                                        </div>
-                                </div>
-                                )
-                            })
-                        }
-                    </div>
-                </div>
+                )
+            })
+        }
+        </div>
+    </div>
             </div>
         </Fragment>
     )

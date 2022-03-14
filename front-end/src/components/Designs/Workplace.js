@@ -117,6 +117,7 @@ class WorkPlace extends React.Component {
   };
 // ................................
   setConfirm = (val) =>{
+    alert("clicked")
     this.setState({
       confirm: val
     })
@@ -153,12 +154,12 @@ class WorkPlace extends React.Component {
           <h1 className="text-center common-header" style={{zIndex:"3"}}>Cake WorkPlace</h1>
         <div className="row" style={{overflow:"hidden"}} width="100vw" >
          
-          <div className='col-md-4 col-3' >
+          <div className='col-lg-4 col-3' >
               <div className='row container justify-content-center' style={{overflowY:"scroll", height:"100vh", overflowX:"hidden"}}>
                 {
                 this.state.cakesArray.map((item) => {
                   return(
-                    <div className='col-12 col-md-4 wp-cakelist-wrapper'>
+                    <div className='col-12 col-lg-4 wp-cakelist-wrapper'>
                         <img src={item.img} className="wp-cakelist-img" onClick={(e) => {this.setState({selectedCake: item.name})}}/>
                     </div>
                   )
@@ -167,7 +168,7 @@ class WorkPlace extends React.Component {
               </div>
           </div>
           
-          <div className='col-md-6 col-9 wp-design-edit-wrapper' >
+          <div className='col-lg-6 col-9 wp-design-edit-wrapper' >
             <Draggable  bounds={{top: 0, left: -75, right: 150, bottom: 150}}  {...dragHandlers} >
               <div className="box" id="wp-design-edit">                  
                     {

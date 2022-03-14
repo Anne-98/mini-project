@@ -9,6 +9,7 @@ cakeMakerProfileRoute.use(bodyParser.json(true))
 cakeMakerProfileRoute.post('/myprofile',async(req, res) => {
 
     var cake_makers_id = req.body.cake_makers_id
+    console.log("cake_makers_id: ",cake_makers_id)
 
     // if (req.session.isLog) {
         var data = await getCakeMakerProfile(cake_makers_id)
@@ -16,7 +17,7 @@ cakeMakerProfileRoute.post('/myprofile',async(req, res) => {
         if (data.length > 0) {
             res.json({data, msg:"Data successfully fetched into the profile page", isLog:true, success: true})
         }else{
-            res.json({msg:"You haven't created any account", exist: false, success:false, isLog:true})
+            res.json({msg:"Something went wrong", exist: false, success:false, isLog:true})
         }
     // }else{
     //     res.json({isLog: false, msg: 'You are not logged In'})

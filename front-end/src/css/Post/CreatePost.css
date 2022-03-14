@@ -29,11 +29,39 @@
     background-size: cover;
     padding: 0;margin: 0;
     font-family: 'Acme', sans-serif;
-    height: 100vh;
+    height: object-fit;
+}
+.newdesign-container{
+    background-repeat: no-repeat;
+    background:  url('./../../../src/images/backgrounds/newDesign4.jpg');
+    z-index: -2;
+    object-fit: cover;
+    background-size: cover;
+    padding: 0;margin: 0;
+    font-family: 'Acme', sans-serif;
+    height: object-fit;
 }
 
+.newDesign-submit-button{
+    margin-bottom: 50px;
+    color: #fcdec7;
+    background-color: #9b7654;
+    width: 100%; 
+    padding: 10px;
+}
 @media screen and (max-width: 700px) {
     .createpost-common-container{
         width: 75vw;
     }
+    .newdesign-container{
+    background-repeat: no-repeat;
+    background:  url('./../../../src/images/backgrounds/home_wrapper2.jpg');
+    z-index: -2;
+    object-fit: cover;
+    background-size: cover;
+    padding: 0;margin: 0;
+    font-family: 'Acme', sans-serif;
+    height: object-fit;
 }
+}
+

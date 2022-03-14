@@ -3,11 +3,11 @@ const connection = require('./database')
 const getUncheckedMsgs = (cus_id) => {
     console.log(cus_id)
     return new Promise((resolve, reject)=>{
-        connection.query(`SELECT*FROM direct_orders WHERE cus_id = '${cus_id}' AND check_msg = 0 AND (confirm = 1 OR rejected = 1)`, (err, direct_row) => {
+        connection.query(`SELECT*FROM direct_orders WHERE cus_id = '${cus_id}' AND check_msg = 0 AND (confirm = 1 OR rejected = 1 OR dispatched = 1)`, (err, direct_row) => {
             if (err) {
                 return reject(err)
             }else{
-                connection.query(`SELECT*FROM indirect_orders WHERE cus_id = '${cus_id}' AND check_msg = 0 AND (confirm = 1 OR rejected = 1)`, (error, indirect_row) => {
+                connection.query(`SELECT*FROM indirect_orders WHERE cus_id = '${cus_id}' AND check_msg = 0 AND (confirm = 1 OR rejected = 1 OR dispatched = 1)`, (error, indirect_row) => {
                     if (error) {
                         return reject(error)
                     }else{

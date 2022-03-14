@@ -1,7 +1,8 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useContext, useEffect, useState } from "react";
 import axios from 'axios';
-import {useParams, Link} from 'react-router-dom';
+import {useParams, Link, useNavigate} from 'react-router-dom';
 import './../../css/Orders/DesignDetails.css';
+import { UserIdContext } from "../Context/UserIdContext";
 
 const DesignDetails = () => {
 
@@ -10,7 +11,9 @@ const DesignDetails = () => {
     var [design, setDesign] = useState([])
     var [msg, setMsg] = useState('')
     var [cake_makers_id, setCake_makers_id] = useState('')
-
+    let [userId, setUserId] = useContext(UserIdContext)
+    var navigate = useNavigate()
+    console.log("userId: ",userId)
     useEffect(async()=>{
 
         var {data} = await axios.post('http://localhost:8000/general/get_one_design/design_details', {design_id})
@@ -25,6 +28,10 @@ const DesignDetails = () => {
 
     }, [])
 
+    const userOnClick = () => {
+        alert("You should have an account to make order")
+        navigate('/login')
+    }
     return(
 
         <Fragment>
@@ -34,7 +41,8 @@ const DesignDetails = () => {
                     design.map((item) => {
                         return(
                             <div className="row justify-content-center mt-5">
-                                <img className="col-md-5 col-lg-4 col-sm-12 col-xs-12 design-details-img" src={item.image} alt="Card image"/>
+                                <img className="col-md-5 col-lg-4 col-sm-12 col-xs-12 design-details-img" src={item.image} alt="Card image" style={{position:"relative"}}/>
+                                
                                 <div className="col-md-5 col-lg-5 col-sm-12 col-xs-12 design-details-content justify-content-center row">
                                     <div className="design-details-content-inner col-12 col-lg-9">
                                         <h1 className="m-3 design-details-title">{item.title}</h1>
@@ -58,9 +66,18 @@ const DesignDetails = () => {
                                                 <i className="fas fa-star-half-alt fa-star"></i>
                                                 <i className="far fa-star"></i>    
                                         </div>
-                                        <Link to={`/profiles/cakemaker/${cake_makers_id}`}>
-               <div className="m-3" > <button className="btn" style={{background:"#b89472", color:"white"}}>Baker Profile</button></div>
-           </Link>
+            <div className="row">
+                
+                    <div className="m-3 col-md-4 col-4" > <Link to={`/profiles/cakemaker/${cake_makers_id}`}><button className="btn" style={{background:"#b89472", color:"white"}}>Baker Profile</button></Link></div>
+           {
+                userId.length > 0 ? <div className="m-3 col-md-2 col-2 design-details-order-btn text-center"><Link to={`/orders/direct/${item.design_id}`} >
+                <button className="btn " >Order</button></Link>
+                </div> : <div className="m-3 col-md-2 col-2 design-details-order-btn text-center"onClick={userOnClick}>
+                <button className="btn" >Order</button>
+                </div>
+            }
+            </div>
+            
                                     </div>
                                 </div>
                             </div>

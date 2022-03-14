@@ -1,5 +1,5 @@
 .customer-editprofile-wrapper{
-    background: url('./../../../src/images/backgrounds/createpost.jpg');
+    background: url('./../../../src/images/backgrounds/bg_signin.jpg');
     /* z-index: -2; */
     object-fit: cover;
     background-size: cover;
@@ -11,7 +11,7 @@
     margin-top: 50px;
     background-color: #a1816083;
     /* padding-bottom: 120px; */
-    width: 50vw;
+    width: 75vw;
     border-radius: 10px;
     backdrop-filter: blur(15px);
     position: relative;

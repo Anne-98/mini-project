@@ -85,7 +85,7 @@ const CustomerSignIn = () => {
             <h1 className="text-center common-header" style={{zIndex:"3"}}>Customer Sign In</h1>
             <div className='signin-common-container d-flex justify-content-center container'>
                     <Link to={'/signin'}><button className='btn signin-signin-btn'><i className="fas fa-arrow-left"></i></button></Link>
-                <div className="mt-5 signin-inner-container">
+                <div className="signin-inner-container">
                      <form className="mt-5" onSubmit={signInCustomer}>
                           {
                         msg.length > 0 ? <p className='common-error-msg'>{msg}</p> : <></>
