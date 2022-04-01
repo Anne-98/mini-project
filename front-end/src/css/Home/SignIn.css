@@ -22,22 +22,26 @@
     font-family: 'Acme', sans-serif;
 }
 .signin-home-btns{
-    color: #58493d ;
-    background-color: rgba(243, 213, 181, 0.555);
+    color: #fceadc ;
+    /* background-color: rgba(243, 213, 181, 0.555); */
     font-size: 60px; font-weight: bold;
     font-family: 'Averia Serif Libre', cursive;
     transition: all 0.8s;
-    border: #58493d solid 5px;
+    border: #fcdec7 solid 2px;
     border-radius: 10px;
+    width: 70%;
+    backdrop-filter: blur(10px);
 }
 .signin-home-div{
     margin: 5% 0px;
-
 }
 .signin-home-btns:hover{
-    color: #58493d;
-    background-color: rgba(243, 213, 181, 0.836);
+    color: #fceadc;
+    backdrop-filter: blur(20px);
+    /* background-color: rgba(243, 213, 181, 0.836); */
+
 }
+
 .signin-common-container{
     margin-top: 50px;
     background-color: #a1816083;
@@ -54,7 +58,7 @@
 }
 .signinpage-common-container{
     margin-top: 50px;
-    background-color: #f3d5b56b;
+    background-color: #b8947298;
     /* padding-bottom: 120px; */
     width: 600px;
     border-radius: 10px;
@@ -95,13 +99,14 @@
     color: #7c634c;
     
 }
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 700px) {
     .signin-common-container{
         width: 75vw;
     }
 
     .signin-home-btns{
         border-radius: 5px;
-        font-size: 40px; font-weight: bold;
+        font-size: 35px; font-weight: bold;
+        width: 100%;
 }
 }

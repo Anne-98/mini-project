@@ -7,8 +7,8 @@ const CakeMakerOverdueOrders = () => {
     var warning_count = params.warnings
 
     return(
-        <div className='text-center'>
-            <h1 className="text-center common-header mb-5">Warning</h1>
+        <div className='text-center '>
+            <h1 className="text-center common-header mb-5 ">Warning</h1>
            {
                warning_count == 2 ? 
                <h1 className='text-danger'>This is the {warning_count}nd warning for you</h1> :

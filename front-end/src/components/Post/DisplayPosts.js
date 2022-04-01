@@ -62,7 +62,7 @@ const DisplayPost = () => {
                     var month = parseInt(splitted_date_1[1])
 
                     return(
-                        <div className="col-lg-6 col-md-12 col-12 container justify-content-center align-center d-flex displaypost-container" style={{height:"fit-content"}}>
+                        <div className="col-lg-6 col-md-12 col-12 container justify-content-center align-center d-flex displaypost-container" style={{height:"fit-content"}} data-aos="fade-right" data-aos-duration="1500">
                             <div className="item row " >
                                 <div className="img col col-xs-12 displaypost-img">
                                 <img src={item.image} alt=""/>
@@ -85,7 +85,7 @@ const DisplayPost = () => {
                        
 
              <div className="col-lg-6 col-md-12 row post-collection-wrapper justify-content-center">
-               {
+                   {
                    allPosts.map((item, index) => {
                        let post_date = item.post_date
                         let splitted_date = post_date.split('/')
@@ -101,9 +101,8 @@ const DisplayPost = () => {
                        )
                    })
                }
+               </div>
             </div>
-            
-          </div>
         </div>
       </section>
     )

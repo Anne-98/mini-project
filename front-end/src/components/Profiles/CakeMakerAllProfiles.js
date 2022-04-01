@@ -28,7 +28,7 @@ const CakeMakerAllProfiles = () => {
 
     return(
         <div>
-             <h1 className="text-center common-header">Cake Maker Profiles</h1>
+             <h1 className="text-center common-header" style={{zIndex:"3"}}>Cake Makers</h1>
             <div className='row mt-5' style={{'--bs-gutter-x':"0rem"}}>
             {
                 row.map((item) => {

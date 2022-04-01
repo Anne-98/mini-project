@@ -66,20 +66,20 @@ const Home = () => {
                 <div>
                     <Container id="popUp" style={{position:"absolute"}}>
                     <Row>
-                        <Col xs={3} md={6} lg={4}>
-                            <i  className="fas fa-utensils carouselIcon" ></i>
+                        <Col xs={3} md={3} lg={3}>
+                            <i class="fas fa-birthday-cake carouselIcon"></i>
                         </Col>
                         
-                        <Col xs={9} md={6} lg={8} id="carouselFollow">
-                            <p style={{paddingLeft:"15px"}}>Follow<br/> to get the latest recipes,<br/> articles and more!</p>
+                        <Col xs={9} md={8} lg={8} id="carouselFollow">
+                            <p style={{paddingLeft:"20px"}}>Follow,<br/> us to make your <br/>dream cake a  Real..!</p>
                         </Col>
                     </Row>
                 </Container >
                 </div>
-                
+                {/* Follow us to show our talent to the world while making your desired cake real. */}
                 <div className="home-cake-structure">
                     <div className="text-center">
-                        <h1 id="home-cake-header">Cake Mount</h1>
+                        <h1 id="home-cake-header" className="text-center">Cake Mount</h1>
                         <div className="text-center">
                             <i className="fas fa-birthday-cake fa-5x" id="home-cake-icon"></i>
                         </div>

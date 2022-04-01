@@ -25,9 +25,13 @@ cakeMakerProfileRoute.post('/myprofile',async(req, res) => {
 })
 
 cakeMakerProfileRoute.post('/updateprofile', async(req, res) => {
+
+    console.log(req.body)
+
     if (req.session.isLog) {
 
         var {name, district, qualifications, contact_num, brandName, facebook, instagram, twitter} = req.body
+
 
         if (req.files != undefined) {
             var imageFile = req.files.file

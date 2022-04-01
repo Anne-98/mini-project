@@ -13,6 +13,7 @@ const AdminAllActivities = () =>{
     var [direct, setDirect] = useState([])
     var [indirect, setIdirect] = useState([])
     var [monthlyOrders, setMonthlyOrders] = useState([])
+    
     const monthNames = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];

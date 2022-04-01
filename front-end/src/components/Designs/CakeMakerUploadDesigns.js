@@ -125,7 +125,7 @@ console.log(file)
                 <button type="submit" className="btn newDesign-submit-button"><i className="fas fa-upload"></i></button>
                 </form>
             </div>
-            </div>
+            </div><br/>
         </div>
         
 

@@ -19,12 +19,12 @@
 .home-cake-structure {
     color: #f1f1f1;
     width: 350px;
-    background-color: #b89472;
+    background-color: #b89472e8;
     margin-right: 30px;
     padding: 50px;
     font-family: 'Acme', sans-serif;
     float: right;
-    margin-top: 80px;
+    margin-top: 70px;
     color: #ffe8d6;
     animation-name: home-cake-structure;
   animation-duration: 5s;
@@ -34,14 +34,15 @@
 }
 #home-cake-header{
     font-family: 'Meie Script', cursive;
+
 }
 @keyframes pop-up{
   0%{ transform: translateX(-80px); width: 300px;}
   100%{ transform: translateX(80px);width: 400px;}
 }
 @keyframes home-cake-structure{
-  0%{ transform: translateY(-100px); height: 89vh;}
-  100%{ transform: translateY(0px);height: 89vh;}
+  0%{ transform: translateY(-100px); height: 90vh;}
+  100%{ transform: translateY(0px);height: 90vh;}
 }
 #popUp{
   background-color: #ffe8d6;
@@ -63,6 +64,7 @@
   border-radius:10px;
   float:left;
   font-size: 30px;
+  width: fit-content;
 }
 #carouselFollow{
   color: #b89472;
@@ -100,12 +102,18 @@
     width: 250px;
     border-radius: 50px;
 }
-
+@media screen and (max-width:900px){
+  #popUp{margin-top: 70vh;}
+}
 @media screen and (max-width:600px){
 
     @keyframes pop-up{
         0%{width: 300px;}
         100%{width: 350px;}
+    }
+    @keyframes home-cake-structure{
+      0%{ transform: translateY(-100px); height: 100vh;}
+      100%{ transform: translateY(0px);height: 100vh;}
     }
 
     #popUp{
@@ -115,15 +123,58 @@
     animation-name: pop-up;
     animation-duration: 5s;
     animation-fill-mode: forwards;
-    margin-top: 250px;
+    margin-top: 70vh;
     z-index: 2;
     transition: all 0.2s ease;
     width: 300px;
     padding: 5px;
     }
     .home-cake-structure {
-      opacity: 0;
+      width: fit-content;
+      background-color: #b89472cb;
+      margin-top: 0px;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      padding: 15px;
+      margin-right: 0px;
     }
+    #home-cake-icon{
+      font-size: 50px;
+    }
+    .home-cake-btn{
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        color: #ffe8d6;
+        border: 5px solid #ffe8d6;
+    }
+    #home-cake-designs{
+        border-bottom: none;
+        width: 100px;
+        height: 30px;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        margin-top: 5px;
+      }
+      
+      #home-cake-profiles{
+        border-bottom: none;
+        width: 150px;
+        height: 40px;
+      }
+      #home-cake-bottom{
+        border: 5px solid #ffe8d6;
+        width: 170px;
+        margin-top: 5px;
+        border-radius: 50px;
+        padding: 0px;
+
+    }
+    #home-cake-header{
+        font-family: 'Meie Script', cursive;
+        font-size: 30px;
+
+      }
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');

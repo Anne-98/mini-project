@@ -1,6 +1,7 @@
-import axios from "axios"
-import { useState } from "react"
-import { useLocation, useNavigate, useParams } from "react-router-dom"
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import './../../css/Ratings/CustomerRatings.css';
 
 const CustomerRatings = () => {
 
@@ -11,6 +12,7 @@ const CustomerRatings = () => {
     var navigate = useNavigate()
     var [rated, setRated] = useState(false)
     var location = useLocation()
+    var [cakeMakersDetails, setCakeMakersDetails] = useState([])
 
     var order_id = location.state.order_id
 
@@ -43,25 +45,64 @@ const CustomerRatings = () => {
         }
 
     }
+    useEffect(async() => {
+        var {data} = await axios.post('http://localhost:8000/cakemaker/profile/myprofile', {cake_makers_id})
+
+        setCakeMakersDetails(data.data)
+
+    }, [])
 
     return(
         <div>
             <h1 className="common-header text-center" style={{zIndex:"3"}}>Customer Ratings</h1>
-            <h5>{rate}</h5>
-            <p>{msg}</p>
+            <div className="customer-ratings-wrapper my-auto mt-5">
+                <div className="customer-ratings-container text-center my-auto">
+                <h3 className="common_sub_header pb-5">We'd Love Your Feedback</h3>
+                <p className="customer-ratings-content ">Feedback is very Important to us. We'd Love to get your Feedback on the Baker</p>
+                {/* <h5>{rate}</h5> */}
+            <p className="pt-3 customer-ratings-msg">{msg}</p>
+            <div className='col-12 mb-5 mt-4' style={{color:"#f9c74f"}}>
+                        <i class="far fa-star" onClick={getRate}></i>    
+                        <i class="far fa-star" onClick={getRate}></i>    
+                        <i class="far fa-star" onClick={getRate}></i>    
+                        <i class="far fa-star" onClick={getRate}></i>    
+                        <i class="far fa-star" onClick={getRate}></i>    
+                    </div>
             {
                 rated == false ?
                 <>
-                <div className='col-12 mb-3' style={{color:"#f9c74f"}}>
-                    <i class="far fa-star" onClick={getRate}></i>    
-                    <i class="far fa-star" onClick={getRate}></i>    
-                    <i class="far fa-star" onClick={getRate}></i>    
-                    <i class="far fa-star" onClick={getRate}></i>    
-                    <i class="far fa-star" onClick={getRate}></i>    
-                </div>
-                <button className="btn" onClick={clickConfirm}>Submit</button></> :
+                    
+                    <button className="btn customer-ratings-submit-btn" onClick={clickConfirm}>Submit</button></> :
                 <></>
             }
+            {
+                cakeMakersDetails.map((item) => {
+                    return(
+                        <div className="row order-details-profile-div p-3 ">
+                        <Link to={`/profiles/cakemaker/${item.cake_makers_id}`}>
+                            <div className="row order-details-profile-div-inner ">
+                            <div className='cm-profile-img-div col-2 col-lg-4'>
+                                <img src={item.profile_picture} className="order-details-profile-img" alt="..."/>
+                            </div>
+                            <div className='col-7 col-lg-7 order-details-profile-body my-auto mx-auto text-start'>
+                                <h5 className="">{item.name}</h5>
+                                <div className='order-details-body row'>
+                                    <span className='details-heading col-3 col-md-2'><i className="fas fa-home"></i></span>
+                                    <span className="col-7">{item.district}</span>
+                                </div>
+                                <div className='order-details-body row'>
+                                    <span className='details-heading col-3 col-md-2'><i className="fas fa-phone"></i></span>
+                                    <span className="col-7">0{item.contact_num}</span>
+                                </div>
+                            </div>
+                            </div>
+                        </Link>
+                    </div>
+                    )
+                })
+            }
+            </div>
+            </div>
         </div>
     )
 }

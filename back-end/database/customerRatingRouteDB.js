@@ -10,9 +10,6 @@ const updateRates = (cake_makers_id, rate, order_id) => {
                 
                 var rated_customers = row[0].rated_customers + 1
                 var rated_values = row[0].rated_values + rate
-
-                console.log("rated_customers:", rated_customers, rated_values)
-                console.log("ROW: ", row[0])
                 
                 connection.query(`UPDATE cake_makers_details SET rated_customers = ${rated_customers} , rated_values = ${rated_values} WHERE cake_makers_id = '${cake_makers_id}'`, (err_2, row_2) =>{
                     console.log("7")

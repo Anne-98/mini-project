@@ -74,7 +74,7 @@
 }
 button:focus { outline: none !important; box-shadow: none !important; }
 input:focus { outline: none !important; box-shadow: none !important; }
-@media screen and (max-width:800px) {
+@media screen and (max-width:991.5px) {
     .navbar-workplace-icon{
         align-items: center
     }

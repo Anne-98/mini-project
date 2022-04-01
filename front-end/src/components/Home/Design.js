@@ -2,6 +2,10 @@ import React, {Fragment, useState, useEffect} from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import './../../css/Home/Design.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
 
 const Design = () => {
 
@@ -39,13 +43,14 @@ const Design = () => {
     }
 
     return(
-        <div className='container'>
+        <div className='design-wrpper' 
+        >
             <div className='row '>
                 {
                     designs.map((item) => {
                         console.log(item.title)
                         return(
-                            <div className="design-container col ">
+                            <div className="design-container col " data-aos="fade-up" data-aos-duration="3000">
                                 <div className="design-card">
                                     <div className="design-img-cover">
                                         <img src={item.image}/>
@@ -60,7 +65,7 @@ const Design = () => {
                                     
                                     <div className="design-desc">
                                     <h2>{item.title}</h2>
-                                    <p>{item.description}</p>
+                                    <p className='design-desc-description'>{item.description}</p>
                                     </div>
                                     <Link to={`/designs/details/${item.design_id}`} className="text-decoration-none design-details-btn">Details 
                                     <i style={{paddingLeft:"10px"}} className="fas fa-angle-double-right"></i>

@@ -1,13 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 body {
-  background : beige ;
+  background : rgb(254,
+  249,
+  239) ;
   margin : 0 ;
   padding : 0 ;
+}
+.design-wrpper{
+  width: 80vw;
+  margin: 0px auto;
 }
 
 .design-container{
   margin: 10px;
+  padding: 10px;
 }
 .design-card{
   margin :0px auto;
@@ -107,5 +114,24 @@ body {
   70%{
     opacity:0;
     transform:translateX(-100%);
+  }
+}
+
+@media screen and (max-width:600px) {
+  .design-desc-description{
+    display: none;
+    background-color: red;
+  }
+  .design-card{
+    margin :0px auto;
+    width: 250px;
+    height: 250px;
+    overflow : hidden;
+    border-radius : 20px;
+    background : white;
+    transition: all .2s;
+    box-shadow:5px 5px 15px rgba(0,0,0, .3);
+      position: relative;
+
   }
 }

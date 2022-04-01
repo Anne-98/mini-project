@@ -87,13 +87,25 @@
 .wp-cakelist-img:hover{
     transform: translate(5%) ;
 }
-
+.wp-order-btn{
+    color: #ffe8d6;
+    border: 1px solid #ffe8d6;
+    width: 100px;
+    margin: 20px 0px 20px 5px;
+    font-family: 'Averia Serif Libre', cursive;
+    font-weight: bold;
+    letter-spacing: 2px;
+    width: 70%;
+}
+.wp-order-btn:hover, .wp-export-btn:hover, .wp-confirm-btn:hover{
+        color: #806251;
+    }
 @media screen and (max-width:900px) {
     .wp-cakelist-wrapper:nth-child(2){
     margin-top: 5px;
 }
     .design-container{
-        width: 40vw;
+        width: 60vw;
         
     }
     .wp-confirm-btn{
@@ -116,9 +128,18 @@
     .wp-export-btn{
     background-color:  #b89472;
     color: #ffe8d6;
-    width: 100px;
+    width: fit-content;
     margin: 20px 0px;
     }
+    .wp-order-btn{
+    border: 1px solid #b89472;
+    color: #b89472;
+    background-color: #fdece0;
+    width: 100px;
+    margin: 20px 0px 20px 5px;
+    font-family: 'Averia Serif Libre', cursive;
+    }
+    
     .wp-export-wrapper{
         top: 5;
         right: 20px;

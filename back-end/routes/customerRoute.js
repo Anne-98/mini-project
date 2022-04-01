@@ -37,7 +37,7 @@ customerRoute.post('/login', async(req, res) => {
         }else{
             req.session.isLog = false
             req.session.user_id = null
-            res.json({success: false, msg: "Invalid credentials", isLog: false})
+            res.json({success: false, msg: "Invalid Passwprd", isLog: false})
         }
     }else{
         res.json({success:false, msg:"You have already Logged In", isLog: true})

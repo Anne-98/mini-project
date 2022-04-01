@@ -53,7 +53,7 @@ const CreatePost = () => {
         <div className="createpost-container">
             <h1 className="text-center common-header" style={{zIndex:"3"}}>Create Post</h1>
 
-             <div className='createpost-common-container d-flex justify-content-center container'>
+             <div className='createpost-common-container d-flex justify-content-center container '>
             <div className="mt-5" style={{width:"75%"}}>
                 <form className="mt-5" onSubmit={createPost}>
                     {
@@ -101,7 +101,7 @@ const CreatePost = () => {
                 <button type="submit" className="btn createpost-submit-button">Submit</button>
                 </form>
             </div>
-            </div>
+            </div><br/>
         </div>
     )
 }

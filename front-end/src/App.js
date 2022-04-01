@@ -42,6 +42,8 @@ import ChatList from "./components/Common/ChatList";
 import Footer from "./components/Home/Footer";
 import OneCategory from "./components/Common/OneCategory";
 import CustomerRatings from "./components/Ratings/CustomerRatings";
+import CakeMakerForgotPw from "./components/Login/CakeMakerForgotPw";
+import CustomerForgotPw from "./components/Login/CustomerForgotPw";
 
 
 const App = () =>{
@@ -107,6 +109,8 @@ var orders = localStorage.getItem('orders')
                       <Route path="/chat/:userId" element={<ChatList />}/> 
                       <Route path="/category/selected_category/:category_name" element={<OneCategory/>} />
                       <Route path="/customer/ratings/:cake_makers_id" element={<CustomerRatings />}/>
+                      <Route path={"/forgot_password/cakemaker"} element={<CakeMakerForgotPw /> }></Route>
+                      <Route path={"/forgot_password/customer"} element={<CustomerForgotPw /> }></Route>
                     </Routes>
                     
                     {/* </Routes> */}

@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import profile from './../../images/profiles/6.jpg';
+import CustomerOrderHistory from '../Orders/CustomerOrderHistory';
 
 axios.defaults.withCredentials = true
 
@@ -45,8 +46,11 @@ const CustomerProfile = () => {
 
     return(
         <Fragment>
-            <h1 className="text-center common-header">Customer Profile</h1>
+            <h1 className="text-center common-header" style={{zIndex:"3"}}>Customer Profile</h1>
             <div className="container cm-profile-wrapper">
+                <div style={{display:"flex", alignItems:"right", justifyContent:"right"}}>
+                        <Link to={`/orders/indirect/${customer_id}`}><button className="btn m-3 cm-profile-btns">Make Order</button></Link>
+                    </div>
                 <div className='mt-5' >
                     <div className="row justify-content-center">
                     <div className='cm-profile-img-div col-4 mx-auto'>
@@ -76,9 +80,9 @@ const CustomerProfile = () => {
                         </div>
                     </div>
                 </div>
-                
                 </div>
             </div>
+            <br/>
         </Fragment>
     )
 }

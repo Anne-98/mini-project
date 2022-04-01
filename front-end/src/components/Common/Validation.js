@@ -62,12 +62,12 @@
             // console.log("duration_days: ",duration_days)
             // console.log("duration_hours: ",duration_hours)
 
-            var result = duration_days > 2
+            var result = duration_days > 4
             if (duration_days > 0) {
-                if (duration_days > 2) {
+                if (duration_days > 4) {
                     var msg = ''
                 }else{
-                    var msg = 'Please be kind to order a cake before 3 days'
+                    var msg = 'Please be kind to order a cake before 4 days'
                 }
             }else{
                 var msg = 'Date is not valid'

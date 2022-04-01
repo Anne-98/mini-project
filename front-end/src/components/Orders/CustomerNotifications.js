@@ -64,12 +64,11 @@ console.log(indirect)
         <Fragment>
             <h1 className="text-center common-header" style={{zIndex:"3"}}>Notifications</h1>
             {/* {msg} */}
-            <div className="notifications__wrapper container pt-1 " >
-                <div className="notifications row">
+            <div className="notifications__wrapper" >
 
             {   direct.length ?
-                <div>
-                        <h2 className="text-center pb-4 common_sub_header" style={{position:"relative"}}>Direct Orders</h2>
+                <div className="notifications_container">
+                        <h2 className="text-center pb-4 common_sub_header" >Direct Orders</h2>
                         {
                         direct.map((item) => {
 
@@ -77,33 +76,35 @@ console.log(indirect)
                             var splitted_date = order_date.substr(0,10)
 
                             return(
-                                    <div className= 'notifications__item'>
-                            <div className="notifications__item__avatar">
+                                    <div className= 'notifications__item row'>
+
+                            <div className="notifications__item__avatar col-3 col-md-3">
                                 <img src={item.image}/>
                                 <button onClick={() => {orderDetails(item.direct_order_id, item.cake_makers_id)}} className="btn notifications__details"><i className="far fa-arrow-alt-circle-right" style={{color:"#ffe8d6e0"}}></i></button>
                             </div>
                             {
                                 item.dispatched == '0' ?
-                                <div className="notifications__item__content">
+
+                                <div className="notifications__item__content col-6">
+                                    <span className="notifications__item__date">{splitted_date}</span>
+                                    {
+                                        item.confirm == true && item.dispatched == '0'? <span className="notifications__item__message">Your Order Confirmed</span> : 
+                                        <span className="notifications__item__message">Place Your Order to a different Cakemaker</span>
+                                        
+                                    }
+                                </div> :
+                            <div className="notifications__item__content col-6">
                                 <span className="notifications__item__date">{splitted_date}</span>
-                                {
-                                    item.confirm == true && item.dispatched == '0'? <span className="notifications__item__message">Congratulations..! Your Order Confirmed</span> : 
-                                    <span className="notifications__item__message">Place Your Order to a different Cakemaker</span>
-                                    
-                                }
-                            </div> :
-                            <div className="notifications__item__content">
-                                <span className="notifications__item__date">{splitted_date}</span>
-                                <span className="notifications__item__message">Congratulations Your order dispacthed. Please give a feedback.</span> 
+                                <p className="notifications__item__message">Your order dispacthed.</p> 
                                 {
                                     item.rated == '0' ?
-                                    <button onClick={() => {setFeedback(item.direct_order_id, item.cake_makers_id)}} className="btn">Feedback</button> :
+                                    <button onClick={() => {setFeedback(item.direct_order_id, item.cake_makers_id)}} className="btn notification-feedback-btn">Feedback</button> :
                                     <></>
                                 }
                             </div>
                             }
 
-                            <div id="hello">
+                            <div id="hello" className="col-1">
                                 <i className=" notifications__item__option delete fas fa-trash" onClick={
                                     (e) => {
                                         appendClass(e, item.direct_order_id)
@@ -121,8 +122,8 @@ console.log(indirect)
                     </div> : <></>
             }
             {   indirect.length ?
-                <div>
-                        <h2 className="text-center pb-4  pt-4 common_sub_header" style={{position:"relative"}}>Indirect Orders</h2>
+                <div className="notifications_container ">
+                        <h2 className="text-center pb-4  pt-4 common_sub_header">Indirect Orders</h2>
                         {
                         indirect.map((item) => {
 
@@ -130,34 +131,34 @@ console.log(indirect)
                             var splitted_date = order_date.substr(0,10)
 
                             return(
-                            <div className= 'notifications__item'>
-                            <div className="notifications__item__avatar">
+                            <div className= 'notifications__item row'>
+                            <div className="notifications__item__avatar col-4 col-md-3">
                                 <img src={item.image} />
                                 <button onClick={() => {orderDetails(item.indirect_order_id, item.cake_makers_id)}} className="btn notifications__details"><i className="far fa-arrow-alt-circle-right" style={{color:"#ffe8d6e0"}}></i></button>
                             </div>
                            {
                                 item.dispatched == '0' ?
-                                <div className="notifications__item__content">
+                                <div className="notifications__item__content col-6">
                                 <span className="notifications__item__date">{splitted_date}</span>
                                 {
-                                    item.confirm == true && item.dispatched == '0'? <span className="notifications__item__message">Congratulations..! Your Order Confirmed</span> : 
+                                    item.confirm == true && item.dispatched == '0'? <span className="notifications__item__message">Your Order Confirmed</span> : 
                                     <span className="notifications__item__message">Place Your Order to a different Cakemaker</span>
                                     
                                 }
                             </div> :
-                            <div className="notifications__item__content">
+                            <div className="notifications__item__content col-6">
                                 <span className="notifications__item__date">{splitted_date}</span>
-                                <span className="notifications__item__message">Congratulations Your order dispacthed. Please give a feedback.</span> 
+                                <span className="notifications__item__message">Your order dispacthed.</span> 
                                 {
                                     item.rated == '0' ?
-                                    <button onClick={() => {setFeedback(item.indirect_order_id, item.cake_makers_id)}} className="btn">Feedback</button> :
+                                    <button onClick={() => {setFeedback(item.indirect_order_id, item.cake_makers_id)}} className="btn notification-feedback-btn">Feedback</button> :
                                     <></>
                                 }
                             </div>
                             }
 
-                            <div id="hello">
-                                <i className=" notifications__item__option delete fas fa-trash" onClick={
+                            <div id="hello" className="col-1">
+                                <i className=" notifications__item__option delete fas fa-trash " onClick={
                                     (e) => {
                                         appendClass(e, item.indirect_order_id)
                                     }} >
@@ -174,7 +175,6 @@ console.log(indirect)
                     </div> : <></>
             }
                     
-                </div>
                 </div>
         </Fragment>
     )

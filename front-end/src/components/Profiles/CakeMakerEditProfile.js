@@ -46,6 +46,7 @@ const CakeMakerEditProfile = () => {
     }, [])
 
     const updateProfile = async(event) => {
+
         event.preventDefault()
 
         var body = new FormData()
@@ -106,13 +107,13 @@ const CakeMakerEditProfile = () => {
                             <small id="passwordHelpInline" className="text-danger">
                         {nameValidate}
                         </small>
-                            <input type="text" className="form-control" placeholder="First name" onChange={e => setName(e.target.value)} value={name} required={true} />
+                            <input type="text" className="form-control" placeholder="First name" onChange={e => setName(e.target.value)} value={name}  />
                         </div>
                     </div>
                     <div className="row mb-4 col-md-6 cm-editprofile-row">
-                        <label className="col-sm-4 cm-editprofile-label col-md-3" for="inputCity">City</label>
+                        <label className="col-sm-4 cm-editprofile-label col-md-3" for="inputCity">District</label>
                         <div className="col-sm-8 col-md-9">
-                            <input value={city} type="text" className="form-control" id="inputCity" onChange={e =>setCity(e.target.value)} required={true}/>
+                            <input value={city} type="text" className="form-control" id="inputCity" onChange={e =>setCity(e.target.value)} />
                         </div>
                     </div>
                 </div>
@@ -129,7 +130,7 @@ const CakeMakerEditProfile = () => {
                             <small id="passwordHelpInline" className="text-danger">
                         {contactNumValidate}
                         </small>
-                            <input value={contact_num} type="number" className="form-control" id="formGroupExampleInput" placeholder="0711118898 / 0112255447" onChange={e => setContact_num(e.target.value)} required={true}/>
+                            <input value={contact_num} type="number" className="form-control" id="formGroupExampleInput" placeholder="0711118898 / 0112255447" onChange={e => setContact_num(e.target.value)} />
                         </div>
                     </div>
                 </div>
@@ -154,7 +155,7 @@ const CakeMakerEditProfile = () => {
                 }
                 <div className="form-group  row mb-3">
                      <label  className="btn text-uppercase col-sm-4 mb-1" for="exampleFormControlTextarea1" htmlFor="filePicker">Upload <i class="fas fa-camera"></i></label>
-                        <input type="file" className="form-control-file" id="filePicker" style={{visibility:"hidden"}} required={true} 
+                        <input type="file" className="form-control-file" id="filePicker" style={{visibility:"hidden"}}  
                         onChange = { 
                             e => {
                                 if (e.target.files && e.target.files[0]) {

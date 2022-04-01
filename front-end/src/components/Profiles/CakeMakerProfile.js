@@ -1,7 +1,8 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useContext, useEffect, useState } from 'react'
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import './../../css/Profiles/CakeMakerProfile.css';
+import { UserIdContext } from '../Context/UserIdContext';
 
 axios.defaults.withCredentials = true
 
@@ -14,20 +15,34 @@ const CakeMakerProfile = () => {
     var [totalDesigns, setTotalDesigns] = useState('')
     var navigate = useNavigate()
     var [designs, setDesigns] = useState([])
-    var userId = localStorage.getItem('userId')
+    // var userId = localStorage.getItem('userId')
+    let [userId, setUserId] = useContext(UserIdContext)
+    var [ratings, setRatings] = useState(0)
     console.log(cake_makers_id)
 
     useEffect(async()=>{
 
+        // cakemaker details....................
         var {data} = await axios.post('http://localhost:8000/cakemaker/profile/myprofile', {cake_makers_id})
         
         setRow(data.data[0])
 
+        // total dispatch orders....................
         var dispatch_orders = await axios.post('http://localhost:8000/cakemaker/dispatch_order/number_of_dispatches', {cake_makers_id})
 
         setTotalOrders(dispatch_orders.data.data.direct_row.length + dispatch_orders.data.data.direct_row.length)
 
+        // get cake maker designs....................
         var dataSet = await axios.post('http://localhost:8000/cakemaker/cakemaker_designs/get_cakemaker_designs', {cake_makers_id})
+
+        var rated_customers = data.data[0].rated_customers
+        var rated_values = data.data[0].rated_values
+        console.log("rated_customers",rated_customers)
+        console.log("rated_values",rated_values)
+        
+        var rates = rated_values/rated_customers
+        console.log("rates",rates)
+        setRatings(rates)
 
         if (dataSet.data.sucess) {
             setDesigns(dataSet.data.data)
@@ -68,14 +83,107 @@ const CakeMakerProfile = () => {
                     }   </h1>
 
                         <div className='row mb-3'>
-                            <div className='col-12 mb-3' style={{color:"#f9c74f"}}>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt fa-star"></i>
-                                <i class="far fa-star"></i>    
-                            </div>
-                            <div className='col-4'><b>{totalOrders}</b> Total Orders</div>
+                            
+                                {
+                                    ratings <= 0.5 ?
+
+                                    <div className='col-12 mb-3' style={{color:"#f9c74f"}}>
+                                        <i class="fas fa-star-half-alt fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    : 
+                                    
+                                    ratings <= 1 && ratings > 0.5 ?
+
+                                    <div className='col-12 mb-3' style={{color:"#f9c74f"}}>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    :
+
+                                    ratings <= 1.5 && ratings > 1 ?
+
+                                    <div className='col-12 mb-3' style={{color:"#f9c74f"}}>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    :
+                                    ratings <= 2 && ratings > 1.5 ?
+                                    
+                                    <div className='col-12 mb-3' style={{color:"#f9c74f"}}>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    :
+                                    ratings <= 2.5 && ratings > 2 ?
+
+                                    <div className='col-12 mb-3' style={{color:"#f9c74f"}}>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    :
+                                    ratings <= 3 && ratings > 2.5 ?
+                                    <div className='col-12 mb-3' style={{color:"#f9c74f"}}>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    :
+                                    ratings <= 3.5 && ratings > 3 ?
+                                    <div className='col-12 mb-3' style={{color:"#f9c74f"}}>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    :
+                                    ratings <= 4 && ratings > 3.5 ?
+                                    <div className='col-12 mb-3' style={{color:"#f9c74f"}}>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    :
+                                    ratings <= 4.5 && ratings > 4 ?
+                                    <div className='col-12 mb-3' style={{color:"#f9c74f"}}>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt fa-star"></i>
+                                    </div>
+                                    :
+                                    ratings > 5 && ratings > 4.5 ?
+                                    <div className='col-12 mb-3' style={{color:"#f9c74f"}}>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    :<></>                                    
+                                }   
+                        <div className='col-4'><b>{totalOrders}</b> Total Orders</div>
                             <div className='col-4'><b>{totalDesigns}</b> Designs</div>
                         </div>
                         
@@ -107,6 +215,7 @@ const CakeMakerProfile = () => {
                 </div>
             </div>
 
+            {/* designs............................................ */}
            <div className='cm-design-wrapper'  style={{position:"relative"}}>
                    <div className='row justify-content-center' style={{margin:"0px auto"}}>
                         {
@@ -116,7 +225,7 @@ const CakeMakerProfile = () => {
                             <div className="container-glass col-4 text-center">
                                 
 
-                                <div className='cm-designs-title mb-2'>{item.title} </div>
+                                <div className='cm-designs-title mb-2 mt-3'>{item.title} </div>
                                 <div className='cm-designs-price'>${item.price}</div>
                                 
                                 <img className="img" src={item.image} alt="" />
@@ -124,19 +233,29 @@ const CakeMakerProfile = () => {
                                     {item.description}
                                 </p> */}
                                 {/* <div>{item.category}</div> */}
+                                {console.log("userId:",userId.length)}
                                 {
-                                            userId.length > 0 ? <Link to={`/orders/direct/${item.design_id}`}><div className="cm-profile-cart-icon" >
-                                            <i class="fas fa-cart-plus"></i>
+                                        userId.length > 0 ? <Link to={`/orders/direct/${item.design_id}`}><div className="cm-profile-cart-icon" >
+                                        <i class="fas fa-cart-plus"></i>
                                         </div></Link> : <div className="cm-profile-cart-icon" onClick={userOnClick}>
                                             <i class="fas fa-cart-plus"></i>
                                         </div>
-                                        }
+                                }
+
+                                {   
+                                    cake_makers_id ==  userId ?
+                                    <div className="cm-profile-edit-div col-6 text-start">
+                                        <Link to={`/cakemaker/designs/edit/${item.design_id}`}className='text-decoration-none'><button className="btn"><i className="fas fa-pen "></i></button></Link>
+                                    </div>
+                                    :
+                                    <></>
+                                }
                                 <Link to={`/designs/details/${item.design_id}`}className='text-decoration-none'><button className="btn cm-designs-discover mt-3">Discover</button></Link>
                             </div>
                         )
                     })
                 }
-                   </div>
+                </div>
            </div>
            
         </Fragment>

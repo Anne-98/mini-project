@@ -59,13 +59,13 @@ const DesignDetails = () => {
                                             <div className="col-4 col-lg-2 "><b>Details</b></div>
                                             <div className="col-7 col-lg-8">{item.description}</div>
                                         </div>
-                                        <div className="m-3 mt-5" style={{color:"#f9c74f"}}>
+                                        {/* <div className="m-3 mt-5" style={{color:"#f9c74f"}}>
                                                 <i className="fas fa-star"></i>
                                                 <i className="fas fa-star"></i>
                                                 <i className="fas fa-star"></i>
                                                 <i className="fas fa-star-half-alt fa-star"></i>
                                                 <i className="far fa-star"></i>    
-                                        </div>
+                                        </div> */}
             <div className="row">
                 
                     <div className="m-3 col-md-4 col-4" > <Link to={`/profiles/cakemaker/${cake_makers_id}`}><button className="btn" style={{background:"#b89472", color:"white"}}>Baker Profile</button></Link></div>

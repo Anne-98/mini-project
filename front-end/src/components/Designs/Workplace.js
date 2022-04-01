@@ -25,6 +25,7 @@ import Design_5_svg from './../../../src/images/svgs/final/Design_5.svg';
 // import Design_6_svg from './../../../src/images/svgs/final/Design_6.svg';
 import Design_7_svg from './../../../src/images/svgs/final/Design_7.svg';
 import Design_8_svg from './../../../src/images/svgs/final/Design_8.svg';
+import { Link } from 'react-router-dom';
 // import Design_9_svg from './../../../src/images/svgs/final/Design_9.svg';
 // import Design_10_svg from './../../../src/images/svgs/final/Design_10.svg';
 // import Design_11_svg from './../../../src/images/svgs/final/Design_11.svg';
@@ -56,6 +57,9 @@ class WorkPlace extends React.Component {
     ],
     confirm: false
   };
+  
+  type = localStorage.getItem('type')
+  userId = localStorage.getItem('userId')
 
   handleDrag = (e, ui) => {
     const {x, y} = this.state.deltaPosition;
@@ -117,7 +121,6 @@ class WorkPlace extends React.Component {
   };
 // ................................
   setConfirm = (val) =>{
-    alert("clicked")
     this.setState({
       confirm: val
     })
@@ -140,11 +143,17 @@ class WorkPlace extends React.Component {
         this.setState({
           confirm: false
         })
+        
       }else{
         alert('Please confirm your design before download it.')
       }
     // e.target.style.display ="none"
   }
+    userOnClick = () => {
+        alert("You should have an account to make order")
+        // navigate('/login')
+
+    }
 
   render() {
     const dragHandlers = {onStart: this.onStart, onStop: this.onStop};
@@ -212,8 +221,11 @@ class WorkPlace extends React.Component {
           </div>
           <div className='col-md-2 text-center wp-export-wrapper' > 
             <button className='btn wp-export-btn' onClick={this.downloadImage}> <span className='p-2'><i class="fas fa-download pl-2"></i></span></button>
-          </div>
-          
+            
+            {
+              this.type == 'customer' || this.type == 'cakemaker' ? <Link to={`/orders/indirect/${this.userId}`}><button className='btn wp-order-btn'> <span className='p-2'>Order</span></button></Link> : <button onClick={this.userOnClick} className='btn wp-order-btn'> <span className='p-2'>Order</span></button>
+            }
+          </div>          
         </div>
       </div>
     );

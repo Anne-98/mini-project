@@ -23,6 +23,17 @@ const NavbarFixed = () => {
     const refreshPage = () => {
         window.location.reload(true)
     }
+    
+    const loadTop = () => {
+        window.scrollTo(0, 0)
+        
+    }
+    
+    const refreshLoadTop = () => {
+        window.scrollTo(0, 0)
+        window.location.reload(true)
+
+    }
 
     useEffect(async()=>{
         var {data} = await axios.post('http://localhost:8000/cakemaker/profile/myprofile', {cake_makers_id: userId})
@@ -61,7 +72,7 @@ const NavbarFixed = () => {
         <Fragment>
             <nav className="navbar fixed-top navbar-expand-lg" id="navbarWrapper">
                 <div className="container-fluid" >
-                    <a className="navbar-brand" href="#">Cake Mount</a>
+                    <Link to={`/`}><a className="navbar-brand" onClick={loadTop} href="#">Cake Mount</a></Link>
 
                     <button className="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
                     <span className="navbar-toggler-icon" id="toggler-icon" style={{color:"black"}}></span>
@@ -70,7 +81,7 @@ const NavbarFixed = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mx-auto">
                         <li className="nav-item  text-center">
-                            <Link className="navItem" to="/">Home</Link>
+                            <Link className="navItem" onClick={loadTop} to="/">Home</Link>
                         </li>
                         
                         {
@@ -120,7 +131,7 @@ const NavbarFixed = () => {
                         }                        
                         
                             {
-                                type == 'customer' ? <Link className="navItem " to={`/profiles/customer/${userId}`}><li className="nav-item text-center orderHistory-navItem" >Profile</li></Link> : type == 'cakemaker' ? <Link className="navItem orderHistory-navItem"  to={`/profiles/cakemaker/${userId}`}><li className="nav-item text-center " >Profile</li></Link>  : <span></span>
+                                type == 'customer' ? <Link className="navItem " to={`/profiles/customer/${userId}`}><li onClick={loadTop} className="nav-item text-center orderHistory-navItem" >Profile</li></Link> : type == 'cakemaker' ? <Link className="navItem orderHistory-navItem"  to={`/profiles/cakemaker/${userId}`}><li onClick={loadTop} className="nav-item text-center " >Profile</li></Link>  : <span></span>
                                 
                             }
                     </ul>

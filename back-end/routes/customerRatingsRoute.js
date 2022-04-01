@@ -13,7 +13,7 @@ customerRatingsRoute.post('/add_ratings', async(req, res) =>{
 
         console.log("data.......:",data)
         if (data.changedRows > 0) {
-            res.json({msg:"rates successfully updated", success:true, isLog:true})
+            res.json({msg:"Thank you for your feedback..!", success:true, isLog:true})
         }else{
             
             res.json({msg:"Something went wrong", success:false, isLog:true})

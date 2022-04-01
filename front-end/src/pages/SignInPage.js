@@ -16,7 +16,7 @@ const SignInPage = () => {
                     <button className='btn signin-home-btns' value="customer" onClick={(e) => {navigate('/signin/customer')}}>Customer</button>
                 </div>
                 <div className='col-lg-6 col-12 signin-home-div'>
-                    <button className='btn signin-home-btns' value="cakemaker" onClick={(e) => {navigate('/signin/cakemaker')}}>Cake Maker</button>
+                    <button className='btn signin-home-btns' value="cakemaker" onClick={(e) => {navigate('/signin/cakemaker')}}>Baker</button>
                 </div>
             </div> 
         </div>
