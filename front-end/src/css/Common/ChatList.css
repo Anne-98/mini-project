@@ -116,25 +116,13 @@ li{
 	 font-size: 16px;
 	 border-radius: 7px;
 	 margin-bottom: 30px;
-	 width: 90%;
+	 width: 70%;
 	 position: relative;
 }
 .chatlist-list{
 	padding: 0px;
 }
- .chatlist-chat .chatlist-chat-history .chatlist-message:after {
-	 bottom: 100%;
-	 left: 7%;
-	 border: solid transparent;
-	 content: " ";
-	 height: 0;
-	 width: 0;
-	 position: absolute;
-	 pointer-events: none;
-	 border-bottom-color: #86bb71;
-	 border-width: 10px;
-	 margin-left: -10px;
-}
+
  .chatlist-chat .chatlist-chat-history .chatlist-my-message {
 	 background: #86bb71;
 }
@@ -149,13 +137,13 @@ li{
 	 padding: 30px;
 }
  .chatlist-chat .chatlist-chat-message textarea {
-	 width: 100%;
+	 /* width: 100%;
 	 border: none;
 	 padding: 10px 20px;
 	 font: 14px/22px "Lato", Arial, sans-serif;
 	 margin-bottom: 10px;
 	 border-radius: 5px;
-	 resize: none;
+	 resize: none; */
 }
  .chatlist-chat .chatlist-chat-message .chatlist-fa-file-o, .chatlist-chat .chatlist-chat-message .chatlist-fa-file-image-o {
 	 font-size: 16px;

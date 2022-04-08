@@ -67,7 +67,7 @@ console.log(indirect)
             <div className="notifications__wrapper" >
 
             {   direct.length ?
-                <div className="notifications_container">
+                <div className="notifications_container" >
                         <h2 className="text-center pb-4 common_sub_header" >Direct Orders</h2>
                         {
                         direct.map((item) => {
@@ -76,7 +76,7 @@ console.log(indirect)
                             var splitted_date = order_date.substr(0,10)
 
                             return(
-                                    <div className= 'notifications__item row'>
+                                    <div className= 'notifications__item row' data-aos="fade-up" data-aos-duration="1000">
 
                             <div className="notifications__item__avatar col-3 col-md-3">
                                 <img src={item.image}/>
@@ -131,7 +131,7 @@ console.log(indirect)
                             var splitted_date = order_date.substr(0,10)
 
                             return(
-                            <div className= 'notifications__item row'>
+                            <div className= 'notifications__item row' data-aos="fade-up" data-aos-duration="1000">
                             <div className="notifications__item__avatar col-4 col-md-3">
                                 <img src={item.image} />
                                 <button onClick={() => {orderDetails(item.indirect_order_id, item.cake_makers_id)}} className="btn notifications__details"><i className="far fa-arrow-alt-circle-right" style={{color:"#ffe8d6e0"}}></i></button>

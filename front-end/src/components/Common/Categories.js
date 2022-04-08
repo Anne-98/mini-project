@@ -23,7 +23,7 @@ const CategoriesPage = () => {
                 {
                     row.map((item) => {
                         return(
-                            <div className='col-md-4 categories-col'>
+                            <div className='col-md-4 categories-col' data-aos="fade-up" data-aos-duration="1000">
                                     <Link to={`/category/selected_category/${item.name}`}>
                                     <div className='categories-img-div'>
                                         <img src={item.image} className="categories-img"/>

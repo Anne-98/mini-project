@@ -65,7 +65,7 @@ console.log(file)
             <div className="newdesign-container">
             <h1 className="text-center common-header" style={{zIndex:"3"}}>Upload New Designs</h1>
 
-             <div className='createpost-common-container d-flex justify-content-center container'>
+             <div className='createpost-common-container d-flex justify-content-center container' data-aos="zoom-in" data-aos-duration="1000">
             <div className="" style={{width:"75%"}}>
                 <form className="mt-5" onSubmit={onSubmit}>
                     {

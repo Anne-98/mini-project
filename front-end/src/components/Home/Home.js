@@ -17,6 +17,12 @@ const Home = () => {
     console.log(cake_makers_id)
     var type = localStorage.getItem('type')
 
+    const refreshLoadTop = (e) => {
+        e.preventDefault();
+        window.location.reload(true)
+    
+    }
+
         useEffect(async()=>{
             if (type == 'cakemaker') {
                 
@@ -84,11 +90,11 @@ const Home = () => {
                             <i className="fas fa-birthday-cake fa-5x" id="home-cake-icon"></i>
                         </div>
                         <div className="text-center">
-                            <Link to='/categories'> <button className="btn home-cake-btn" id="home-cake-designs" type="button" >Categories</button></Link>
+                             <button onClick={refreshLoadTop} className="btn home-cake-btn nav-item" id="home-cake-designs"  type="button" ><Link to='/categories' className="navItem" style={{color:"#ffe8d6"}}>Categories</Link></button>
                         </div>
                         <div className="text-center">
 
-                            {type == 'cakemaker'? <Link to={`/profiles/cakemaker/${cake_makers_id}`}><button className="btn home-cake-btn" id="home-cake-profiles" type="button" >Profiles</button></Link> : <Link to={`/profiles/allcakemakers`}><button className="btn home-cake-btn" id="home-cake-profiles" type="button" >Cakemakers</button></Link>}
+                            {type == 'cakemaker'? <button className="btn home-cake-btn" id="home-cake-profiles" type="button" ><Link style={{color:"#ffe8d6"}} to={`/profiles/cakemaker/${cake_makers_id}`}>Profiles</Link></button> : <button className="btn home-cake-btn" id="home-cake-profiles" type="button" ><Link to={`/profiles/allcakemakers`} style={{color:"#ffe8d6"}}>Cakemakers</Link></button>}
                             
                         </div>
                         <div className="text-center">

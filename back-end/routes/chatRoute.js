@@ -2,12 +2,12 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const { chatUpdate, availableChats, getClickedChat } = require('../database/chatDB')
-
 const chatRoute = express.Router();
 chatRoute.use(bodyParser.json())
 
 chatRoute.post('/chat_update', async(req, res) => {
     
+    console.log("chat body: ", req.body)
     if (req.session.isLog) {
         const {chat_history, cake_makers_id, cus_id} = req.body
     
@@ -27,8 +27,9 @@ chatRoute.post('/available_chats', async(req, res) => {
     
     if (req.session.isLog) {
         const userId = req.body.userId
+        const type = req.body.type
     
-        var data = await availableChats(userId)
+        var data = await availableChats(userId,type)
 
         if (data.length > 0 || data.length == 0) {
             res.json({isLog: true, msg: "Successfully fetched all data", success: true, data})
@@ -44,9 +45,11 @@ chatRoute.post('/clicked_chat', async(req, res) => {
     if (req.session.isLog) {
         const userId = req.body.userId
         const clickedId = req.body.clickedId
-    
-        var data = await getClickedChat(userId, clickedId)
+        const type = req.body.type
 
+        var data = await getClickedChat(userId, clickedId, type)
+
+        console.log("data: ", data)
         if (data.length > 0) {
             res.json({isLog: true, msg: "Successfully fetched all data", success: true, data})
         }else{

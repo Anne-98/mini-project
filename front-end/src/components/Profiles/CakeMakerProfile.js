@@ -20,8 +20,10 @@ const CakeMakerProfile = () => {
     var [ratings, setRatings] = useState(0)
     console.log(cake_makers_id)
 
+    
+    
     useEffect(async()=>{
-
+        
         // cakemaker details....................
         var {data} = await axios.post('http://localhost:8000/cakemaker/profile/myprofile', {cake_makers_id})
         
@@ -46,7 +48,8 @@ const CakeMakerProfile = () => {
 
         if (dataSet.data.sucess) {
             setDesigns(dataSet.data.data)
-            setTotalDesigns(designs.length)
+            let total_designs = dataSet.data.data.length
+            setTotalDesigns(total_designs)
 
         }
     },[])
@@ -72,8 +75,8 @@ const CakeMakerProfile = () => {
                 }
                 <div className='mt-5' >
                     <div className="row justify-content-center">
-                    <div className='cm-profile-img-div col-4 mx-auto'>
-                        <img src={row.profile_picture} className="cm-profile-img" alt="..."/>
+                    <div className='cm-profile-img-div col-4 mx-auto' data-aos="fade-right"  data-aos-duration="3000">
+                        <img src={row.profile_picture} className="cm-profile-img" alt="..." />
                     </div>
                     
                     {/* <div className='col-1 ></div> */}
@@ -222,7 +225,7 @@ const CakeMakerProfile = () => {
                     designs.map((item) => {
 
                         return(
-                            <div className="container-glass col-4 text-center">
+                            <div className="container-glass col-4 text-center" data-aos="fade-up" data-aos-duration="2000">
                                 
 
                                 <div className='cm-designs-title mb-2 mt-3'>{item.title} </div>

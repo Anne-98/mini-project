@@ -5,9 +5,10 @@ import io, { Socket } from 'socket.io-client';
 
 var socket;
 var CONNECTION_PORT = 'localhost:8000/';
+socket = io(CONNECTION_PORT);
 
-const ChatContainer = ({clickedId}) => {
-
+const ChatContainer = ({clickedId, clickedName}) => {
+  
   const [message, setMessage] = useState('')
   const [messageList, setMessageList] = useState([]);
   var type = localStorage.getItem('type')
@@ -16,29 +17,43 @@ const ChatContainer = ({clickedId}) => {
   // fetch chat history................................
   
   useEffect(async()=>{
-    socket = io(CONNECTION_PORT);
-    var {data} = await axios.post('http://localhost:8000/general/chat/clicked_chat', {userId, clickedId})
+    var {data} = await axios.post('http://localhost:8000/general/chat/clicked_chat', {userId, clickedId, type})
     var messages = JSON.parse(data.data[0].chat_history)
-    console.log("clicked data: ", messages)
     
     setMessageList(messages)
+
     socket.on("receive_message", (data) => {
-      setMessageList([...messageList, data])
+      var dataSet = JSON.parse(data)
+      setMessageList([...messageList, dataSet.chat_history])
+      console.log("variable: ", messageList.length)
     })
-  }, [CONNECTION_PORT])
+  }, [clickedId])
   
-  // useEffect(() =>{
-  // }, [messageList])
+  
     const sendMessage = async() => {
+
+      var time = new Date();
+      const formattedTime = time.toLocaleString("en-US", { hour: "numeric", minute: "numeric" });
 
       let messageContent = {
         content: {
           author: userId,
-          message: message
+          message: message, 
+          time: formattedTime,
+          type: type
         }
       }
-      await socket.emit("send_message", messageContent)
-      setMessageList([...messageList, messageContent.content])
+
+      var history = [...messageList, messageContent.content]
+      
+      socket.emit("send_message",  {history, recieverId: clickedId, senderId:userId, type})
+
+      setMessageList(history)
+      
+      // var {data} = await axios.post('http://localhost:8000/general/chat/chat_update', {chat_history:messageList, cake_makers_id:clickedId, cus_id:userId})
+
+      // socket.emit('save_message_list', {history, recieverId: clickedId, senderId:userId})
+
       setMessage("")
   }
 
@@ -47,6 +62,7 @@ const ChatContainer = ({clickedId}) => {
   }
     return(
         <Fragment>
+          {/* <h1>{clickedName}</h1> */}
               <div className="chatlist-chat col-md-8">
       <div className="chatlist-chat-header clearfix row">
         <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg" alt="avatar"  className="col-3 col-lg-1" />
@@ -82,12 +98,13 @@ const ChatContainer = ({clickedId}) => {
           {
             messageList.map((item) => {
               return(
-                <li>
-                  <div className="chatlist-message-data">
-                    <span className="chatlist-message-data-name"><i className="fa fa-circle online"></i> {item.author}</span>
-                    <span className="chatlist-message-data-time">10:12 AM, Today</span>
+                <li className="row" style={{float: item.type == type ? 'right' : 'left'}}>
+                  <div className="chatlist-message-data" >
+                    <span className="chatlist-message-data-name"><i className="fa fa-circle online"></i> {item.type == type ? 'you' : clickedName}</span>
+                    <span className="chatlist-message-data-time">{item.time}</span>
                   </div>
-                  <div className="chatlist-message chatlist-my-message">
+                    <i class="fas fa-caret-up"></i>
+                  <div className="chatlist-message chatlist-my-message" style={{background: item.type == type ? '#b89472' : '#deb495'}}>
                     {item.message}
                   </div>
                 </li>
@@ -150,10 +167,7 @@ const ChatContainer = ({clickedId}) => {
                 <button className="btn chat-send-btn" onClick={sendMessage} type="submit"><i className="fas fa-paper-plane" style={{transform:"rotate(45deg)"}}></i></button>
               </div>
             </div>
-
-    </div> 
-
-
+          </div>
         </Fragment>
     )
 }

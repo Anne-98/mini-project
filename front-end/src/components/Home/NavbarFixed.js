@@ -5,6 +5,7 @@ import axios from "axios";
 import { UserIdContext } from "../Context/UserIdContext";
 import { UserTypeContext } from "../Context/UserTypeContext";
 import { OrderContext } from "../Context/OrderContext";
+import {Nav} from 'react-bootstrap';
 
 const NavbarFixed = () => {
 
@@ -20,6 +21,7 @@ const NavbarFixed = () => {
 
     setOrders(localStorage.getItem('orders'))
 
+    
     const refreshPage = () => {
         window.location.reload(true)
     }
@@ -29,10 +31,10 @@ const NavbarFixed = () => {
         
     }
     
-    const refreshLoadTop = () => {
-        window.scrollTo(0, 0)
+    const refreshLoadTop = (e) => {
+        e.preventDefault();
         window.location.reload(true)
-
+    
     }
 
     useEffect(async()=>{
@@ -72,7 +74,9 @@ const NavbarFixed = () => {
         <Fragment>
             <nav className="navbar fixed-top navbar-expand-lg" id="navbarWrapper">
                 <div className="container-fluid" >
-                    <Link to={`/`}><a className="navbar-brand" onClick={loadTop} href="#">Cake Mount</a></Link>
+                    <Nav.Item onClick={refreshLoadTop}>
+                        <Link to={`/`}><a className="navbar-brand"  href="#">Cake Mount</a></Link>
+                    </Nav.Item>
 
                     <button className="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" >
                     <span className="navbar-toggler-icon" id="toggler-icon" style={{color:"black"}}></span>
@@ -80,33 +84,33 @@ const NavbarFixed = () => {
 
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mx-auto">
-                        <li className="nav-item  text-center">
-                            <Link className="navItem" onClick={loadTop} to="/">Home</Link>
+                        <li onClick={refreshLoadTop} className="nav-item  text-center">
+                            <Link className="navItem"  to="/">Home</Link>
                         </li>
                         
                         {
                             type == '' ? 
                             <Fragment>
-                                <li className="nav-item  text-center">
+                                <li onClick={refreshLoadTop} className="nav-item  text-center">
                                     <Link className="navItem" to="/login">Log In</Link>
                                 </li>
-                                <li className="nav-item  text-center">
+                                <li onClick={refreshLoadTop} className="nav-item  text-center">
                                     <Link className="navItem" to="/signin">Sign In</Link>
                                 </li>
                             </Fragment> : <></>
                             
                         }
                         
-                        <li className="nav-item  text-center">
+                        <li onClick={refreshLoadTop} className="nav-item  text-center">
                             <Link className="navItem" to="/profiles/allcakemakers">Bakers</Link>
                         </li>
-                        <li className="nav-item  text-center navbar-workplace">
+                        <li onClick={refreshLoadTop} className="nav-item  text-center navbar-workplace">
                             <div style={{overflowX:"hidden", width:"75px"}}>
                                 <Link className="navItem " to={`/workplace`}>Workplace</Link><div className=" navbar-workplace-icon"></div>
                             </div>
                         </li>
                         {
-                            type == 'customer' ? <li className="nav-item  text-center orderHistory-navItem">
+                            type == 'customer' ? <li onClick={refreshLoadTop} className="nav-item  text-center orderHistory-navItem">
                             <Link className="navItem" to={`/customer/orders/history/${userId}`}>Order history</Link>
                         </li> : <></>
                         }
@@ -114,43 +118,56 @@ const NavbarFixed = () => {
                             type == 'admin' ? <li className="nav-item  text-center orderHistory-navItem" 
                             onClick={()=>{
                                 localStorage.setItem('orders', '0')
-                                refreshPage()
+                                refreshLoadTop()
                                 }} >
                             <Link className="navItem" to={`/admin/workplace/dashboard/${userId}`} style={{color:"#6b705c"}}>Dashboard</Link>
                         </li> : <></>
                         }
                         {
                             type == 'customer' ?
-                            <li className="nav-item  text-center">
+                            <li onClick={refreshLoadTop} className="nav-item  text-center">
                                 <Link className="navItem" to={`/chat/${userId}`}>Chat</Link>
                             </li> : type == 'cakemaker' ?
-                            <li className="nav-item  text-center  orderHistory-navItem">
+                            <li onClick={refreshLoadTop} className="nav-item  text-center  orderHistory-navItem">
                                 <Link className="navItem" to={`/chat/${userId}`}>Chat</Link>
                             </li> :
                             <></>
                         }                        
                         
                             {
-                                type == 'customer' ? <Link className="navItem " to={`/profiles/customer/${userId}`}><li onClick={loadTop} className="nav-item text-center orderHistory-navItem" >Profile</li></Link> : type == 'cakemaker' ? <Link className="navItem orderHistory-navItem"  to={`/profiles/cakemaker/${userId}`}><li onClick={loadTop} className="nav-item text-center " >Profile</li></Link>  : <span></span>
+                                type == 'customer' ? <li onClick={refreshLoadTop} className="nav-item text-center orderHistory-navItem" ><Link className="navItem " to={`/profiles/customer/${userId}`}>Profile</Link></li> : type == 'cakemaker' ? <li onClick={refreshLoadTop} className="nav-item text-center " ><Link className="navItem orderHistory-navItem"  to={`/profiles/cakemaker/${userId}`}>Profile</Link> </li> : <span></span>
                                 
                             }
                     </ul>
                         {
-                            type == 'cakemaker' ? <Link to={`/cakemaker/overdues/${cakemakerDetails.warning}`}> 
-                            <i  style={{fontSize:"25px", color:"#b89472", position:"relative"}}  className={`fas fa-exclamation-circle ${cakemakerDetails.warning > 0 ? 'warning-icon' : ''}`}>
-                                {
-                                    cakemakerDetails.warning > 0 ? <span className="text-monospace p-1" style={{background:"#e63946", color:"white", borderRadius:"50px", position:"absolute", margin:"-8px", fontSize:"10px", fontFamily:"sans-serif"}}>{cakemakerDetails.warning}</span> : <></>
-                                }
-                                </i></Link> : <></>
+                            type == 'cakemaker' ? 
+                            
+                            <button className="btn" onClick={refreshLoadTop}>
+                                <Link to={`/cakemaker/overdues/${cakemakerDetails.warning}`}> 
+                                <i style={{fontSize:"25px", color:"#b89472", position:"relative"}}  className={`fas fa-exclamation-circle ${cakemakerDetails.warning > 0 ? 'warning-icon' : ''}`}>
+                                    {
+                                        cakemakerDetails.warning > 0 ? <span className="text-monospace p-1" style={{background:"#e63946", color:"white", borderRadius:"50px", position:"absolute", margin:"-8px", fontSize:"10px", fontFamily:"sans-serif"}}>{cakemakerDetails.warning}</span> : <></>
+                                    }
+                                    </i>
+                                </Link>
+                            </button>
+                            
+                            : <></>
                         }
                         {
-                            type == 'cakemaker' ? <Link to={`/cakemaker/calender/${userId}`}> <button  className="btn" ><i style={{fontSize:"25px", color:"#b89472"}} className="far fa-calendar"></i></button></Link> : <></>
+                            type == 'cakemaker' ? 
+                                                        
+                            <button  className="btn" onClick={refreshLoadTop}><Link to={`/cakemaker/calender/${userId}`}><i style={{fontSize:"25px", color:"#b89472"}} className="far fa-calendar"></i></Link> </button>
+                            
+                            : <></>
                         }
                         {
-                            type == 'customer' ? <Link to={`/customer/notifications/${userId}`}> <button  className="btn navbar-notification" ><i style={{fontSize:"25px", color:"#b89472"}} className="fas fa-bell"><span className="text-monospace p-1" style={{background:"#e63946", color:"white", borderRadius:"50px", position:"absolute", margin:"-8px", fontSize:"10px", fontFamily:"sans-serif"}}>{orders}</span></i></button></Link> : <></>
+                            type == 'customer' ? 
+                            
+                            <button  className="btn navbar-notification" onClick={refreshLoadTop}><Link to={`/customer/notifications/${userId}`}> <i style={{fontSize:"25px", color:"#b89472"}} className="fas fa-bell"><span className="text-monospace p-1" style={{background:"#e63946", color:"white", borderRadius:"50px", position:"absolute", margin:"-8px", fontSize:"10px", fontFamily:"sans-serif"}}>{orders}</span></i></Link></button> : <></>
                         }
                         {
-                            type == 'cakemaker' ? <Link to={`cakemaker/orders/all/${userId}`}> <button  className="btn" ><i style={{fontSize:"25px", color:"#b89472"}} className="fas fa-birthday-cake"><span className="text-monospace p-1" style={{background:"#e63946", color:"white", borderRadius:"50px", position:"absolute", margin:"-8px", fontSize:"10px", fontFamily:"sans-serif"}}>{orders}</span></i></button></Link> : <></>
+                            type == 'cakemaker' ? <button onClick={refreshLoadTop} className="btn" ><Link to={`cakemaker/orders/all/${userId}`}> <i style={{fontSize:"25px", color:"#b89472"}} className="fas fa-birthday-cake"><span className="text-monospace p-1" style={{background:"#e63946", color:"white", borderRadius:"50px", position:"absolute", margin:"-8px", fontSize:"10px", fontFamily:"sans-serif"}}>{orders}</span></i></Link></button> : <></>
                         }
                     <form className="d-flex">
 

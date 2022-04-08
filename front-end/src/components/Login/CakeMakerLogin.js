@@ -63,7 +63,7 @@ const CakeMakerLogin = () => {
     return(
         <div className='login-wrapper'>
         <h1 className="text-center common-header" style={{zIndex:"3"}}>Cake Maker Log In</h1>
-        <div className='login-common-container d-flex justify-content-center container'>
+        <div className='login-common-container d-flex justify-content-center container' data-aos="zoom-in" data-aos-duration="1000">
             <Link to={'/login'}><button className='btn login-login-btn text-end'><i class="fas fa-arrow-left"></i></button></Link>
             <div className='mt-5' style={{width:"65%"}}>
 

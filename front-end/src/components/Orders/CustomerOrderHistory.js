@@ -40,7 +40,7 @@ const CustomerOrderHistory = () => {
                             direct.map((item)=>{
 
                                 return(
-                                    <div className="col cm-order-history-card" >
+                                    <div className="col cm-order-history-card" data-aos="fade-up" data-aos-duration="1000" >
                                 <div className="cm-order-history-card-inner ">
                                 <img className="cm-order-history-img" src={item.image} />
 
@@ -65,7 +65,7 @@ const CustomerOrderHistory = () => {
             indirect.map((item)=>{
 
                 return(
-                    <div className="col cm-order-history-card " >
+                    <div className="col cm-order-history-card " data-aos="fade-up" data-aos-duration="1000">
                         <div className="cm-order-history-card-inner">                   
                             <img className="cm-order-history-img" src={item.image}/>
 

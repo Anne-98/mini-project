@@ -100,7 +100,9 @@ const IndirectOrders = () => {
                             {
                                 array.map((item) => {
                                     return(
-                                    <div className="col-lg-3 col">
+                                    <div className="col-lg-3 col" data-aos="fade-up"
+                                    data-aos-easing="linear"
+                                    data-aos-duration="500">
                                             <Link to={`/profiles/cakemaker/${item.cake_makers_id}`} className="text-decoration-none">
                                         <div className= 'indirect-order-cm row'>
                                             <div className="search_item_avatar col-5">

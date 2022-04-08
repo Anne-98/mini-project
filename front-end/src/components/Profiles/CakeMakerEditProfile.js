@@ -94,7 +94,7 @@ const CakeMakerEditProfile = () => {
     return(
         <div className="cm-editprofile-wrapper">
                 <h1 className="text-center common-header" style={{zIndex:"3"}}>Edit Profile</h1>
-            <div className='cm-edit-profile-container d-flex justify-content-center container'>
+            <div className='cm-edit-profile-container d-flex justify-content-center container' data-aos="zoom-in" data-aos-duration="1000">
             <div className="signin-inner-container">
                 <form className="mt-5" onSubmit={updateProfile}>
 

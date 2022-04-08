@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import {Routes } from "react-router-dom";
 import Design from "../components/Home/Design";
 import Home from "../components/Home/Home";
@@ -8,6 +8,8 @@ import Poster from "../components/Home/Poster";
 import Footer from "../components/Home/Footer";
 
 const HomePage = () => {
+
+
     return(
                 <div fluid="md">
                     <Row>

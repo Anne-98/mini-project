@@ -130,7 +130,7 @@ const CakeMakerSignIn = () => {
     return(
         <div className='signin-wrapper'>
                 <h1 className="text-center common-header" style={{zIndex:"3"}}>Cake Maker Sign In</h1>
-            <div className='signin-common-container d-flex justify-content-center container'>
+            <div className='signin-common-container d-flex justify-content-center container' data-aos="zoom-in" data-aos-duration="1000">
                 <Link to={'/signin'}><button className='btn signin-signin-btn'><i class="fas fa-arrow-left"></i></button></Link>
             <div className="signin-inner-container">
                 <form className="mt-5" onSubmit={signInCakeMaker}>

@@ -50,6 +50,7 @@ app.use('/general', generalRoute)
 const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
+const { chatUpdate } = require('./database/chatDB')
 const io = new Server(server, {
   cors: {
     origin: "http://localhost:3000",
@@ -58,17 +59,33 @@ const io = new Server(server, {
 });
 
 io.on('connection', (socket)=>{
-  console.log("socket id: ",socket.id)
-  
-  socket.on('join_room', (data) => {
-    socket.join(data)
-    console.log('User joined Room: ' + data)
-  });
 
-  socket.on("send_message", (data) => {
+  socket.on("send_message",async (data) => {
     
-    socket.broadcast.emit("receive_message", data.content);
-  })
+      var chat_history = JSON.stringify(data.history)
+      var recieverId = data.recieverId
+      var senderId = data.senderId
+      let type = data.type
+    
+      var dataSet = await chatUpdate(chat_history, recieverId, senderId, type)
+
+      console.log("dataSet: ", dataSet)
+      socket.broadcast.emit("receive_message", dataSet);  
+    
+    })
+
+  // socket.on('save_message_list', async(data) =>{
+      // var chat_history = JSON.stringify(data.history)
+      // var recieverId = data.recieverId
+      // var senderId = data.senderId
+    
+      // var dataSet = await chatUpdate(chat_history, recieverId, senderId)
+
+      // socket.broadcast.emit("receive_message", dataSet);
+
+      
+      //   console.log("data: ", dataSet)
+  // })
   
   socket.on('disconnect', ()=>{
     console.log("User disconnected")

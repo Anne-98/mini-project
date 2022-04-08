@@ -83,7 +83,7 @@ const CakeMakerCalender = () =>{
 
                                 // }
                                 return(
-                                    <div className="notifications__item" id="calendar-orderlist-div" >
+                                    <div className="notifications__item" id="calendar-orderlist-div" data-aos="fade-up" data-aos-duration="1000">
                                     {
                                         round_num > 0 ? 
                                         
@@ -155,7 +155,7 @@ const CakeMakerCalender = () =>{
                                     overdueOrders(localStorage.getItem('userId', userId), i+j)
                                 }
                                 return(
-                                    <div className="notifications__item" id="calendar-orderlist-div">
+                                    <div className="notifications__item" id="calendar-orderlist-div" data-aos="fade-up" data-aos-duration="1000">
                                     {
                                         round_num > 0 ? 
                                         <div className="row calendar-orderlist">

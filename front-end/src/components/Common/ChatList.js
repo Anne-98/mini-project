@@ -11,19 +11,24 @@ const ChatList = () => {
     var [allChats, setAllChats] = useState([])
     var [cake_makers_id, setCakeMakersId] = useState('')
     var [clickedId, setClickedId] = useState('')
+    var [clickedName, setClickedName] = useState('')
+    var [availableChats, setAvailableChats] = useState([])
     var [cus_id, setCusId] = useState('')
 
     useEffect(async()=>{
-      if (type == 'customer') {
-        var {data} = await axios.get('http://localhost:8000/cakemaker/allprofiles/cakemakers')
+      // if (type == 'customer') {
+        var dataSet = await axios.get('http://localhost:8000/cakemaker/allprofiles/cakemakers')
+        setAvailableChats(dataSet.data.data)
+        console.log("all chats: ",availableChats)
+      //   setAllChats(data.data)
+      //   console.log("all chats: ",data)
+      // }else if(type == 'cakemaker'){
+      //   console.log("userId: ", userId)
+        var {data} = await axios.post('http://localhost:8000/general/chat/available_chats', {userId,type})
         setAllChats(data.data)
-        console.log("all chats: ",allChats)
-      }else if(type == 'cakemaker'){
-        var {data} = await axios.post('http://localhost:8000/general/chat/available_chats', {userId})
-        setAllChats(data.data)
-        console.log("all chats: ",data)
-      }
+      // }
     },[])
+
 
     return(
         <Fragment>
@@ -40,8 +45,9 @@ const ChatList = () => {
         
         { type == 'customer' ? 
           allChats.map((item) => {
+            console.log("name: ", item.name)
             return(
-            <li className="chatlist-list-container row" onClick={(e) => {setClickedId(item.cake_makers_id)}}>
+            <li className="chatlist-list-container row" onClick={(e) => {setClickedId(item.cake_makers_id); setClickedName(item.name);}}>
               <img src={item.profile_picture} alt="avatar"  className="col-3 col-lg-2 chatlist-list-img" />
               <div className="chatlist-about col-9 col-lg-10">
                 <div className="chatlist-name">{item.name}</div>
@@ -53,11 +59,12 @@ const ChatList = () => {
             )
           }) :
            allChats.map((item) => {
+             console.log("name: ", item.name)
             return(
-            <li className="chatlist-list-container row" onClick={(e) => {setClickedId(item.cus_id)}}>
+            <li className="chatlist-list-container row" onClick={(e) => {setClickedId(item.cus_id); setClickedName(item.name)}}>
               <img src={profile} alt="avatar"  className="col-3 col-lg-2 chatlist-list-img" />
               <div className="chatlist-about col-9 col-lg-10">
-                <div className="chatlist-name">{item.cus_name}</div>
+                <div className="chatlist-name">{item.name}</div>
                 {/* <div className="chatlist-status">
                   <i className="fa fa-circle online" style={{fontSize:"8px"}}></i> <p>online</p>
                 </div> */}
@@ -66,11 +73,30 @@ const ChatList = () => {
             )
           })
         }
+        <hr/>
+        {  type == 'customer' ? 
+
+        availableChats.map((item) => {
+          return(
+            <li className="chatlist-list-container row" onClick={(e) => {setClickedId(item.cus_id); setClickedName(item.name)}}>
+              <img src={item.profile_picture} alt="avatar"  className="col-3 col-lg-2 chatlist-list-img" />
+              <div className="chatlist-about col-9 col-lg-10">
+                <div className="chatlist-name">{item.name}</div>
+                {/* <div className="chatlist-status">
+                  <i className="fa fa-circle online" style={{fontSize:"8px"}}></i> <p>online</p>
+                </div> */}
+              </div>
+            </li>
+          )
+        }) :
+
+        <></>
+      }
       </ul> 
     </div>
-    {console.log("cake_makers_id", cake_makers_id, cus_id)
-  }
-      <ChatContainer clickedId={clickedId} />
+    {console.log("clickerdId", clickedId)}
+    {console.log("userId", userId)}
+      <ChatContainer clickedId={clickedId} clickedName={clickedName}/>
   </div> 
         </Fragment>
     )

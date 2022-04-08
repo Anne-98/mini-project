@@ -30,7 +30,7 @@ const OneCategory = () => {
                     row.map((item) => {
                         console.log(item.title)
                         return(
-                            <div className="design-container col ">
+                            <div className="design-container col " data-aos="fade-up" data-aos-duration="1000">
                                 <div className="design-card">
                                     <div className="design-img-cover">
                                         <img src={item.image}/>

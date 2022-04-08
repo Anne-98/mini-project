@@ -38,9 +38,9 @@ const CakeMakerAllProfiles = () => {
                 //    setCake_makers_id(item.cake_makers_id)
 
                     return(
-                        <div className='col d-flex justify-content-center' >
+                        <div className='col d-flex justify-content-center' data-aos="fade-up" data-aos-duration="1000">
                             
-                        <figure className="snip0056 text-center" >
+                        <figure style={{height:"fit-content"}} className="snip0056 text-center" >
                             <figcaption >
                             <h2>{first_name} <br/><span>{second_name}</span></h2>
                             <img className='profile-picture rounded-circle' src ={item.profile_picture}/>

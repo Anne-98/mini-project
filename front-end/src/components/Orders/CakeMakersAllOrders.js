@@ -87,7 +87,7 @@ const CakeMakersAllDetails = () => {
                             direct.map((item)=>{
 
                                 return(
-                                    <div className="col cm-order-history-card" >
+                                    <div className="col cm-order-history-card" data-aos-duration="1000" data-aos="fade-up">
                                 <div className="cm-order-history-card-inner ">
                                 <img className="cm-order-history-img" src={item.image} />
 
